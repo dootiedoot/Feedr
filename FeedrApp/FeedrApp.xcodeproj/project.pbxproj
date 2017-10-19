@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F06246D1F96A84A003ED25C /* RecipeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246C1F96A84A003ED25C /* RecipeScreenViewController.swift */; };
 		9FB9B6541F8BDE1E004B26A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B6531F8BDE1E004B26A9 /* AppDelegate.swift */; };
 		9FB9B6561F8BDE1E004B26A9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B6551F8BDE1E004B26A9 /* FirstViewController.swift */; };
 		9FB9B6581F8BDE1E004B26A9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B6571F8BDE1E004B26A9 /* SecondViewController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F06246C1F96A84A003ED25C /* RecipeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenViewController.swift; sourceTree = "<group>"; };
 		9FB9B6501F8BDE1E004B26A9 /* FeedrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB9B6531F8BDE1E004B26A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FB9B6551F8BDE1E004B26A9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				9FB9B6551F8BDE1E004B26A9 /* FirstViewController.swift */,
 				9FB9B6571F8BDE1E004B26A9 /* SecondViewController.swift */,
 				9FB9B6CB1F8C0108004B26A9 /* HomeViewController.swift */,
+				9F06246C1F96A84A003ED25C /* RecipeScreenViewController.swift */,
 				9FB9B6C91F8C0046004B26A9 /* UserLibraryViewController.swift */,
 				9FB9B6C51F8BFFF4004B26A9 /* ShoppingListViewController.swift */,
 				9FB9B6C71F8C001A004B26A9 /* UserProfileViewController.swift */,
@@ -281,6 +284,7 @@
 				9FB9B6C81F8C001A004B26A9 /* UserProfileViewController.swift in Sources */,
 				9FB9B6541F8BDE1E004B26A9 /* AppDelegate.swift in Sources */,
 				9FB9B6CC1F8C0108004B26A9 /* HomeViewController.swift in Sources */,
+				9F06246D1F96A84A003ED25C /* RecipeScreenViewController.swift in Sources */,
 				9FB9B6C61F8BFFF4004B26A9 /* ShoppingListViewController.swift in Sources */,
 				9FB9B6CA1F8C0046004B26A9 /* UserLibraryViewController.swift in Sources */,
 				9FB9B6561F8BDE1E004B26A9 /* FirstViewController.swift in Sources */,
