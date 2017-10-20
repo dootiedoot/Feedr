@@ -6,12 +6,114 @@
 //  Copyright © 2017 Chad Hoang. All rights reserved.
 //
 
+/*
+     Example of how to use the global yummlyAPI search function.
+ 
+     Call anywhere with: YummlyAPI.GetSearch(_Parameters_)
+ 
+     Parameters to fill are:
+ 
+         search: String                         //  General string to search with. Examples: "Soup", "Garlic", "Chocolate Cake" etc. USE SINGLE SPACE ONLY.
+         requirePictures: Bool                  //  should the search only return results with pictures? (Most likey will be using True all the time)
+         allowedIngredients: [String]           //  Array of strings containing names of ingredients to allow in the search. Ex. ["garlic", "onion", "apple"]
+         allowedAllergies: [Allergy]            //  Array of Allergy to be allowed in search. Ex. [Allergy.Diary, Allergy.Gluten]. See YummlyAPI.swift for all types
+         allowedDiet: [Diet]                    //  Array of Diet to be allowed in search. Ex. [Diet.Vegan, Diet.Pescetarian]. See YummlyAPI.swift for all types
+         allowedCuisines: []                    //  Array of Cuisine to be allowed in search. Ex. [Cuisine.Asian, Cuisine.Mexican]. See YummlyAPI.swift for all types
+         excludedCuisines: []                   //  Array of Cuisine to be excluded in search. Ex. [Cuisine.Asian, Cuisine.Mexican]. See YummlyAPI.swift for all types
+         allowedCourses: []                     //  Array of Courses to be allowed in search. Ex. [Course.Breakfest, Course.Brunch]. See YummlyAPI.swift for all types
+         excludeCourses: []                     //  Array of Course to be excluded in search. Ex. [Course.Breakfest, Course.Brunch]. See YummlyAPI.swift for all types
+         allowedHoliday: []                     //  Array of Holiday to be allowed in search. Ex. [Holiday.Christmas, Holiday.Summer]. See YummlyAPI.swift for all types
+         excludeHoliday: []                     //  Array of Holiday to be excluded in search. Ex. [Holiday.Christmas, Holiday.Summer]. See YummlyAPI.swift for all types
+         maxTotalTimeInSeconds: Int             //  Allowed recipes in search only under this cooking time in seconds. Ex. 5000 = 83 minutes or 5000(seconds)
+         maxResults: Int                        //  Max number of results allowed to be returned by the search (There might be a bug? Looking into it)
+ 
+     Due to how JSON has to wait for the data to be parsed. To use the result, the function must have {} at the end with "result in" to acccess the data. Exmaple below:
+ 
+     YummlyAPI.GetSearch(....)
+     { result in
+         // Do stuff with result
+     }
+ */
+
+/*  Exmaple search with general search only
+ 
+    YummlyAPI.GetSearch(
+        search: "soup",
+        requirePictures: true,
+        allowedIngredients: [],
+        allowedAllergies: [],
+        allowedDiet: [],
+        allowedCuisines: [],
+        excludedCuisines: [],
+        allowedCourses: [],
+        excludeCourses: [],
+        allowedHoliday: [],
+        excludeHoliday: [],
+        maxTotalTimeInSeconds: -1,
+        maxResults: -1)
+     { result in
+ 
+         print (result.matches)
+ 
+     }
+*/
+
+/*
+     The Structure of the Result:
+ 
+     -Result
+         -attribution
+             -html
+             -url
+             -text
+             -logo
+         -totalMatchCount
+         -facetCounts
+         -matches
+             -attributes
+                 -course
+                 -cuisine
+             -flavors
+                 -salty
+                 -sour
+                 -sweet
+                 -bitter
+                 -meaty
+                 -piquant
+             -rating
+             -id
+             -smallImageUrls
+             -sourceDisplayName
+             -totalTimeInSeconds
+             -ingredients
+             -recipeName
+         -criteria
+             -maxResults
+             -excludedIngredients
+             -excludedAttributes
+             -allowedIngredients
+             -attributeRanges
+                 -flavorPiquant
+                     -min
+                     -max
+             -nutritionRestrictions
+                 -nutrition
+                     -min
+                     -max
+             -allowedDiets
+             -resultsToSkip
+             -requirePictures
+             -facetFields
+             -terms
+             -allowedAttributes
+ */
+
 import Foundation
 
 /*
  Yummly Enums
  */
-enum Cuisine
+public enum Cuisine
 {
     case American
     case Italian
@@ -40,7 +142,7 @@ enum Cuisine
     case Portugese
 }
 
-enum Allergy
+public enum Allergy
 {
     case Diary
     case Gluten
@@ -53,7 +155,7 @@ enum Allergy
     case Wheat
 }
 
-enum Diet
+public enum Diet
 {
     case LactoVegetarian
     case OvoVegetarian
@@ -62,7 +164,7 @@ enum Diet
     case Vegetarian
 }
 
-enum Course
+public enum Course
 {
     case Main
     case Desserts
@@ -78,7 +180,7 @@ enum Course
     case Cocktails
 }
 
-enum Holiday
+public enum Holiday
 {
     case Christmas
     case Summer
@@ -95,77 +197,98 @@ enum Holiday
  */
 struct Result: Decodable
 {
-    var attribution : Attribution?
-    var totalMatchCount : Int?
-    var facetCounts : [String: String]?
-    var matches : [Matches]?
-    var criteria : Criteria?
+    let attribution : Attribution?
+    let totalMatchCount : Int?
+    let facetCounts : [String: String]?
+    let matches : [Matches]?
+    let criteria : Criteria?
+    
+    //  "Blank" constructor
+    init()
+    {
+        attribution = Attribution(html: "", url: "", text: "", logo: "")
+        totalMatchCount = -1
+        facetCounts = ["":""]
+        matches = []
+        criteria = Criteria(maxResults: -1,
+                            excludedIngredients: [],
+                            excludedAttributes : [],
+                            allowedIngredients : [],
+                            attributeRanges : AttributeRanges(flavorPiquant: FlavorPiquant(min: 0.0, max: 0.0)),
+                            nutritionRestrictions : NutritionRestrictions(nutrition: []),
+                            allowedDiets : [],
+                            resultsToSkip : -1,
+                            requirePictures : false,
+                            facetFields : [],
+                            terms : [],
+                            allowedAttributes : [])
+    }
 }
 struct Attribution: Decodable
 {
-    var html : String?
-    var url : String?
-    var text : String?
-    var logo : String?
+    let html : String?
+    let url : String?
+    let text : String?
+    let logo : String?
 }
 struct Matches: Decodable
 {
-    var attributes : Attributes?
-    var flavors : Flavors?
-    var rating : Float?
-    var id : String?
-    var smallImageUrls : [String]?
-    var sourceDisplayName : String?
-    var totalTimeInSeconds : Int?
-    var ingredients : [String]?
-    var recipeName : String?
+    let attributes : Attributes?
+    let flavors : Flavors?
+    let rating : Float?
+    let id : String?
+    let smallImageUrls : [String]?
+    let sourceDisplayName : String?
+    let totalTimeInSeconds : Int?
+    let ingredients : [String]?
+    let recipeName : String?
 }
 struct Attributes: Decodable
 {
-    var course : [String]?
-    var cuisine : [String]?
+    let course : [String]?
+    let cuisine : [String]?
 }
 struct Flavors: Decodable
 {
-    var salty : Float?
-    var sour : Float?
-    var sweet : Float?
-    var bitter : Float?
-    var meaty : Float?
-    var piquant : Float?
+    let salty : Float?
+    let sour : Float?
+    let sweet : Float?
+    let bitter : Float?
+    let meaty : Float?
+    let piquant : Float?
 }
 struct Criteria: Decodable
 {
-    var maxResults : Int?
-    var excludedIngredients : [String]?
-    var excludedAttributes : [String]?
-    var allowedIngredients : [String]?
-    var attributeRanges : AttributeRanges?
-    var nutritionRestrictions : NutritionRestrictions?
-    var allowedDiets : [String]?
-    var resultsToSkip : Int?
-    var requirePictures : Bool?
-    var facetFields : [String]?
-    var terms : [String]?
-    var allowedAttributes : [String]?
+    let maxResults : Int?
+    let excludedIngredients : [String]?
+    let excludedAttributes : [String]?
+    let allowedIngredients : [String]?
+    let attributeRanges : AttributeRanges?
+    let nutritionRestrictions : NutritionRestrictions?
+    let allowedDiets : [String]?
+    let resultsToSkip : Int?
+    let requirePictures : Bool?
+    let facetFields : [String]?
+    let terms : [String]?
+    let allowedAttributes : [String]?
 }
 struct AttributeRanges: Decodable
 {
-    var flavorPiquant : FlavorPiquant?
+    let flavorPiquant : FlavorPiquant?
 }
 struct FlavorPiquant: Decodable
 {
-    var min : Float
-    var max : Float
+    let min : Float
+    let max : Float
 }
 struct NutritionRestrictions: Decodable
 {
-    var nutrition : [Nutrition]?
+    let nutrition : [Nutrition]?
 }
 struct Nutrition: Decodable
 {
-    var min : Int
-    var max : Int
+    let min : Int
+    let max : Int
 }
 
 class YummlyAPI
@@ -173,9 +296,8 @@ class YummlyAPI
     //  VARIABLES
     
     //  yummly API variables
-
-    
-    //  Global function for making yummly calls. Returns a search result enum that contains all the data
+        
+    //  Actual function that returns a search result enum that contains all the data
     static func GetSearch(search: String?,
                          requirePictures: Bool?,
                          allowedIngredients: [String]?,
@@ -219,7 +341,7 @@ class YummlyAPI
             query += "&requirePictures=true"
         }
         //  Allowed Ingredients
-        if allowedIngredients!.count > 0
+        if allowedIngredients != nil && allowedIngredients!.count > 0
         {
             for ingredient in allowedIngredients!
             {
@@ -229,7 +351,7 @@ class YummlyAPI
 
         //excludedIngredients: [String]?,
         //  Allowed Allergies
-        if allowedAllergies!.count > 0
+        if allowedAllergies != nil && allowedAllergies!.count > 0
         {
             for allergy in allowedAllergies!
             {
@@ -259,7 +381,7 @@ class YummlyAPI
             }
         }
         //  Allowed Diets
-        if allowedDiet!.count > 0
+        if allowedDiet != nil && allowedDiet!.count > 0
         {
             for diet in allowedDiet!
             {
@@ -281,7 +403,7 @@ class YummlyAPI
             }
         }
         //  Allowed Cuisines
-        if allowedCuisines!.count > 0
+        if allowedCuisines != nil && allowedCuisines!.count > 0
         {
             for cuisine in allowedCuisines!
             {
@@ -343,7 +465,7 @@ class YummlyAPI
             }
         }
         //  Excluded Cuisines
-        if excludedCuisines!.count > 0
+        if excludedCuisines != nil && excludedCuisines!.count > 0
         {
             for cuisine in excludedCuisines!
             {
@@ -405,7 +527,7 @@ class YummlyAPI
             }
         }
         //  Allowed Courses
-        if allowedCourses!.count > 0
+        if allowedCourses != nil && allowedCourses!.count > 0
         {
             for course in allowedCourses!
             {
@@ -441,7 +563,7 @@ class YummlyAPI
             }
         }
         //  Excluded Courses
-        if excludeCourses!.count > 0
+        if excludeCourses != nil && excludeCourses!.count > 0
         {
             for course in excludeCourses!
             {
@@ -477,7 +599,7 @@ class YummlyAPI
             }
         }
         //  Allowed Holiday
-        if allowedHoliday!.count > 0
+        if allowedHoliday != nil && allowedHoliday!.count > 0
         {
             for holiday in allowedHoliday!
             {
@@ -505,7 +627,7 @@ class YummlyAPI
             }
         }
         //  Excluded Holiday
-        if excludeHoliday!.count > 0
+        if excludeHoliday != nil && excludeHoliday!.count > 0
         {
             for holiday in excludeHoliday!
             {

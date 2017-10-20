@@ -8,7 +8,8 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController
+{
     
         //THIS IS THE SEARCH BAR AT THE TOP OF THE VIEW
     @IBOutlet var lbl_searchbar1: UITextField!
