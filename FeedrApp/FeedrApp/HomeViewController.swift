@@ -11,14 +11,14 @@ import UIKit
 class HomeViewController: UIViewController {
     
         //THIS IS THE SEARCH BAR AT THE TOP OF THE VIEW
-    @IBOutlet var Lbl_searchbar1: UILabel!
-
+    @IBOutlet var lbl_searchbar1: UITextField!
+    
     @IBAction func Btn_Search1(_ sender: Any) {
         
                 //WE NEED A CHECK HERE TO SEE IF THE Lbl_searchbar1 HAS THIS ITEM
         
         YummlyAPI.GetSearch(
-            search: Lbl_searchbar1.text!,//"soup",
+            search: lbl_searchbar1.text!,//"soup",
             requirePictures: true,
             allowedIngredients: [],
             allowedAllergies: [],
