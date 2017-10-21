@@ -8,70 +8,92 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController
+{
     //THIS IS THE SEARCH BAR AT THE TOP OF THE VIEW
     @IBOutlet var lbl_searchbar1: UITextField!
     
-    @IBAction func Btn_Search1(_ sender: Any) {
-        
+    var result = Result()
+    
+    @IBAction func Btn_Search1(_ sender: Any)
+    {
         //WE NEED A CHECK HERE TO SEE IF THE Lbl_searchbar1 HAS THIS ITEM
         
-        YummlyAPI.GetSearch(
-            search: lbl_searchbar1.text!,//"soup",
-            requirePictures: true,
-            allowedIngredients: [],
-            allowedAllergies: [],
-            allowedDiet: [],
-            allowedCuisines: [],
-            excludedCuisines: [],
-            allowedCourses: [],
-            excludeCourses: [],
-            allowedHoliday: [],
-            excludeHoliday: [],
-            maxTotalTimeInSeconds: -1,
-            maxResults: -1)
-        { result in
-            
-            for match in result.matches!
-            {
-                print (match.recipeName!)
+        if lbl_searchbar1.text != nil
+        {
+            YummlyAPI.GetSearch(
+                search: lbl_searchbar1.text!,
+                requirePictures: true,
+                allowedIngredients: [],
+                allowedAllergies: [],
+                allowedDiet: [],
+                allowedCuisines: [],
+                excludedCuisines: [],
+                allowedCourses: [],
+                excludeCourses: [],
+                allowedHoliday: [],
+                excludeHoliday: [],
+                maxTotalTimeInSeconds: -1,
+                maxResults: -1)
+            { result in
+                
+                for match in result.matches!
+                {
+                    print (match.recipeName!)
+                }
+                
+                //  Update the current result variable so it can be used outside of this function
+                self.result = result
+                
+                //  Dispatch queue so table view is refreshed with data
+                DispatchQueue.main.async
+                {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.result.matches!.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        //  Initialize the variables to tags
+        let img_recipeThumbnail = cell.viewWithTag(1) as! UIImageView
+        let lbl_recipeName = cell.viewWithTag(2) as! UILabel
+        
+        //  Assign variables to actual values
+        img_recipeThumbnail.image = UIImage(data: try! Data(contentsOf: URL(string: result.matches![indexPath.row]. !)!))
+        lbl_recipeName.text = result.matches![indexPath.row].recipeName
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
