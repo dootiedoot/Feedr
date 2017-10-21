@@ -88,7 +88,7 @@ class HomeTableViewController: UITableViewController
         let lbl_recipeName = cell.viewWithTag(2) as! UILabel
         
         //  Assign variables to actual values
-        img_recipeThumbnail.image = UIImage(data: try! Data(contentsOf: URL(string: result.matches![indexPath.row]. !)!))
+        img_recipeThumbnail.image = UIImage(data: try! Data(contentsOf: URL(string: result.matches![indexPath.row].smallImageUrls![0])!))
         lbl_recipeName.text = result.matches![indexPath.row].recipeName
         
         return cell
