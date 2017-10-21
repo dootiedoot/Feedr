@@ -13,7 +13,7 @@
         <!--Home-->
         <scene sceneID="B6m-Do-wG8">
             <objects>
-                <tableViewController id="6LZ-fz-Jbt" sceneMemberID="viewController">
+                <tableViewController id="6LZ-fz-Jbt" customClass="HomeTableViewController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WT3-yk-IYz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,7 +174,7 @@
         <!--Library-->
         <scene sceneID="5SO-Zh-haM">
             <objects>
-                <tableViewController id="yTC-fg-eDd" sceneMemberID="viewController">
+                <tableViewController id="yTC-fg-eDd" customClass="UserLibraryTableViewController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X3g-0N-OXx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
