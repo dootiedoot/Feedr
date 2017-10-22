@@ -242,6 +242,13 @@ struct Matches: Decodable
     let totalTimeInSeconds : Int?
     let ingredients : [String]?
     let recipeName : String?
+    
+    func GetCookingTime() -> String
+    {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: TimeInterval(totalTimeInSeconds!))!
+    }
 }
 struct Attributes: Decodable
 {

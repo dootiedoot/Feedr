@@ -40,6 +40,9 @@
                                             <state key="normal" title="Search">
                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btn_Search:" destination="6LZ-fz-Jbt" eventType="touchUpInside" id="AS0-pH-BF8"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -74,7 +77,7 @@
                             </subviews>
                         </stackView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jOv-J8-rTt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="jOv-J8-rTt">
                                 <rect key="frame" x="0.0" y="134" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jOv-J8-rTt" id="CW4-5a-DUe">
@@ -91,12 +94,31 @@
                                                         <constraint firstAttribute="width" constant="128" id="rQh-3S-Hez"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label_RecipeName" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WI-Zp-eZS">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kpl-2M-rOl">
                                                     <rect key="frame" x="164" y="0.0" width="175" height="128"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_RecipeName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t86-Al-T5s">
+                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="96"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bET-y0-jER">
+                                                            <rect key="frame" x="0.0" y="96" width="175" height="32"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cookingTimer" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCD-9i-vbQ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="58" height="32"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lbl_CookTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nh8-De-7Bo">
+                                                                    <rect key="frame" x="68" y="0.0" width="107" height="32"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -114,10 +136,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Home" id="WUe-vj-5yW"/>
+                    <connections>
+                        <outlet property="lbl_searchbar" destination="SHc-Jd-ayv" id="SXF-Pb-OZ6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mD-pU-bDD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="-860"/>
+            <point key="canvasLocation" x="104.8" y="-860.41979010494754"/>
         </scene>
         <!--Recipe Screen View Controller-->
         <scene sceneID="2rL-d9-khj">
@@ -501,6 +526,9 @@
             <point key="canvasLocation" x="1982" y="-299"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cookingTimer" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sf3-E1-Jt9"/>
     </inferredMetricsTieBreakers>

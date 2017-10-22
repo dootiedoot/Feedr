@@ -11,18 +11,18 @@ import UIKit
 class HomeTableViewController: UITableViewController
 {
     //THIS IS THE SEARCH BAR AT THE TOP OF THE VIEW
-    @IBOutlet var lbl_searchbar1: UITextField!
+    @IBOutlet weak var lbl_searchbar: UITextField!
     
     var result = Result()
     
-    @IBAction func Btn_Search1(_ sender: Any)
+    @IBAction func btn_Search(_ sender: Any)
     {
-        //WE NEED A CHECK HERE TO SEE IF THE Lbl_searchbar1 HAS THIS ITEM
-        
-        if lbl_searchbar1.text != nil
+        //  if the lbl_searchbar isnt empty...
+        if lbl_searchbar.text != nil
         {
+            //  if the lbl_searchbar isnt empty...
             YummlyAPI.GetSearch(
-                search: lbl_searchbar1.text!,
+                search: lbl_searchbar.text!,
                 requirePictures: true,
                 allowedIngredients: [],
                 allowedAllergies: [],
@@ -39,7 +39,8 @@ class HomeTableViewController: UITableViewController
                 
                 for match in result.matches!
                 {
-                    print (match.recipeName!)
+                    //print (match.recipeName!)
+                    //print (match.smallImageUrls![0])
                 }
                 
                 //  Update the current result variable so it can be used outside of this function
@@ -86,10 +87,28 @@ class HomeTableViewController: UITableViewController
         //  Initialize the variables to tags
         let img_recipeThumbnail = cell.viewWithTag(1) as! UIImageView
         let lbl_recipeName = cell.viewWithTag(2) as! UILabel
+        let lbl_cookingTime = cell.viewWithTag(3) as! UILabel
         
         //  Assign variables to actual values
-        img_recipeThumbnail.image = UIImage(data: try! Data(contentsOf: URL(string: result.matches![indexPath.row].smallImageUrls![0])!))
+        //  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
+        let url = URL(string: result.matches![indexPath.row].smallImageUrls![0])
+        URLSession.shared.dataTask(with: url!, completionHandler:{ (data, reponse, error) in
+            if error != nil
+            {
+                print(error!)
+                return
+            }
+            DispatchQueue.main.async
+            {
+                //  Finally, assign the image if all is successful
+                img_recipeThumbnail.image = UIImage(data: data!)
+            }
+        }).resume()
+        
+        //  Recipe Name
         lbl_recipeName.text = result.matches![indexPath.row].recipeName
+        //  Cooking Time
+        lbl_cookingTime.text = result.matches![indexPath.row].GetCookingTime()
         
         return cell
     }
