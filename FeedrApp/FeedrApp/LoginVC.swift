@@ -1,5 +1,5 @@
 //
-//  UserProfileViewController.swift
+//  UserLoginViewController.swift
 //  FeedrApp
 //
 //  Created by James Perry on 10/9/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController {
+class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

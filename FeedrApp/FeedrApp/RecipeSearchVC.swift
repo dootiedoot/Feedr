@@ -8,12 +8,13 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController
+class RecipeSearchVC: UITableViewController
 {
     //THIS IS THE SEARCH BAR AT THE TOP OF THE VIEW
     @IBOutlet weak var lbl_searchbar: UITextField!
     
     var result = Result()
+    var selectedRecipe = Match()
     
     @IBAction func btn_Search(_ sender: Any)
     {
@@ -37,11 +38,11 @@ class HomeTableViewController: UITableViewController
                 maxResults: -1)
             { result in
                 
-                for match in result.matches!
+                /*for match in result.matches!
                 {
                     //print (match.recipeName!)
                     //print (match.smallImageUrls![0])
-                }
+                }*/
                 
                 //  Update the current result variable so it can be used outside of this function
                 self.result = result
@@ -59,6 +60,16 @@ class HomeTableViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //  Update the table at start if there was a previous search
+        if result.matches!.count > 0
+        {
+            //  Dispatch queue so table view is refreshed with data
+            DispatchQueue.main.async
+            {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning()
@@ -113,6 +124,35 @@ class HomeTableViewController: UITableViewController
         return cell
     }
     
+    /*override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 80
+    }*/
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        selectedRecipe = result.matches![indexPath.row]
+        self.performSegue(withIdentifier: "RecipeDetail", sender: self)
+    }
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "RecipeDetail"
+        {
+            let RecipeDetailController = segue.destination as! RecipeDetailVC
+            RecipeDetailController.recipe = selectedRecipe
+        }
+        else
+        {
+            print("Could not find segue identifier")
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -148,15 +188,4 @@ class HomeTableViewController: UITableViewController
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

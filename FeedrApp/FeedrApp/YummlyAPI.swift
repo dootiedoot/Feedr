@@ -200,7 +200,7 @@ struct Result: Decodable
     let attribution : Attribution?
     let totalMatchCount : Int?
     let facetCounts : [String: String]?
-    let matches : [Matches]?
+    let matches : [Match]?
     let criteria : Criteria?
     
     //  "Blank" constructor
@@ -231,7 +231,7 @@ struct Attribution: Decodable
     let text : String?
     let logo : String?
 }
-struct Matches: Decodable
+struct Match: Decodable
 {
     let attributes : Attributes?
     let flavors : Flavors?
@@ -242,6 +242,19 @@ struct Matches: Decodable
     let totalTimeInSeconds : Int?
     let ingredients : [String]?
     let recipeName : String?
+    
+    init()
+    {
+        attributes = Attributes(course: [], cuisine: [])
+        flavors = Flavors(salty: -1, sour: -1, sweet: -1, bitter: -1, meaty: -1, piquant: -1)
+        rating = -1
+        id = ""
+        smallImageUrls = []
+        sourceDisplayName = ""
+        totalTimeInSeconds = -1
+        ingredients = []
+        recipeName = ""
+    }
     
     func GetCookingTime() -> String
     {

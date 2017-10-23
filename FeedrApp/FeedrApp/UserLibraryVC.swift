@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserLibraryTableViewController: UITableViewController {
+class UserLibraryVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

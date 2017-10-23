@@ -1,14 +1,14 @@
 //
-//  RecipeScreenViewController.swift
+//  UserProfileViewController.swift
 //  FeedrApp
 //
-//  Created by James Perry on 10/17/17.
+//  Created by James Perry on 10/9/17.
 //  Copyright © 2017 Team9. All rights reserved.
 //
 
 import UIKit
 
-class RecipeScreenViewController: UIViewController {
+class UserProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

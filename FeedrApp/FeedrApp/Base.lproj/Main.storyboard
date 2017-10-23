@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Search-->
         <scene sceneID="B6m-Do-wG8">
             <objects>
-                <tableViewController id="6LZ-fz-Jbt" customClass="HomeTableViewController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="6LZ-fz-Jbt" userLabel="Search" customClass="RecipeSearchVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WT3-yk-IYz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-hk-yZJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="  Type text here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-Jd-ayv">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="  Type text here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-Jd-ayv">
                                             <rect key="frame" x="0.0" y="0.0" width="275" height="45"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -144,18 +144,20 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Home" id="WUe-vj-5yW"/>
+                    <navigationItem key="navigationItem" id="daV-6c-kMg"/>
                     <connections>
                         <outlet property="lbl_searchbar" destination="SHc-Jd-ayv" id="SXF-Pb-OZ6"/>
+                        <segue destination="Xvd-cF-ap2" kind="show" identifier="RecipeDetail" id="5y2-Cy-4Lm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mD-pU-bDD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="104.8" y="-860.41979010494754"/>
+            <point key="canvasLocation" x="758" y="-699"/>
         </scene>
-        <!--Recipe Screen View Controller-->
+        <!--Recipe DetailVC-->
         <scene sceneID="2rL-d9-khj">
             <objects>
-                <viewController id="Xvd-cF-ap2" customClass="RecipeScreenViewController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xvd-cF-ap2" customClass="RecipeDetailVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jzm-OF-oT1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,23 +166,24 @@
                                 <rect key="frame" x="10" y="57" width="355" height="600"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBk-WH-For">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="294"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="300"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bk7-m0-pEJ">
-                                        <rect key="frame" x="0.0" y="294" width="355" height="306"/>
+                                        <rect key="frame" x="0.0" y="300" width="355" height="300"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXH-4I-jOn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRV-aA-1vh">
+                                <rect key="frame" x="-10" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Recipe" id="obN-kQ-gkE">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt;Back" id="4ZM-NE-FYv">
+                                    <navigationItem title="Title" id="xLz-qH-1j8">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="UhO-Hz-BGd">
                                             <connections>
-                                                <segue destination="6LZ-fz-Jbt" kind="show" id="RSg-lb-RmB"/>
+                                                <segue destination="6LZ-fz-Jbt" kind="show" id="ZPz-Rp-hI1"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -189,25 +192,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EC9-qW-ifN" firstAttribute="centerX" secondItem="kXH-4I-jOn" secondAttribute="centerX" id="JL4-Ix-2Tr"/>
                             <constraint firstItem="CN0-Z9-vFc" firstAttribute="trailing" secondItem="EC9-qW-ifN" secondAttribute="trailing" constant="10" id="L5a-fe-N7a"/>
                             <constraint firstAttribute="bottomMargin" secondItem="EC9-qW-ifN" secondAttribute="bottom" constant="10" id="NL3-S7-LOE"/>
-                            <constraint firstItem="EC9-qW-ifN" firstAttribute="top" secondItem="kXH-4I-jOn" secondAttribute="bottom" constant="13" id="bjk-OT-SPk"/>
                             <constraint firstItem="EC9-qW-ifN" firstAttribute="leading" secondItem="CN0-Z9-vFc" secondAttribute="leading" constant="10" id="eWx-Za-jro"/>
                             <constraint firstItem="EC9-qW-ifN" firstAttribute="top" secondItem="jzm-OF-oT1" secondAttribute="top" constant="57" id="rFZ-Vz-bWH"/>
-                            <constraint firstItem="kXH-4I-jOn" firstAttribute="leading" secondItem="jzm-OF-oT1" secondAttribute="leading" id="sQD-Ol-BRi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CN0-Z9-vFc"/>
                     </view>
+                    <connections>
+                        <outlet property="img_RecipeThumbnail" destination="MBk-WH-For" id="JpA-JP-XZN"/>
+                        <outlet property="lbl_title" destination="xLz-qH-1j8" id="l5h-eP-Nc8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9N-8a-ckw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="-860.41979010494754"/>
+            <point key="canvasLocation" x="1472.8" y="-699.40029985007504"/>
         </scene>
         <!--Library-->
         <scene sceneID="5SO-Zh-haM">
             <objects>
-                <tableViewController id="yTC-fg-eDd" customClass="UserLibraryTableViewController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yTC-fg-eDd" customClass="UserLibraryVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X3g-0N-OXx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,7 +251,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wQ-9s-sis" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2881" y="-299"/>
+            <point key="canvasLocation" x="1473" y="-1"/>
         </scene>
         <!--Splash Screen-->
         <scene sceneID="Af9-FV-ohS">
@@ -294,12 +298,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pts-gb-h1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1726" y="0.0"/>
+            <point key="canvasLocation" x="-1478" y="-1"/>
         </scene>
         <!--User Login-->
         <scene sceneID="yj6-jb-PDI">
             <objects>
-                <viewController title="User Login" id="bPk-3Y-F9H" customClass="UserLoginViewController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="User Login" id="bPk-3Y-F9H" customClass="LoginVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r0Z-z5-Rzp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -392,7 +396,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2R-fD-UrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-924.375" y="-1.25"/>
+            <point key="canvasLocation" x="-730" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -417,7 +421,7 @@
         <!--Shopping List-->
         <scene sceneID="65H-Ad-zIR">
             <objects>
-                <tableViewController id="4Am-tD-dAr" customClass="ShoppingListTableViewController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4Am-tD-dAr" customClass="ShoppingListVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lxc-Wm-dEu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -443,12 +447,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8j-3U-SD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2292" y="472.71364317841085"/>
+            <point key="canvasLocation" x="1473" y="766"/>
         </scene>
         <!--User Profile-->
         <scene sceneID="D8V-UQ-Pqv">
             <objects>
-                <viewController title="User Profile" id="5Hi-YC-g0D" customClass="UserProfileViewController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="User Profile" id="5Hi-YC-g0D" customClass="UserProfileVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIt-Yc-MDi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -493,7 +497,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="1090.704647676162"/>
+            <point key="canvasLocation" x="-1" y="843"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="piH-8T-4u9">
@@ -512,7 +516,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxp-HW-4fQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1388" y="473"/>
+            <point key="canvasLocation" x="758" y="766"/>
         </scene>
         <!--Library-->
         <scene sceneID="gcz-Z0-6r5">
@@ -531,13 +535,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcS-jQ-sN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1982" y="-299"/>
+            <point key="canvasLocation" x="758" y="0.0"/>
         </scene>
     </scenes>
     <resources>
         <image name="cookingTimer" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sf3-E1-Jt9"/>
+        <segue reference="5y2-Cy-4Lm"/>
+        <segue reference="ZPz-Rp-hI1"/>
     </inferredMetricsTieBreakers>
 </document>
