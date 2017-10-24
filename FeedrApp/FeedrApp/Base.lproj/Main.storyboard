@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -162,19 +162,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EC9-qW-ifN">
-                                <rect key="frame" x="37" y="44" width="301" height="480.5"/>
+                                <rect key="frame" x="37" y="44" width="375" height="480.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MBk-WH-For">
-                                        <rect key="frame" x="0.0" y="0.0" width="301" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lbl_RecipeName2" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aD-kk-LjM">
-                                        <rect key="frame" x="0.0" y="320" width="301" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="320" width="375" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="UtP-tG-D4F" userLabel="Stack View_CookingTime">
-                                        <rect key="frame" x="0.0" y="360.5" width="301" height="32"/>
+                                        <rect key="frame" x="0.0" y="360.5" width="375" height="32"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cookingTimer" translatesAutoresizingMaskIntoConstraints="NO" id="X2U-2H-q2O">
                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -184,7 +184,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lbl_CookTime2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="738-Ka-8ls">
-                                                <rect key="frame" x="39" y="0.0" width="262" height="32"/>
+                                                <rect key="frame" x="39" y="0.0" width="375" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -192,13 +192,13 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lbl_Ingredients" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bk7-m0-pEJ">
-                                        <rect key="frame" x="0.0" y="412.5" width="301" height="18"/>
+                                        <rect key="frame" x="0.0" y="412.5" width="375" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xtl-Zl-qdY">
-                                        <rect key="frame" x="0.0" y="450.5" width="301" height="30"/>
+                                        <rect key="frame" x="0.0" y="450.5" width="375" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHI-rv-deW">
                                                 <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
@@ -208,7 +208,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2e-ig-0g3" userLabel="Add to Favorites">
-                                                <rect key="frame" x="75" y="0.0" width="226" height="30"/>
+                                                <rect key="frame" x="75" y="0.0" width="375" height="30"/>
                                                 <state key="normal" title="Add to Favorites"/>
                                             </button>
                                         </subviews>
@@ -711,7 +711,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bOm-b4-biV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" id="xW8-Sh-l6Q"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" selectedImage="person" id="xW8-Sh-l6Q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
