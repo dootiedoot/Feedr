@@ -145,6 +145,7 @@ class RecipeSearchVC: UITableViewController
         // Pass the selected object to the new view controller.
         if segue.identifier == "RecipeDetail"
         {
+            //  Cache the recipe detail controller and pass the data over
             let RecipeDetailController = segue.destination as! RecipeDetailVC
             RecipeDetailController.recipe = selectedRecipe
         }

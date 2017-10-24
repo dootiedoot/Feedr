@@ -17,6 +17,11 @@ class RecipeDetailVC: UIViewController
     @IBOutlet weak var img_RecipeThumbnail: UIImageView!
     @IBOutlet weak var lbl_title: UINavigationItem!
     
+    @IBAction func btn_RecipeWebsite(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "RecipeWebsite", sender: self)
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -48,15 +53,23 @@ class RecipeDetailVC: UIViewController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "RecipeWebsite"
+        {
+            //  Cache the recipe detail controller and pass the data over
+            let recipeSourceWebsiteVC = segue.destination as! RecipeSourceWebsiteVC
+            recipeSourceWebsiteVC.url = "http://allrecipes.com/Recipe/hot-turkey-salad-sandwiches/detail.aspx"
+        }
+        else
+        {
+            print("Could not find segue identifier")
+        }
     }
-    */
 }
