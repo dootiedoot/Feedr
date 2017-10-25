@@ -11,8 +11,9 @@ import UIKit
 class RecipeDetailVC: UIViewController
 {
     //  CLASS VARIABLES
-    var recipe = Match()
-    
+    var match = Match()
+	var recipe = Recipe()
+	
     //  OUTLET VARIABLES
     @IBOutlet weak var img_RecipeThumbnail: UIImageView!
     @IBOutlet weak var lbl_title: UINavigationItem!
@@ -28,24 +29,31 @@ class RecipeDetailVC: UIViewController
 
         // Do any additional setup after loading the view.
         
-        print(recipe)
-        
-        //  Update title
-        lbl_title.title = recipe.recipeName!
-        
-        //  Load picture in thumbnail
-        let url = URL(string: recipe.smallImageUrls![0])
-        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-            if error != nil
-            {
-                print(error!)
-                return
-            }
-            DispatchQueue.main.async
-            {
-                self.img_RecipeThumbnail.image = UIImage(data: data!)
-            }
-        }).resume()
+        //print(match)
+		
+		YummlyAPI.GetRecipe(recipeID: match.id!)
+		{ recipe in
+			self.recipe = recipe
+			
+			//print(self.recipe)
+			
+			//  Update title
+			self.lbl_title.title = recipe.name!
+			
+			//  Load picture in thumbnail
+			let url = URL(string: recipe.images![0].hostedLargeUrl!)
+			URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+				if error != nil
+				{
+					print(error!)
+					return
+				}
+				DispatchQueue.main.async
+					{
+						self.img_RecipeThumbnail.image = UIImage(data: data!)
+				}
+			}).resume()
+		}
     }
 
     override func didReceiveMemoryWarning()
@@ -65,7 +73,7 @@ class RecipeDetailVC: UIViewController
         {
             //  Cache the recipe detail controller and pass the data over
             let recipeSourceWebsiteVC = segue.destination as! RecipeSourceWebsiteVC
-            recipeSourceWebsiteVC.url = "http://allrecipes.com/Recipe/hot-turkey-salad-sandwiches/detail.aspx"
+            recipeSourceWebsiteVC.url = recipe.source?.sourceRecipeUrl!
         }
         else
         {

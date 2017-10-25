@@ -43,7 +43,14 @@ class RecipeSearchVC: UITableViewController
                     //print (match.recipeName!)
                     //print (match.smallImageUrls![0])
                 }*/
-                
+				
+				//	Error handling. (Use a pop-up)
+				if result.totalMatchCount! <= 0
+				{
+					print("No results found!")
+					return
+				}
+				
                 //  Update the current result variable so it can be used outside of this function
                 self.result = result
                 
@@ -60,16 +67,6 @@ class RecipeSearchVC: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        //  Update the table at start if there was a previous search
-        if result.matches!.count > 0
-        {
-            //  Dispatch queue so table view is refreshed with data
-            DispatchQueue.main.async
-            {
-                self.tableView.reloadData()
-            }
-        }
     }
 
     override func didReceiveMemoryWarning()
@@ -147,7 +144,7 @@ class RecipeSearchVC: UITableViewController
         {
             //  Cache the recipe detail controller and pass the data over
             let RecipeDetailController = segue.destination as! RecipeDetailVC
-            RecipeDetailController.recipe = selectedRecipe
+            RecipeDetailController.match = selectedRecipe
         }
         else
         {

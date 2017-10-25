@@ -245,7 +245,7 @@ struct Match: Decodable
     
     init()
     {
-        attributes = Attributes(course: [], cuisine: [])
+		attributes = Attributes(course: [], cuisine: [], holiday: [])
         flavors = Flavors(salty: -1, sour: -1, sweet: -1, bitter: -1, meaty: -1, piquant: -1)
         rating = -1
         id = ""
@@ -258,6 +258,12 @@ struct Match: Decodable
     
     func GetCookingTime() -> String
     {
+		//	Error handling
+		if totalTimeInSeconds! == nil || totalTimeInSeconds! <= -1
+		{
+			return "-1"
+		}
+		
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
         return formatter.string(from: TimeInterval(totalTimeInSeconds!))!
@@ -267,6 +273,7 @@ struct Attributes: Decodable
 {
     let course : [String]?
     let cuisine : [String]?
+    let holiday : [String]?
 }
 struct Flavors: Decodable
 {
@@ -311,13 +318,83 @@ struct Nutrition: Decodable
     let max : Int
 }
 
+/*
+ Recipe structure
+ */
+
+struct Recipe : Decodable
+{
+    let attribution: Attribution?
+    let ingredientLines: [String]?
+    let flavors: Flavors?
+    let nutritionEstimates: [NutritionEstimate]?
+    let images: [ImageURL]?
+    let name: String?
+    let yield: String?
+    let totalTime: String?
+    let attribute: Attributes?
+    let totalTimeInSeconds: Int?
+    let rating: Float?
+    let numberOfServings : Int?
+    let source: Source?
+    let id : String?
+	
+	//  "Blank" constructor
+	init()
+	{
+		attribution = Attribution(html: "", url: "", text: "", logo: "")
+		ingredientLines = []
+		flavors = Flavors(salty: -1, sour: -1, sweet: -1, bitter: -1, meaty: -1, piquant: -1)
+		nutritionEstimates = []
+		images = []
+		name = ""
+		yield = ""
+		totalTime = ""
+		attribute = Attributes(course : [], cuisine : [], holiday : [])
+		totalTimeInSeconds = -1
+		rating = -1
+		numberOfServings = -1
+		source = Source(sourceRecipeUrl: "", sourceSiteUrl: "", sourceDisplayName: "")
+		id = ""
+	}
+}
+struct NutritionEstimate: Decodable
+{
+    let attribute: String?
+    let description: String?
+    let value: Float?
+    let unit: Unit?
+}
+struct Unit: Decodable
+{
+    let name: String?
+    let abbreviation: String?
+    let plural: String?
+    let pluralAbbreviation: String?
+}
+struct ImageURL: Decodable
+{
+    let hostedLargeUrl: String?
+    let hostedMediumUrl: String?
+    let hostedSmallUrl: String?
+}
+struct Source: Decodable
+{
+    let sourceRecipeUrl: String?
+    let sourceSiteUrl: String?
+    let sourceDisplayName: String?
+}
+
+
 class YummlyAPI
 {
     //  VARIABLES
     
     //  yummly API variables
-        
-    //  Actual function that returns a search result enum that contains all the data
+	private static let yummlyID = "51013d4c"
+	private static let yummlyKey = "0549dc2605e77741e0feb12736c65087"
+	
+    //	Function that returns a search result enum that contains all the data
     static func GetSearch(search: String?,
                          requirePictures: Bool?,
                          allowedIngredients: [String]?,
@@ -334,10 +411,6 @@ class YummlyAPI
                          maxResults: Int?,
                          completion: @escaping (Result) -> ())
     {
-        let yummlyID = "51013d4c"
-        let yummlyKey = "0549dc2605e77741e0feb12736c65087"
-        let yummlyURL = "https://api.yummly.com/v1/api/recipes?"
-        
         //  Replace spaces with '+'
         let search = search!.replacingOccurrences(of: " ", with: "+")
 
@@ -348,7 +421,7 @@ class YummlyAPI
         }
         
         //  Create the base query string that will request from yummly
-        var query = yummlyURL + "_app_id=" + yummlyID + "&_app_key=" + yummlyKey
+        var query = "https://api.yummly.com/v1/api/recipes?_app_id=" + self.yummlyID + "&_app_key=" + self.yummlyKey
         
         //  Append to query with parameters
         if !search.isEmpty
@@ -686,33 +759,7 @@ class YummlyAPI
         }
         
         let url = URL(string: query)
-        
-        //  Empty result var to be returned after URLSession
-        /*var result = Result(attribution : Attribution(html:"",url:"",text:"",logo:""),
-                            totalMatchCount : -1,
-                            facetCounts : ["": ""],
-                            matches : [Matches(attributes : Attributes(course: [], cuisine: []),
-                                                           flavors : Flavors(salty: -1, sour: -1, sweet: -1, bitter: -1, meaty: -1, piquant: -1),
-                                                           rating : -1,
-                                                           id : "",
-                                                           smallImageUrls : [],
-                                                           sourceDisplayName : "",
-                                                           totalTimeInSeconds : -1,
-                                                           ingredients : [],
-                                                           recipeName : "")],
-                            criteria : Criteria.init(maxResults: -1,
-                                                     excludedIngredients: [],
-                                                     excludedAttributes: [],
-                                                     allowedIngredients: [],
-                                                     attributeRanges: AttributeRanges(flavorPiquant: FlavorPiquant(min: -1, max: -1)),
-                                                     nutritionRestrictions: NutritionRestrictions(nutrition: []),
-                                                     allowedDiets: [],
-                                                     resultsToSkip: -1,
-                                                     requirePictures: false,
-                                                     facetFields: [],
-                                                     terms: [],
-                                                     allowedAttributes: []))*/
-        
+		
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
             //  Check error
@@ -724,20 +771,9 @@ class YummlyAPI
             //  Try to serialize the JSON data.
             do
             {
-                //let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
                 let result = try JSONDecoder().decode(Result.self, from: data)
                 
-                print("Total matches:", result.totalMatchCount!)
-                
-                //  Loop through all recipe matches
-                /*for match in searchResult.matches!
-                {
-                    print("Attributes:", match.attributes!)
-                    print("Ingredients:", match.ingredients!)
-                    print("Total seconds to cook:", match.totalTimeInSeconds!)
-                    print("Recipe Name:", match.recipeName!)
-                    //print("Flavors:", match.flavors!)
-                }*/
+                //print("Total matches:", result.totalMatchCount!)
                 
                 completion(result)
             }
@@ -747,4 +783,40 @@ class YummlyAPI
             }
         }.resume()
     }
+	
+	//	Function that returns a recipe result. Pass the id of the recipe to search
+	static func GetRecipe(recipeID: String?, completion: @escaping (Recipe) -> ())
+	{
+		//  Check check parameter errors
+		if recipeID!.isEmpty
+		{
+			print("Empty recipe id!")
+		}
+		
+		//  Create the base query string that will request from yummly
+		let query = "http://api.yummly.com/v1/api/recipe/" + recipeID! + "?_app_id=" + self.yummlyID + "&_app_key=" + self.yummlyKey
+		
+		let url = URL(string: query)
+		
+		URLSession.shared.dataTask(with: url!)
+		{ (data, response, error) in
+			//  Check error
+			//  Check status code
+			
+			//  Ensure data is not null
+			guard let data = data else {    return  }
+			
+			//  Try to serialize the JSON data.
+			do
+			{
+				let recipe = try JSONDecoder().decode(Recipe.self, from: data)
+				
+				completion(recipe)
+			}
+			catch let jsonErr
+			{
+				print("Error serializing json:", jsonErr)
+			}
+		}.resume()
+	}
 }
