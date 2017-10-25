@@ -711,7 +711,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bOm-b4-biV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" id="xW8-Sh-l6Q"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" selectedImage="person" id="xW8-Sh-l6Q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
