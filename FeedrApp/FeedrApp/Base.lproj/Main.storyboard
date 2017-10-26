@@ -58,26 +58,14 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zgq-gg-0oq">
                                     <rect key="frame" x="0.0" y="46" width="375" height="60"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTZ-iS-GSX">
-                                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
-                                            <color key="backgroundColor" red="0.026734799835015966" green="0.94685913705583757" blue="0.92663510177249431" alpha="0.23012093321917809" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="j2f-NH-uCT"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                            <state key="normal" title="Browse">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJT-xL-iXN">
-                                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="60"/>
-                                            <color key="backgroundColor" red="0.02673479984" green="0.94685913710000003" blue="0.92663510179999997" alpha="0.23012093319999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="Ias-3F-QHZ"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                            <state key="normal" title="Recomended"/>
-                                        </button>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-7i-ppE">
+                                            <rect key="frame" x="0.0" y="16" width="375" height="29"/>
+                                            <segments>
+                                                <segment title="Browse"/>
+                                                <segment title="Popular"/>
+                                                <segment title="Recomended"/>
+                                            </segments>
+                                        </segmentedControl>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -449,6 +437,11 @@
                                         <state key="normal" title="Log in">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="49e-Tb-3d3" kind="show" id="ilS-5h-8vO"/>
                                         </connections>
@@ -629,6 +622,11 @@
                                         <state key="normal" title="Register">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="bPk-3Y-F9H" kind="show" id="oJC-Ra-Hrg"/>
                                         </connections>
