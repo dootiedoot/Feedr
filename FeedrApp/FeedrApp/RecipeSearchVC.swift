@@ -16,6 +16,9 @@ class RecipeSearchVC: UITableViewController
     var result = Result()
     var selectedRecipe = Match()
     
+    var name = ""
+    var user_id = -1
+    
     @IBAction func btn_Search(_ sender: Any)
     {
         //  if the lbl_searchbar isnt empty...
@@ -67,6 +70,7 @@ class RecipeSearchVC: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        print("Id is \(user_id) Name is \(name)")
     }
 
     override func didReceiveMemoryWarning()
@@ -145,6 +149,7 @@ class RecipeSearchVC: UITableViewController
             //  Cache the recipe detail controller and pass the data over
             let RecipeDetailController = segue.destination as! RecipeDetailVC
             RecipeDetailController.match = selectedRecipe
+            RecipeDetailController.this_user_id = user_id
         }
         else
         {

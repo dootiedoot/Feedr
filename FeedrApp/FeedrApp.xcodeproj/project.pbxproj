@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5327FCB21FA7842C000DFB01 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5327FCB11FA7841D000DFB01 /* libsqlite3.tbd */; };
+		5327FCBB1FA78AD0000DFB01 /* CreateAllDatabases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5327FCBA1FA78AD0000DFB01 /* CreateAllDatabases.swift */; };
+		5358577A1FA84E7300AA27D6 /* RecipeNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535857791FA84E7300AA27D6 /* RecipeNavController.swift */; };
 		61D7F8031F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */; };
 		9F06246D1F96A84A003ED25C /* RecipeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */; };
 		9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246E1F994878003ED25C /* YummlyAPI.swift */; };
@@ -43,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5327FCB11FA7841D000DFB01 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5327FCB31FA78451000DFB01 /* FeedrApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedrApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		5327FCBA1FA78AD0000DFB01 /* CreateAllDatabases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllDatabases.swift; sourceTree = "<group>"; };
+		535857791FA84E7300AA27D6 /* RecipeNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNavController.swift; sourceTree = "<group>"; };
 		61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSourceWebsiteVC.swift; sourceTree = "<group>"; };
 		9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailVC.swift; sourceTree = "<group>"; };
 		9F06246E1F994878003ED25C /* YummlyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YummlyAPI.swift; sourceTree = "<group>"; };
@@ -72,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5327FCB21FA7842C000DFB01 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5327FCB01FA7841B000DFB01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5327FCB11FA7841D000DFB01 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9FB9B6471F8BDE1E004B26A9 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +115,8 @@
 				9FB9B6691F8BDE1E004B26A9 /* FeedrAppTests */,
 				9FB9B6741F8BDE1F004B26A9 /* FeedrAppUITests */,
 				9FB9B6511F8BDE1E004B26A9 /* Products */,
+				5327FCB01FA7841B000DFB01 /* Frameworks */,
+				5327FCB31FA78451000DFB01 /* FeedrApp-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +137,7 @@
 				9FB9B6851F8BF305004B26A9 /* LoginVC.swift */,
 				9F0624701F9BD27F003ED25C /* RecipeSearchVC.swift */,
 				9FB9B6551F8BDE1E004B26A9 /* FirstVC.swift */,
+				5327FCBA1FA78AD0000DFB01 /* CreateAllDatabases.swift */,
 				9FB9B6571F8BDE1E004B26A9 /* SecondVC.swift */,
 				9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */,
 				61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */,
@@ -127,6 +146,7 @@
 				9FB9B6C71F8C001A004B26A9 /* UserProfileVC.swift */,
 				9F06246E1F994878003ED25C /* YummlyAPI.swift */,
 				9FB9B6591F8BDE1E004B26A9 /* Main.storyboard */,
+				535857791FA84E7300AA27D6 /* RecipeNavController.swift */,
 				9FB9B65C1F8BDE1E004B26A9 /* Assets.xcassets */,
 				9FB9B65E1F8BDE1E004B26A9 /* LaunchScreen.storyboard */,
 				9FB9B6611F8BDE1E004B26A9 /* Info.plist */,
@@ -220,6 +240,7 @@
 				TargetAttributes = {
 					9FB9B64F1F8BDE1E004B26A9 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					9FB9B6651F8BDE1E004B26A9 = {
@@ -290,11 +311,13 @@
 				9F0624711F9BD27F003ED25C /* RecipeSearchVC.swift in Sources */,
 				9FB9B6C81F8C001A004B26A9 /* UserProfileVC.swift in Sources */,
 				9F0624731F9BD3C1003ED25C /* UserLibraryVC.swift in Sources */,
+				5327FCBB1FA78AD0000DFB01 /* CreateAllDatabases.swift in Sources */,
 				9FB9B6541F8BDE1E004B26A9 /* AppDelegate.swift in Sources */,
 				61D7F8031F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift in Sources */,
 				9F06246D1F96A84A003ED25C /* RecipeDetailVC.swift in Sources */,
 				9F0624751F9BD3E1003ED25C /* ShoppingListVC.swift in Sources */,
 				9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */,
+				5358577A1FA84E7300AA27D6 /* RecipeNavController.swift in Sources */,
 				9FB9B6561F8BDE1E004B26A9 /* FirstVC.swift in Sources */,
 				9FB9B6861F8BF305004B26A9 /* LoginVC.swift in Sources */,
 			);
@@ -462,11 +485,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FeedrApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JamesPerry.FeedrApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FeedrApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -476,11 +502,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FeedrApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JamesPerry.FeedrApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FeedrApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

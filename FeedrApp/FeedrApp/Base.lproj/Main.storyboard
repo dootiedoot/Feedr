@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -156,10 +156,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EC9-qW-ifN">
-                                <rect key="frame" x="37" y="50" width="301" height="421.5"/>
+                                <rect key="frame" x="37" y="50" width="301" height="380.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FyZ-ui-96t">
-                                        <rect key="frame" x="0.0" y="0.0" width="301" height="331.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="290.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBk-WH-For">
                                                 <rect key="frame" x="0.0" y="0.0" width="301" height="250"/>
@@ -168,29 +168,35 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xtl-Zl-qdY">
-                                                <rect key="frame" x="0.0" y="250" width="301" height="61"/>
+                                                <rect key="frame" x="0.0" y="250" width="301" height="20"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHI-rv-deW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="61"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHI-rv-deW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                         <state key="normal" title="Cook this"/>
                                                         <connections>
                                                             <action selector="btn_RecipeWebsite:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="RaX-x4-41c"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGR-6k-TOf" userLabel="Lbl_Blank2">
-                                                        <rect key="frame" x="110" y="0.0" width="50" height="61"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGR-6k-TOf" userLabel="Lbl_Blank2">
+                                                        <rect key="frame" x="95" y="0.0" width="65" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2e-ig-0g3" userLabel="Add to Favorites">
-                                                        <rect key="frame" x="190" y="0.0" width="111" height="61"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2e-ig-0g3" userLabel="Add to Favorites">
+                                                        <rect key="frame" x="190" y="0.0" width="111" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="JC4-wi-gr6"/>
+                                                        </constraints>
                                                         <state key="normal" title="Add to Favorites"/>
+                                                        <connections>
+                                                            <action selector="RecipeFav:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="gSY-36-0Mo"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_RecipeName2" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aD-kk-LjM">
-                                                <rect key="frame" x="0.0" y="311" width="301" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="270" width="301" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -198,7 +204,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="UtP-tG-D4F" userLabel="Stack View_CookingTime">
-                                        <rect key="frame" x="0.0" y="351.5" width="301" height="32"/>
+                                        <rect key="frame" x="0.0" y="310.5" width="301" height="32"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cookingTimer" translatesAutoresizingMaskIntoConstraints="NO" id="X2U-2H-q2O">
                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -216,7 +222,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_Ingredients" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bk7-m0-pEJ">
-                                        <rect key="frame" x="0.0" y="403.5" width="301" height="18"/>
+                                        <rect key="frame" x="0.0" y="362.5" width="301" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -254,7 +260,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Low-Bf-aKa">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -324,7 +330,7 @@
         <!--Splash Screen-->
         <scene sceneID="Af9-FV-ohS">
             <objects>
-                <viewController title="Splash Screen" id="oyW-YV-mJL" sceneMemberID="viewController">
+                <viewController title="Splash Screen" id="oyW-YV-mJL" customClass="CreateAllDatabases" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gNG-5q-zVV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -443,7 +449,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="49e-Tb-3d3" kind="show" id="ilS-5h-8vO"/>
+                                            <action selector="LoginCheck:" destination="bPk-3Y-F9H" eventType="touchUpInside" id="yDq-ds-lev"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7En-EP-Kcz">
@@ -470,6 +476,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5AO-NZ-R6x"/>
                     </view>
+                    <connections>
+                        <outlet property="textf_pass" destination="HJ3-g2-u1p" id="A9Z-fw-XSG"/>
+                        <outlet property="textf_uname" destination="Z1r-XY-h1C" id="mqS-oa-vkl"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="totabbar" id="XFg-Qr-KXG"/>
+                        <segue destination="6LZ-fz-Jbt" kind="show" identifier="torecipe" id="56W-cz-uOL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2R-fD-UrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -526,10 +538,10 @@
             </objects>
             <point key="canvasLocation" x="1473" y="766"/>
         </scene>
-        <!--View Controller-->
+        <!--User ProfileVC-->
         <scene sceneID="ThN-Eg-ck6">
             <objects>
-                <viewController id="Z1n-pa-Hw6" sceneMemberID="viewController">
+                <viewController id="Z1n-pa-Hw6" customClass="UserProfileVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sll-IF-Pju">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -628,6 +640,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="btn_register:" destination="Z1n-pa-Hw6" eventType="touchUpInside" id="meb-Sq-s3Z"/>
                                             <segue destination="bPk-3Y-F9H" kind="show" id="oJC-Ra-Hrg"/>
                                         </connections>
                                     </button>
@@ -650,6 +663,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CnH-aa-nrj"/>
                     </view>
+                    <connections>
+                        <outlet property="textf_email" destination="oSr-Oa-5zx" id="2a5-XR-ghC"/>
+                        <outlet property="textf_name" destination="r0j-ge-hFq" id="WFa-aI-IHj"/>
+                        <outlet property="textf_pass" destination="8HA-I6-mZI" id="jXK-Wi-Awn"/>
+                        <outlet property="textf_phone" destination="bKC-Gg-33V" id="1dq-PZ-kKE"/>
+                        <outlet property="textf_uname" destination="uMx-Vh-C7l" id="EFZ-IP-vEm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZr-Ev-4OW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -746,7 +766,7 @@
         <!--Home-->
         <scene sceneID="gUe-pH-8AA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eeJ-Cs-xIT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eeJ-Cs-xIT" customClass="RecipeNavController" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="WUe-vj-5yW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ccn-lZ-hmB">
@@ -774,6 +794,7 @@
         <image name="person" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oJC-Ra-Hrg"/>
+        <segue reference="uZk-F5-n6L"/>
+        <segue reference="56W-cz-uOL"/>
     </inferredMetricsTieBreakers>
 </document>
