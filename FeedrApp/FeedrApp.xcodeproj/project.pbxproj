@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A5D59321FA921DB00C0E4F0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D59311FA921DB00C0E4F0 /* CustomButton.swift */; };
+		1A5D59341FA9225700C0E4F0 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D59331FA9225700C0E4F0 /* CustomTextField.swift */; };
+		1A5D59361FA922DC00C0E4F0 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D59351FA922DC00C0E4F0 /* CustomLabel.swift */; };
+		1A5D59381FA9243100C0E4F0 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D59371FA9243100C0E4F0 /* CustomVisualEffectView.swift */; };
+		1A5D593A1FA9253600C0E4F0 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D59391FA9253600C0E4F0 /* CustomImageView.swift */; };
+		1A5D593C1FA9260D00C0E4F0 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D593B1FA9260D00C0E4F0 /* CustomView.swift */; };
+		1A5D593E1FA9269C00C0E4F0 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D593D1FA9269C00C0E4F0 /* CustomViewController.swift */; };
 		61D7F8031F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */; };
 		9F06246D1F96A84A003ED25C /* RecipeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */; };
 		9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246E1F994878003ED25C /* YummlyAPI.swift */; };
@@ -43,6 +50,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A5D59311FA921DB00C0E4F0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = FeedrApp/CustomButton.swift; sourceTree = SOURCE_ROOT; };
+		1A5D59331FA9225700C0E4F0 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		1A5D59351FA922DC00C0E4F0 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		1A5D59371FA9243100C0E4F0 /* CustomVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVisualEffectView.swift; sourceTree = "<group>"; };
+		1A5D59391FA9253600C0E4F0 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		1A5D593B1FA9260D00C0E4F0 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		1A5D593D1FA9269C00C0E4F0 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSourceWebsiteVC.swift; sourceTree = "<group>"; };
 		9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailVC.swift; sourceTree = "<group>"; };
 		9F06246E1F994878003ED25C /* YummlyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YummlyAPI.swift; sourceTree = "<group>"; };
@@ -92,6 +106,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A5D59301FA9212E00C0E4F0 /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				1A5D59311FA921DB00C0E4F0 /* CustomButton.swift */,
+				1A5D59331FA9225700C0E4F0 /* CustomTextField.swift */,
+				1A5D59351FA922DC00C0E4F0 /* CustomLabel.swift */,
+				1A5D59371FA9243100C0E4F0 /* CustomVisualEffectView.swift */,
+				1A5D59391FA9253600C0E4F0 /* CustomImageView.swift */,
+				1A5D593B1FA9260D00C0E4F0 /* CustomView.swift */,
+				1A5D593D1FA9269C00C0E4F0 /* CustomViewController.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
 		9FB9B6471F8BDE1E004B26A9 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +146,7 @@
 				9FB9B6531F8BDE1E004B26A9 /* AppDelegate.swift */,
 				9FB9B6851F8BF305004B26A9 /* LoginVC.swift */,
 				9F0624701F9BD27F003ED25C /* RecipeSearchVC.swift */,
+				1A5D59301FA9212E00C0E4F0 /* CustomUI */,
 				9FB9B6551F8BDE1E004B26A9 /* FirstVC.swift */,
 				9FB9B6571F8BDE1E004B26A9 /* SecondVC.swift */,
 				9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */,
@@ -289,13 +318,20 @@
 				9FB9B6581F8BDE1E004B26A9 /* SecondVC.swift in Sources */,
 				9F0624711F9BD27F003ED25C /* RecipeSearchVC.swift in Sources */,
 				9FB9B6C81F8C001A004B26A9 /* UserProfileVC.swift in Sources */,
+				1A5D59361FA922DC00C0E4F0 /* CustomLabel.swift in Sources */,
 				9F0624731F9BD3C1003ED25C /* UserLibraryVC.swift in Sources */,
 				9FB9B6541F8BDE1E004B26A9 /* AppDelegate.swift in Sources */,
 				61D7F8031F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift in Sources */,
+				1A5D59381FA9243100C0E4F0 /* CustomVisualEffectView.swift in Sources */,
 				9F06246D1F96A84A003ED25C /* RecipeDetailVC.swift in Sources */,
+				1A5D593E1FA9269C00C0E4F0 /* CustomViewController.swift in Sources */,
+				1A5D593C1FA9260D00C0E4F0 /* CustomView.swift in Sources */,
+				1A5D593A1FA9253600C0E4F0 /* CustomImageView.swift in Sources */,
 				9F0624751F9BD3E1003ED25C /* ShoppingListVC.swift in Sources */,
+				1A5D59321FA921DB00C0E4F0 /* CustomButton.swift in Sources */,
 				9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */,
 				9FB9B6561F8BDE1E004B26A9 /* FirstVC.swift in Sources */,
+				1A5D59341FA9225700C0E4F0 /* CustomTextField.swift in Sources */,
 				9FB9B6861F8BF305004B26A9 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
