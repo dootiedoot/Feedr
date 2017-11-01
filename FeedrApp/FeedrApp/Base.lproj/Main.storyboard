@@ -379,9 +379,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="bg1_Blur" translatesAutoresizingMaskIntoConstraints="NO" id="m6Q-pD-yYR">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="bg5" translatesAutoresizingMaskIntoConstraints="NO" id="m6Q-pD-yYR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgL-yv-8Zk">
+                                <rect key="frame" x="35" y="176" width="311" height="317"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="esS-GU-Gqu">
+                                    <rect key="frame" x="0.0" y="0.0" width="311" height="317"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nhN-Xa-lme">
                                 <rect key="frame" x="56.5" y="199" width="262" height="269"/>
                                 <subviews>
@@ -461,11 +469,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5AO-NZ-R6x" firstAttribute="bottom" secondItem="pgL-yv-8Zk" secondAttribute="bottom" constant="174" id="6mb-o0-y8o"/>
                             <constraint firstItem="m6Q-pD-yYR" firstAttribute="trailing" secondItem="5AO-NZ-R6x" secondAttribute="trailing" id="DoL-rL-iHc"/>
                             <constraint firstItem="nhN-Xa-lme" firstAttribute="centerX" secondItem="r0Z-z5-Rzp" secondAttribute="centerX" id="F3a-zK-kOw"/>
+                            <constraint firstItem="pgL-yv-8Zk" firstAttribute="top" secondItem="5AO-NZ-R6x" secondAttribute="top" constant="156" id="PdK-7q-4jP"/>
                             <constraint firstItem="m6Q-pD-yYR" firstAttribute="leading" secondItem="5AO-NZ-R6x" secondAttribute="leading" id="b8F-RE-ZDi"/>
+                            <constraint firstItem="pgL-yv-8Zk" firstAttribute="leading" secondItem="5AO-NZ-R6x" secondAttribute="leading" constant="35" id="bM7-p3-bKh"/>
                             <constraint firstItem="nhN-Xa-lme" firstAttribute="centerY" secondItem="r0Z-z5-Rzp" secondAttribute="centerY" id="dy5-sL-DZt"/>
                             <constraint firstItem="m6Q-pD-yYR" firstAttribute="bottom" secondItem="5AO-NZ-R6x" secondAttribute="bottom" id="i8P-k0-c1Q"/>
+                            <constraint firstItem="5AO-NZ-R6x" firstAttribute="trailing" secondItem="pgL-yv-8Zk" secondAttribute="trailing" constant="29" id="mRt-Bw-iWZ"/>
                             <constraint firstItem="m6Q-pD-yYR" firstAttribute="top" secondItem="r0Z-z5-Rzp" secondAttribute="top" id="xyJ-1O-IvB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5AO-NZ-R6x"/>
@@ -537,6 +549,14 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="bg2_Blur" translatesAutoresizingMaskIntoConstraints="NO" id="SZF-Dl-hui">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNK-rG-mbK">
+                                <rect key="frame" x="67" y="122" width="240" height="431"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ebB-ia-TBk">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="431"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6F7-04-f23">
                                 <rect key="frame" x="108" y="132" width="159.5" height="403"/>
                                 <subviews>
@@ -641,10 +661,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MNK-rG-mbK" firstAttribute="leading" secondItem="CnH-aa-nrj" secondAttribute="leading" constant="67" id="9t6-bP-GNt"/>
                             <constraint firstItem="6F7-04-f23" firstAttribute="centerY" secondItem="Sll-IF-Pju" secondAttribute="centerY" id="OiQ-r8-bSg"/>
                             <constraint firstItem="6F7-04-f23" firstAttribute="centerX" secondItem="Sll-IF-Pju" secondAttribute="centerX" id="UEN-Du-84F"/>
                             <constraint firstItem="SZF-Dl-hui" firstAttribute="trailing" secondItem="CnH-aa-nrj" secondAttribute="trailing" id="VTW-5Q-ib3"/>
                             <constraint firstItem="SZF-Dl-hui" firstAttribute="top" secondItem="Sll-IF-Pju" secondAttribute="top" id="c5c-la-4H6"/>
+                            <constraint firstItem="CnH-aa-nrj" firstAttribute="trailing" secondItem="MNK-rG-mbK" secondAttribute="trailing" constant="68" id="gwg-GR-knN"/>
+                            <constraint firstItem="MNK-rG-mbK" firstAttribute="top" secondItem="CnH-aa-nrj" secondAttribute="top" constant="102" id="sSV-ov-8fq"/>
+                            <constraint firstItem="CnH-aa-nrj" firstAttribute="bottom" secondItem="MNK-rG-mbK" secondAttribute="bottom" constant="114" id="wBR-h0-2Vw"/>
                             <constraint firstItem="SZF-Dl-hui" firstAttribute="leading" secondItem="CnH-aa-nrj" secondAttribute="leading" id="wFI-6t-n3W"/>
                             <constraint firstItem="SZF-Dl-hui" firstAttribute="bottom" secondItem="CnH-aa-nrj" secondAttribute="bottom" id="z1t-p1-BJq"/>
                         </constraints>
@@ -866,6 +890,7 @@
         <image name="FeedrSplash" width="379" height="350"/>
         <image name="bg1_Blur" width="720" height="1280"/>
         <image name="bg2_Blur" width="720" height="1280"/>
+        <image name="bg5" width="1440" height="2560"/>
         <image name="cookingTimer" width="32" height="32"/>
         <image name="home" width="30" height="30"/>
         <image name="library" width="30" height="30"/>
@@ -873,6 +898,7 @@
         <image name="person" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="CgY-XM-F8O"/>
         <segue reference="oJC-Ra-Hrg"/>
     </inferredMetricsTieBreakers>
 </document>
