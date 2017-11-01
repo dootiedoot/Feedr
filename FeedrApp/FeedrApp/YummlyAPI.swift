@@ -259,7 +259,7 @@ struct Match: Decodable
     func GetCookingTime() -> String
     {
 		//	Error handling
-		if totalTimeInSeconds! == nil || totalTimeInSeconds! <= -1
+		if totalTimeInSeconds == nil || totalTimeInSeconds! <= -1
 		{
 			return "-1"
 		}
@@ -357,6 +357,19 @@ struct Recipe : Decodable
 		source = Source(sourceRecipeUrl: "", sourceSiteUrl: "", sourceDisplayName: "")
 		id = ""
 	}
+	
+	func GetCookingTime() -> String
+	{
+		//	Error handling
+		if totalTimeInSeconds! == nil || totalTimeInSeconds! <= -1
+		{
+			return "-1"
+		}
+		
+		let formatter = DateComponentsFormatter()
+		formatter.unitsStyle = .abbreviated
+		return formatter.string(from: TimeInterval(totalTimeInSeconds!))!
+	}
 }
 struct NutritionEstimate: Decodable
 {
@@ -389,8 +402,8 @@ struct Source: Decodable
 class YummlyAPI
 {
     //  VARIABLES
-    
-    //  yummly API variables
+    	
+	//  yummly API variables
 	private static let yummlyID = "51013d4c"
 	private static let yummlyKey = "0549dc2605e77741e0feb12736c65087"
 	

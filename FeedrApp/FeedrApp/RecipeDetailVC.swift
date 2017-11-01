@@ -15,9 +15,22 @@ class RecipeDetailVC: UIViewController
 	var recipe = Recipe()
 	
     //  OUTLET VARIABLES
-    @IBOutlet weak var img_RecipeThumbnail: UIImageView!
-    @IBOutlet weak var lbl_title: UINavigationItem!
-    
+	@IBOutlet weak var img_recipeThumbnail: UIImageView!
+	@IBOutlet weak var lbl_title: UINavigationItem!
+	@IBOutlet weak var lbl_cookingTime: UILabel!
+	@IBOutlet weak var lbl_ingredients: UILabel!
+	@IBOutlet weak var lbl_flavor_piquant: UILabel!
+	@IBOutlet weak var lbl_flavor_bitter: UILabel!
+	@IBOutlet weak var lbl_flavor_sweet: UILabel!
+	@IBOutlet weak var lbl_flavor_meaty: UILabel!
+	@IBOutlet weak var lbl_flavor_salty: UILabel!
+	@IBOutlet weak var lbl_flavor_sour: UILabel!
+	@IBOutlet weak var lbl_servings: UILabel!
+	@IBOutlet weak var lbl_holidays: UILabel!
+	@IBOutlet weak var lbl_courses: UILabel!
+	@IBOutlet weak var lbl_cuisines: UILabel!
+	@IBOutlet weak var lbl_ratings: UILabel!
+	
     @IBAction func btn_RecipeWebsite(_ sender: Any)
     {
         self.performSegue(withIdentifier: "RecipeWebsite", sender: self)
@@ -40,6 +53,70 @@ class RecipeDetailVC: UIViewController
 			//  Update title
 			self.lbl_title.title = recipe.name!
 			
+			print(recipe)
+			
+			//	Update everything inside main
+			DispatchQueue.main.async
+			{
+				//	Display Ingredient lines
+				var ingredientLines = ""
+				for ingredientLine in recipe.ingredientLines!
+				{
+					ingredientLines += "\n" + ingredientLine
+				}
+				self.lbl_ingredients.text = ingredientLines
+				
+				//	Display flavors
+				/*self.lbl_flavor_piquant.text = String(recipe.flavors!.piquant!)
+				self.lbl_flavor_bitter.text = String(recipe.flavors!.bitter!)
+				self.lbl_flavor_sweet.text = String(recipe.flavors!.sweet!)
+				self.lbl_flavor_meaty.text = String(recipe.flavors!.meaty!)
+				self.lbl_flavor_salty.text = String(recipe.flavors!.salty!)
+				self.lbl_flavor_sour.text = String(recipe.flavors!.sour!)*/
+				
+				//	Display cooking time
+				self.lbl_cookingTime.text = recipe.GetCookingTime()
+				
+				//	Display servings
+				self.lbl_servings.text = String(recipe.numberOfServings!)
+				
+				//	Display rating
+				self.lbl_ratings.text = String(recipe.rating!)
+				
+				//	Display cuisines
+				var cuisinesLine = ""
+				if recipe.attribute!.cuisine != nil
+				{
+					for cuisine in recipe.attribute!.cuisine!
+					{
+						cuisinesLine += "\n" + cuisine
+					}
+				}
+				self.lbl_cuisines.text = cuisinesLine
+				
+				//	Display courses
+				var coursesLine = ""
+				if recipe.attribute!.course != nil
+				{
+					for course in recipe.attribute!.course!
+					{
+						coursesLine += "\n" + course
+					}
+				}
+				self.lbl_cuisines.text = coursesLine
+				
+				//	Display holidays
+				var holidysLine = ""
+				if recipe.attribute!.holiday != nil
+				{
+					for holiday in recipe.attribute!.holiday!
+					{
+						holidysLine += "\n" + holiday
+					}
+				}
+				self.lbl_cuisines.text = holidysLine
+			}
+			
 			//  Load picture in thumbnail
 			let url = URL(string: recipe.images![0].hostedLargeUrl!)
 			URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -50,7 +127,7 @@ class RecipeDetailVC: UIViewController
 				}
 				DispatchQueue.main.async
 					{
-						self.img_RecipeThumbnail.image = UIImage(data: data!)
+						self.img_recipeThumbnail.image = UIImage(data: data!)
 				}
 			}).resume()
 		}
