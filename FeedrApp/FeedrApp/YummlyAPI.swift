@@ -195,7 +195,7 @@ public enum Holiday
 /*
  Yummly JSON structure
  */
-struct Result: Decodable
+struct Result: Codable
 {
     let attribution : Attribution?
     let totalMatchCount : Int?
@@ -224,17 +224,18 @@ struct Result: Decodable
                             allowedAttributes : [])
     }
 }
-struct Attribution: Decodable
+struct Attribution: Codable
 {
     let html : String?
     let url : String?
     let text : String?
     let logo : String?
 }
-struct Match: Decodable
+struct Match: Codable
 {
     let attributes : Attributes?
-    let flavors : Flavors?
+	//let flavors : [String : String]?
+	let flavors : Flavors?
     let rating : Float?
     let id : String?
     let smallImageUrls : [String]?
@@ -246,7 +247,8 @@ struct Match: Decodable
     init()
     {
 		attributes = Attributes(course: [], cuisine: [], holiday: [])
-        flavors = Flavors(salty: -1, sour: -1, sweet: -1, bitter: -1, meaty: -1, piquant: -1)
+		flavors = Flavors(Piquant: -1, Meaty: -1, Bitter: -1, Sweet: -1, Sour: -1, Salty: -1)
+		//flavors =
         rating = -1
         id = ""
         smallImageUrls = []
@@ -269,22 +271,22 @@ struct Match: Decodable
         return formatter.string(from: TimeInterval(totalTimeInSeconds!))!
     }
 }
-struct Attributes: Decodable
+struct Attributes: Codable
 {
     let course : [String]?
     let cuisine : [String]?
     let holiday : [String]?
 }
-struct Flavors: Decodable
+struct Flavors: Codable
 {
-    let salty : Float?
-    let sour : Float?
-    let sweet : Float?
-    let bitter : Float?
-    let meaty : Float?
-    let piquant : Float?
+	let Piquant : Float?
+	let Meaty : Float?
+	let Bitter : Float?
+	let Sweet : Float?
+	let Sour : Float?
+    let Salty : Float?
 }
-struct Criteria: Decodable
+struct Criteria: Codable
 {
     let maxResults : Int?
     let excludedIngredients : [String]?
@@ -299,20 +301,20 @@ struct Criteria: Decodable
     let terms : [String]?
     let allowedAttributes : [String]?
 }
-struct AttributeRanges: Decodable
+struct AttributeRanges: Codable
 {
     let flavorPiquant : FlavorPiquant?
 }
-struct FlavorPiquant: Decodable
+struct FlavorPiquant: Codable
 {
     let min : Float
     let max : Float
 }
-struct NutritionRestrictions: Decodable
+struct NutritionRestrictions: Codable
 {
     let nutrition : [Nutrition]?
 }
-struct Nutrition: Decodable
+struct Nutrition: Codable
 {
     let min : Int
     let max : Int
@@ -322,39 +324,46 @@ struct Nutrition: Decodable
  Recipe structure
  */
 
-struct Recipe : Decodable
+struct Recipe : Codable
 {
-    let attribution: Attribution?
-    let ingredientLines: [String]?
-    let flavors: Flavors?
-    let nutritionEstimates: [NutritionEstimate]?
-    let images: [ImageURL]?
-    let name: String?
-    let yield: String?
-    let totalTime: String?
-    let attribute: Attributes?
-    let totalTimeInSeconds: Int?
-    let rating: Float?
-    let numberOfServings : Int?
-    let source: Source?
-    let id : String?
+	let yield: String?
+	let nutritionEstimates: [NutritionEstimate]?
+	let prepTimeInSeconds: Int?
+	var totalTime: String?
+	let images: [ImageURL]?
+	let name: String?
+	let source: Source?
+	let id : String?
+	let ingredientLines: [String]?
+	let cookTime: String?
+	let attribution: Attribution?
+	let numberOfServings: Int?
+	let totalTimeInSeconds: Int?
+	let attributes: Attributes
+	let cookTimeInSeconds: Int?
+	let flavors: Flavors?
+	let rating: Float?
 	
 	//  "Blank" constructor
 	init()
 	{
 		attribution = Attribution(html: "", url: "", text: "", logo: "")
 		ingredientLines = []
-		flavors = Flavors(salty: -1, sour: -1, sweet: -1, bitter: -1, meaty: -1, piquant: -1)
+		flavors = Flavors(Piquant: -1, Meaty: -1, Bitter: -1, Sweet: -1, Sour: -1, Salty: -1)
 		nutritionEstimates = []
 		images = []
 		name = ""
 		yield = ""
 		totalTime = ""
-		attribute = Attributes(course : [], cuisine : [], holiday : [])
+		cookTime = ""
+		cookTimeInSeconds = -1
+		prepTimeInSeconds = -1
+		totalTime = ""
+		attributes = Attributes(course : [], cuisine : [], holiday : [])
 		totalTimeInSeconds = -1
 		rating = -1
 		numberOfServings = -1
-		source = Source(sourceRecipeUrl: "", sourceSiteUrl: "", sourceDisplayName: "")
+		source = Source(sourceDisplayName: "", sourceSiteUrl: "", sourceRecipeUrl: "")
 		id = ""
 	}
 	
@@ -371,31 +380,33 @@ struct Recipe : Decodable
 		return formatter.string(from: TimeInterval(totalTimeInSeconds!))!
 	}
 }
-struct NutritionEstimate: Decodable
+struct NutritionEstimate: Codable
 {
     let attribute: String?
     let description: String?
     let value: Float?
     let unit: Unit?
 }
-struct Unit: Decodable
+struct Unit: Codable
 {
+	let id: String?
     let name: String?
     let abbreviation: String?
     let plural: String?
     let pluralAbbreviation: String?
+	let decimal: Bool?
 }
-struct ImageURL: Decodable
+struct ImageURL: Codable
 {
     let hostedLargeUrl: String?
     let hostedMediumUrl: String?
     let hostedSmallUrl: String?
 }
-struct Source: Decodable
+struct Source: Codable
 {
-    let sourceRecipeUrl: String?
+	let sourceDisplayName: String?
     let sourceSiteUrl: String?
-    let sourceDisplayName: String?
+	let sourceRecipeUrl: String?
 }
 
 
@@ -787,7 +798,6 @@ class YummlyAPI
                 let result = try JSONDecoder().decode(Result.self, from: data)
                 
                 //print("Total matches:", result.totalMatchCount!)
-                
                 completion(result)
             }
             catch let jsonErr
@@ -804,12 +814,15 @@ class YummlyAPI
 		if recipeID!.isEmpty
 		{
 			print("Empty recipe id!")
+			return
 		}
 		
 		//  Create the base query string that will request from yummly
 		let query = "http://api.yummly.com/v1/api/recipe/" + recipeID! + "?_app_id=" + self.yummlyID + "&_app_key=" + self.yummlyKey
 		
 		let url = URL(string: query)
+		
+		print("URL REQUEST: "+query)
 		
 		URLSession.shared.dataTask(with: url!)
 		{ (data, response, error) in
@@ -822,7 +835,12 @@ class YummlyAPI
 			//  Try to serialize the JSON data.
 			do
 			{
+				print("PRINTING DATA")
+				print (data)
+				
 				let recipe = try JSONDecoder().decode(Recipe.self, from: data)
+				print("PRINTING RECIPE")
+				print(recipe)
 				
 				completion(recipe)
 			}

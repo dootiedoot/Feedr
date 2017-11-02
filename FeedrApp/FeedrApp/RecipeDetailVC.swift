@@ -48,74 +48,8 @@ class RecipeDetailVC: UIViewController
 		{ recipe in
 			self.recipe = recipe
 			
-			//print(self.recipe)
-			
 			//  Update title
 			self.lbl_title.title = recipe.name!
-			
-			print(recipe)
-			
-			//	Update everything inside main
-			DispatchQueue.main.async
-			{
-				//	Display Ingredient lines
-				var ingredientLines = ""
-				for ingredientLine in recipe.ingredientLines!
-				{
-					ingredientLines += "\n" + ingredientLine
-				}
-				self.lbl_ingredients.text = ingredientLines
-				
-				//	Display flavors
-				/*self.lbl_flavor_piquant.text = String(recipe.flavors!.piquant!)
-				self.lbl_flavor_bitter.text = String(recipe.flavors!.bitter!)
-				self.lbl_flavor_sweet.text = String(recipe.flavors!.sweet!)
-				self.lbl_flavor_meaty.text = String(recipe.flavors!.meaty!)
-				self.lbl_flavor_salty.text = String(recipe.flavors!.salty!)
-				self.lbl_flavor_sour.text = String(recipe.flavors!.sour!)*/
-				
-				//	Display cooking time
-				self.lbl_cookingTime.text = recipe.GetCookingTime()
-				
-				//	Display servings
-				self.lbl_servings.text = String(recipe.numberOfServings!)
-				
-				//	Display rating
-				self.lbl_ratings.text = String(recipe.rating!)
-				
-				//	Display cuisines
-				var cuisinesLine = ""
-				if recipe.attribute!.cuisine != nil
-				{
-					for cuisine in recipe.attribute!.cuisine!
-					{
-						cuisinesLine += "\n" + cuisine
-					}
-				}
-				self.lbl_cuisines.text = cuisinesLine
-				
-				//	Display courses
-				var coursesLine = ""
-				if recipe.attribute!.course != nil
-				{
-					for course in recipe.attribute!.course!
-					{
-						coursesLine += "\n" + course
-					}
-				}
-				self.lbl_cuisines.text = coursesLine
-				
-				//	Display holidays
-				var holidysLine = ""
-				if recipe.attribute!.holiday != nil
-				{
-					for holiday in recipe.attribute!.holiday!
-					{
-						holidysLine += "\n" + holiday
-					}
-				}
-				self.lbl_cuisines.text = holidysLine
-			}
 			
 			//  Load picture in thumbnail
 			let url = URL(string: recipe.images![0].hostedLargeUrl!)
@@ -130,6 +64,82 @@ class RecipeDetailVC: UIViewController
 						self.img_recipeThumbnail.image = UIImage(data: data!)
 				}
 			}).resume()
+			
+			//	Update everything inside main
+			DispatchQueue.main.async
+			{
+				//	Display Ingredient lines
+				var ingredientLines = "Ingredients:"
+				for ingredientLine in recipe.ingredientLines!
+				{
+					ingredientLines += "\n\t" + ingredientLine
+				}
+				self.lbl_ingredients.text = ingredientLines
+				
+				//	Display flavors
+				self.lbl_flavor_piquant.text = "Piuant: " + String(recipe.flavors!.Piquant!)
+				self.lbl_flavor_bitter.text = "Bitter: " + String(recipe.flavors!.Bitter!)
+				self.lbl_flavor_sweet.text = "Sweet: " + String(recipe.flavors!.Sweet!)
+				self.lbl_flavor_meaty.text = "Meaty: " + String(recipe.flavors!.Meaty!)
+				self.lbl_flavor_salty.text = "Salty: " + String(recipe.flavors!.Salty!)
+				self.lbl_flavor_sour.text = "Sour: " + String(recipe.flavors!.Sour!)
+				
+				//	Display cooking time
+				self.lbl_cookingTime.text = recipe.GetCookingTime()
+				
+				//	Display servings
+				self.lbl_servings.text = "Servings: "+String(recipe.numberOfServings!)
+				
+				//	Display rating
+				self.lbl_ratings.text = "Rating: "+String(recipe.rating!)
+				
+				//	Display cuisines
+				var cuisinesLine = "Cuisine(s)"
+				if recipe.attributes.cuisine != nil
+				{
+					for cuisine in recipe.attributes.cuisine!
+					{
+						cuisinesLine += "\n\t" + cuisine
+					}
+					self.lbl_cuisines.text = cuisinesLine
+				}
+				else
+				{
+					self.lbl_cuisines.isHidden = true
+				}
+				
+				//	Display courses
+				var coursesLine = "Course(s)"
+				if recipe.attributes.course != nil
+				{
+					for course in recipe.attributes.course!
+					{
+						coursesLine += "\n\t" + course
+					}
+					self.lbl_courses.text = coursesLine
+				}
+				else
+				{
+					self.lbl_courses.isHidden = true
+				}
+				
+				//	Display holidays
+				var holidysLine = "Holidy(s)"
+				if recipe.attributes.holiday != nil
+				{
+					for holiday in recipe.attributes.holiday!
+					{
+						holidysLine += "\n\t" + holiday
+					}
+					self.lbl_holidays.text = holidysLine
+				}
+				else
+				{
+					self.lbl_holidays.isHidden = true
+				}
+			}
+			
+			
 		}
     }
 

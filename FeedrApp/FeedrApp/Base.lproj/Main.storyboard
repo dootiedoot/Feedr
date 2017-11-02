@@ -161,14 +161,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqx-xi-QmO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vDl-pT-b6f">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vDl-pT-b6f">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-FX-Ieq">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="UtP-tG-D4F" userLabel="Stack View_CookingTime">
-                                                        <rect key="frame" x="0.0" y="230" width="155.5" height="32"/>
+                                                        <rect key="frame" x="0.0" y="245" width="155.5" height="32"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cookingTimer" translatesAutoresizingMaskIntoConstraints="NO" id="X2U-2H-q2O">
                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -186,97 +186,123 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_Ingredients" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bk7-m0-pEJ">
-                                                        <rect key="frame" x="0.0" y="262" width="375" height="18"/>
+                                                        <rect key="frame" x="0.0" y="292" width="375" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_flavor_piquant" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6B-u5-8lq">
-                                                        <rect key="frame" x="0.0" y="280" width="375" height="18"/>
+                                                        <rect key="frame" x="0.0" y="325" width="375" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_flavor_bitter" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6De-Nj-fjG">
-                                                        <rect key="frame" x="0.0" y="298" width="375" height="18"/>
+                                                        <rect key="frame" x="0.0" y="358" width="375" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_flavor_sweet" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHV-C9-k76">
-                                                        <rect key="frame" x="0.0" y="316" width="375" height="18"/>
+                                                        <rect key="frame" x="0.0" y="391" width="375" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_flavor_meaty" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqZ-qs-Ef2">
-                                                        <rect key="frame" x="0.0" y="334" width="375" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_flavor_salty" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fc-Lu-5vA">
-                                                        <rect key="frame" x="0.0" y="352" width="375" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_flavor_sour" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfu-gT-apL">
-                                                        <rect key="frame" x="0.0" y="370" width="102" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_servings" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieL-qQ-F8M">
-                                                        <rect key="frame" x="0.0" y="388" width="375" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_holidays" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gw-Jw-2Po">
-                                                        <rect key="frame" x="0.0" y="406" width="84" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_courses" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-mg-Who">
                                                         <rect key="frame" x="0.0" y="424" width="375" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_flavor_salty" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fc-Lu-5vA">
+                                                        <rect key="frame" x="0.0" y="457" width="375" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_flavor_sour" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfu-gT-apL">
+                                                        <rect key="frame" x="0.0" y="490" width="375" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_servings" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieL-qQ-F8M">
+                                                        <rect key="frame" x="0.0" y="523" width="375" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_holidays" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gw-Jw-2Po">
+                                                        <rect key="frame" x="0.0" y="556" width="375" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_courses" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-mg-Who">
+                                                        <rect key="frame" x="0.0" y="589" width="375" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_cuisines" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qal-Xc-x6y">
-                                                        <rect key="frame" x="0.0" y="442" width="375" height="18"/>
+                                                        <rect key="frame" x="0.0" y="622" width="375" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_ratings" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOx-NN-1dE">
-                                                        <rect key="frame" x="0.0" y="460" width="375" height="18"/>
+                                                        <rect key="frame" x="0.0" y="655" width="375" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DzW-sI-Yrf" userLabel="Buttons">
-                                                        <rect key="frame" x="0.0" y="478" width="91" height="522"/>
+                                                        <rect key="frame" x="0.0" y="688" width="375" height="312"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
-                                                                <rect key="frame" x="0.0" y="0.0" width="36" height="522"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="312"/>
                                                                 <state key="normal" title="Cook"/>
                                                                 <connections>
                                                                     <action selector="btn_RecipeWebsite:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="ews-ew-OxE"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite">
-                                                                <rect key="frame" x="36" y="0.0" width="55" height="522"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite">
+                                                                <rect key="frame" x="375" y="0.0" width="55" height="312"/>
                                                                 <state key="normal" title="Favorite"/>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="BpB-FX-Ieq" secondAttribute="trailing" id="CL9-C5-wIe"/>
+                                                    <constraint firstItem="6De-Nj-fjG" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="1KV-ZG-q8F"/>
+                                                    <constraint firstItem="YPJ-mg-Who" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="3Vx-fE-Qje"/>
+                                                    <constraint firstItem="Pfu-gT-apL" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="3yp-Ll-4DX"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ieL-qQ-F8M" secondAttribute="trailing" id="9um-Jt-FGp"/>
+                                                    <constraint firstItem="bk7-m0-pEJ" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="AyO-o5-YrF"/>
+                                                    <constraint firstItem="4Fc-Lu-5vA" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="DGi-xY-UmM"/>
+                                                    <constraint firstItem="q6B-u5-8lq" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="FeL-Lm-giS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="bk7-m0-pEJ" secondAttribute="trailing" id="GUW-G6-8Im"/>
+                                                    <constraint firstItem="qal-Xc-x6y" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="JCd-cW-kJm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Pfu-gT-apL" secondAttribute="trailing" id="KGd-dY-fFS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6De-Nj-fjG" secondAttribute="trailing" id="LBs-pJ-ifd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YPJ-mg-Who" secondAttribute="trailing" id="MNj-kR-HPr"/>
                                                     <constraint firstItem="BpB-FX-Ieq" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="MYt-W3-fsq"/>
+                                                    <constraint firstItem="0gw-Jw-2Po" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="QRF-PN-uTI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="q6B-u5-8lq" secondAttribute="trailing" id="Qr0-1F-MRh"/>
+                                                    <constraint firstItem="ieL-qQ-F8M" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="Y4H-Oh-Q1m"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4Fc-Lu-5vA" secondAttribute="trailing" id="YAQ-CK-D6r"/>
+                                                    <constraint firstItem="sHV-C9-k76" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="ZQT-JE-aoS"/>
+                                                    <constraint firstItem="jqZ-qs-Ef2" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="ZTx-Fp-JTz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jqZ-qs-Ef2" secondAttribute="trailing" id="ZbH-xG-Ej5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="BpB-FX-Ieq" secondAttribute="trailing" id="fzP-pa-QhT"/>
+                                                    <constraint firstItem="BpB-FX-Ieq" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="m7S-Xq-EJc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qal-Xc-x6y" secondAttribute="trailing" id="mkC-LS-HKg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sHV-C9-k76" secondAttribute="trailing" id="nlh-yk-7kR"/>
+                                                    <constraint firstItem="gOx-NN-1dE" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="qo7-Uu-Ofx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gOx-NN-1dE" secondAttribute="trailing" id="rMo-AN-m87"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DzW-sI-Yrf" secondAttribute="trailing" id="sfS-Ik-SMe"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0gw-Jw-2Po" secondAttribute="trailing" id="vwx-G4-Re6"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
