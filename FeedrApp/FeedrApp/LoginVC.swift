@@ -20,8 +20,9 @@ class LoginVC: UIViewController
     {
         let Iuname = textf_uname.text!
         let Ipassword = textf_pass.text!
+        textf_pass.resignFirstResponder()
         findInDb(uname: Iuname, password: Ipassword)
-    
+        
         if (credentialsMatch == true)
         {
             performSegue(withIdentifier: "torecipe", sender: self)
@@ -41,6 +42,7 @@ class LoginVC: UIViewController
     
     override func viewDidLoad()
 	{
+        self.hideKeyboard()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }

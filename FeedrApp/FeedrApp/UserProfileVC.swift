@@ -8,6 +8,23 @@
 
 import UIKit
 
+extension UIViewController
+{
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
+}
+
 class UserProfileVC: UIViewController
 {
     var Iname:String = ""
@@ -38,6 +55,7 @@ class UserProfileVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.hideKeyboard()
         // Do any additional setup after loading the view.
     }
 
