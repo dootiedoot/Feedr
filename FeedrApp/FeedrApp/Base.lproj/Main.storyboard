@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -166,6 +166,9 @@
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-FX-Ieq">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="230" id="Jx2-lb-Yhx"/>
+                                                        </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="UtP-tG-D4F" userLabel="Stack View_CookingTime">
                                                         <rect key="frame" x="0.0" y="245" width="155.5" height="32"/>
@@ -257,18 +260,30 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DzW-sI-Yrf" userLabel="Buttons">
-                                                        <rect key="frame" x="0.0" y="688" width="375" height="312"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-nk-y48">
+                                                        <rect key="frame" x="0.0" y="688" width="350" height="312"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="312"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="150" id="oI8-eD-AFc"/>
+                                                                </constraints>
                                                                 <state key="normal" title="Cook"/>
                                                                 <connections>
                                                                     <action selector="btn_RecipeWebsite:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="ews-ew-OxE"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite">
-                                                                <rect key="frame" x="375" y="0.0" width="55" height="312"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xh-Kh-1dv" userLabel="Lbl_Blank">
+                                                                <rect key="frame" x="150" y="0.0" width="50" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite">
+                                                                <rect key="frame" x="200" y="0.0" width="150" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="150" id="1eh-OX-BXs"/>
+                                                                </constraints>
                                                                 <state key="normal" title="Favorite"/>
                                                             </button>
                                                         </subviews>
@@ -276,8 +291,10 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="6De-Nj-fjG" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="1KV-ZG-q8F"/>
+                                                    <constraint firstItem="BpB-FX-Ieq" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="1nM-71-1hm"/>
                                                     <constraint firstItem="YPJ-mg-Who" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="3Vx-fE-Qje"/>
                                                     <constraint firstItem="Pfu-gT-apL" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="3yp-Ll-4DX"/>
+                                                    <constraint firstAttribute="trailing" secondItem="BpB-FX-Ieq" secondAttribute="trailing" id="6T3-YF-LlW"/>
                                                     <constraint firstAttribute="trailing" secondItem="ieL-qQ-F8M" secondAttribute="trailing" id="9um-Jt-FGp"/>
                                                     <constraint firstItem="bk7-m0-pEJ" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="AyO-o5-YrF"/>
                                                     <constraint firstItem="4Fc-Lu-5vA" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="DGi-xY-UmM"/>
@@ -286,6 +303,7 @@
                                                     <constraint firstItem="qal-Xc-x6y" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="JCd-cW-kJm"/>
                                                     <constraint firstAttribute="trailing" secondItem="Pfu-gT-apL" secondAttribute="trailing" id="KGd-dY-fFS"/>
                                                     <constraint firstAttribute="trailing" secondItem="6De-Nj-fjG" secondAttribute="trailing" id="LBs-pJ-ifd"/>
+                                                    <constraint firstItem="BpB-FX-Ieq" firstAttribute="top" secondItem="vDl-pT-b6f" secondAttribute="top" id="M4I-5y-qud"/>
                                                     <constraint firstAttribute="trailing" secondItem="YPJ-mg-Who" secondAttribute="trailing" id="MNj-kR-HPr"/>
                                                     <constraint firstItem="BpB-FX-Ieq" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="MYt-W3-fsq"/>
                                                     <constraint firstItem="0gw-Jw-2Po" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="QRF-PN-uTI"/>
@@ -301,7 +319,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="sHV-C9-k76" secondAttribute="trailing" id="nlh-yk-7kR"/>
                                                     <constraint firstItem="gOx-NN-1dE" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="qo7-Uu-Ofx"/>
                                                     <constraint firstAttribute="trailing" secondItem="gOx-NN-1dE" secondAttribute="trailing" id="rMo-AN-m87"/>
-                                                    <constraint firstAttribute="trailing" secondItem="DzW-sI-Yrf" secondAttribute="trailing" id="sfS-Ik-SMe"/>
                                                     <constraint firstAttribute="trailing" secondItem="0gw-Jw-2Po" secondAttribute="trailing" id="vwx-G4-Re6"/>
                                                 </constraints>
                                             </stackView>
@@ -822,7 +839,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="843"/>
+            <point key="canvasLocation" x="-1" y="1512"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="piH-8T-4u9">
