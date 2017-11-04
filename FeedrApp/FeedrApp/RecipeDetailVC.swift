@@ -14,6 +14,8 @@ class RecipeDetailVC: UIViewController
     var match = Match()
 	var recipe = Recipe()
 	
+	var this_user_id = -1
+	
     //  OUTLET VARIABLES
 	@IBOutlet weak var img_recipeThumbnail: UIImageView!
 	@IBOutlet weak var lbl_title: UINavigationItem!
@@ -142,7 +144,71 @@ class RecipeDetailVC: UIViewController
 			
 		}
     }
-
+	
+	@IBAction func RecipeFav(_ sender: Any)
+	{
+		print(recipe.id!)
+		
+		addRecipeAsFav(user_id: this_user_id, recipe_id: recipe.id!)
+	}
+	func addRecipeAsFav(user_id:Int, recipe_id:String)
+	{
+		let fileManager =  FileManager.default
+		var db : OpaquePointer? = nil
+		var dbURl : NSURL? = nil
+		
+		do
+		{
+			let baseURL = try
+				fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+			dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+		}
+		catch
+		{
+			print("Error")
+		}
+		
+		if let dbUrl = dbURl
+		{
+			let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+			let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+			
+			if sqlStatus == SQLITE_OK
+			{
+				var statement: OpaquePointer? = nil
+				let insertQuery = "INSERT INTO favrecipes (user_id, recipe_id) VALUES ('\(user_id)', '\(recipe_id)');"
+				
+				sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil)
+				if sqlite3_step(statement) == SQLITE_DONE
+				{
+					print("Value Inserted")
+				}
+				else
+				{
+					print("Value did not go through")
+				}
+				sqlite3_finalize(statement)
+				
+				var selectStatement : OpaquePointer? = nil
+				let selectQuery = "SELECT * FROM favrecipes"
+				if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
+				{
+					while sqlite3_step(selectStatement) == SQLITE_ROW
+					{
+						let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
+						let uid = String(cString: queryResultCol1!)
+						
+						let queryResultCol2 = sqlite3_column_text(selectStatement, 2)
+						let rid = String(cString: queryResultCol2!)
+						
+						print("\(uid) \(rid)")
+					}
+				}
+				sqlite3_finalize(selectStatement)
+			}
+		}
+	}
+	
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
