@@ -3,109 +3,109 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "FeedrLogo120x120.png",
+      "filename" : "feedr-blue80x80.png",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "FeedrLogoIcon200x200.png",
+      "filename" : "feedr-blue120x120png.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "FeedrLogo120x120-1.png",
+      "filename" : "feedr-blue80x80-1.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "FeedrLogoIcon200x200-1.png",
+      "filename" : "feedr-blue120x120png-1.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "FeedrLogo120x120-2.png",
+      "filename" : "feedr-blue80x80-2.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "FeedrLogoIcon200x200-2.png",
+      "filename" : "feedr-blue120x120png-2.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "FeedrLogo120x120-3.png",
+      "filename" : "feedr-blue80x80-3.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "FeedrLogoIcon200x200-3.png",
+      "filename" : "feedr-blue120x120png-3.png",
       "scale" : "3x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "FeedrLogoIcon80x80-1.png",
+      "filename" : "feedr-blue80x80-4.png",
       "scale" : "1x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "FeedrLogo120x120-4.png",
+      "filename" : "feedr-blue80x80-5.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "FeedrLogoIcon80x80.png",
+      "filename" : "feedr-blue80x80-6.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "FeedrLogo120x120-5.png",
+      "filename" : "feedr-blue80x80-7.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "FeedrLogoIcon80x80-2.png",
+      "filename" : "feedr-blue80x80-8.png",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "FeedrLogo120x120-6.png",
+      "filename" : "feedr-blue80x80-9.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "FeedrLogoIcon80x80-3.png",
+      "filename" : "feedr-blue80x80-10.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "FeedrLogo120x120-7.png",
+      "filename" : "feedr-blue80x80-11.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "FeedrLogo120x120-8.png",
+      "filename" : "feedr-blue80x80-12.png",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "FeedrLogoIcon80x80-4.png",
+      "filename" : "feedr-blue80x80-13.png",
       "scale" : "1x"
     }
   ],
