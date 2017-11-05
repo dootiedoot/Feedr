@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oyW-YV-mJL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bPk-3Y-F9H">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -260,7 +260,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-nk-y48">
-                                                        <rect key="frame" x="0.0" y="688" width="350" height="312"/>
+                                                        <rect key="frame" x="0.0" y="688" width="375" height="312"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
@@ -273,13 +273,13 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xh-Kh-1dv" userLabel="Lbl_Blank">
-                                                                <rect key="frame" x="150" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="150" y="0.0" width="75" height="312"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite">
-                                                                <rect key="frame" x="200" y="0.0" width="150" height="30"/>
+                                                                <rect key="frame" x="225" y="0.0" width="150" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="1eh-OX-BXs"/>
                                                                 </constraints>
@@ -452,56 +452,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wQ-9s-sis" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1473" y="-1"/>
-        </scene>
-        <!--Splash Screen-->
-        <scene sceneID="Af9-FV-ohS">
-            <objects>
-                <viewController title="Splash Screen" id="oyW-YV-mJL" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gNG-5q-zVV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feedr-18" translatesAutoresizingMaskIntoConstraints="NO" id="n8n-JY-jy5">
-                                <rect key="frame" x="30" y="183.5" width="315" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="dCx-Vg-TV6"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xad-xX-gka">
-                                <rect key="frame" x="10" y="30" width="345" height="617"/>
-                                <connections>
-                                    <segue destination="bPk-3Y-F9H" kind="show" id="uZk-F5-n6L"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap anywhere to continue..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JC-mr-f2E">
-                                <rect key="frame" x="16" y="40" width="359" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="u6d-C1-xQE" firstAttribute="bottom" secondItem="xad-xX-gka" secondAttribute="bottom" constant="20" id="1Pc-If-xOj"/>
-                            <constraint firstItem="n8n-JY-jy5" firstAttribute="centerX" secondItem="gNG-5q-zVV" secondAttribute="centerX" id="3BN-tY-36L"/>
-                            <constraint firstAttribute="trailing" secondItem="n8n-JY-jy5" secondAttribute="trailing" constant="30" id="5Lf-c4-p3l"/>
-                            <constraint firstItem="1JC-mr-f2E" firstAttribute="leading" secondItem="u6d-C1-xQE" secondAttribute="leading" constant="16" id="JSB-bV-Gt7"/>
-                            <constraint firstItem="1JC-mr-f2E" firstAttribute="trailing" secondItem="u6d-C1-xQE" secondAttribute="trailing" id="RKX-Ku-0p7"/>
-                            <constraint firstItem="n8n-JY-jy5" firstAttribute="centerX" secondItem="gNG-5q-zVV" secondAttribute="centerX" id="Xjv-HZ-pVi"/>
-                            <constraint firstItem="n8n-JY-jy5" firstAttribute="leading" secondItem="gNG-5q-zVV" secondAttribute="leading" constant="30" id="XrP-yV-6tU"/>
-                            <constraint firstItem="n8n-JY-jy5" firstAttribute="centerY" secondItem="gNG-5q-zVV" secondAttribute="centerY" id="cfm-iP-dm2"/>
-                            <constraint firstItem="xad-xX-gka" firstAttribute="leading" secondItem="u6d-C1-xQE" secondAttribute="leading" constant="10" id="eMa-em-63K"/>
-                            <constraint firstItem="1JC-mr-f2E" firstAttribute="top" secondItem="u6d-C1-xQE" secondAttribute="top" constant="20" id="m3r-k8-Qrk"/>
-                            <constraint firstItem="u6d-C1-xQE" firstAttribute="trailing" secondItem="xad-xX-gka" secondAttribute="trailing" constant="20" id="qo0-tf-Me9"/>
-                            <constraint firstItem="n8n-JY-jy5" firstAttribute="centerY" secondItem="gNG-5q-zVV" secondAttribute="centerY" id="t0V-QY-hVD"/>
-                            <constraint firstItem="xad-xX-gka" firstAttribute="top" secondItem="u6d-C1-xQE" secondAttribute="top" constant="10" id="t2z-Ts-CT9"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="u6d-C1-xQE"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pts-gb-h1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1479.2" y="-1.3493253373313345"/>
         </scene>
         <!--User Login-->
         <scene sceneID="yj6-jb-PDI">
@@ -1042,13 +992,9 @@
         <image name="bg1_Blur" width="720" height="1280"/>
         <image name="bg2" width="1632" height="2464"/>
         <image name="cookingTimer" width="32" height="32"/>
-        <image name="feedr-18" width="1259" height="896"/>
         <image name="home" width="30" height="30"/>
         <image name="library" width="30" height="30"/>
         <image name="lists" width="30" height="30"/>
         <image name="person" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="oJC-Ra-Hrg"/>
-    </inferredMetricsTieBreakers>
 </document>
