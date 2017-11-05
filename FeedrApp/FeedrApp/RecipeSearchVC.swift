@@ -82,6 +82,11 @@ class RecipeSearchVC: UITableViewController
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 
 
     override func didReceiveMemoryWarning()
