@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A002F591FAB92A00065ED67 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A002F581FAB92A00065ED67 /* CustomButton.swift */; };
 		61D7F8031F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */; };
 		9F06246D1F96A84A003ED25C /* RecipeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */; };
 		9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246E1F994878003ED25C /* YummlyAPI.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A002F581FAB92A00065ED67 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSourceWebsiteVC.swift; sourceTree = "<group>"; };
 		9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailVC.swift; sourceTree = "<group>"; };
 		9F06246E1F994878003ED25C /* YummlyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YummlyAPI.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				9FB9B65E1F8BDE1E004B26A9 /* LaunchScreen.storyboard */,
 				9FB9B6611F8BDE1E004B26A9 /* Info.plist */,
 				9FAA20811FAAD93200EBADDA /* PreferencesTableViewController.swift */,
+				1A002F581FAB92A00065ED67 /* CustomButton.swift */,
 			);
 			path = FeedrApp;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A002F591FAB92A00065ED67 /* CustomButton.swift in Sources */,
 				9FB9B6581F8BDE1E004B26A9 /* SecondVC.swift in Sources */,
 				9F0624711F9BD27F003ED25C /* RecipeSearchVC.swift in Sources */,
 				9FB9B6C81F8C001A004B26A9 /* UserProfileVC.swift in Sources */,
