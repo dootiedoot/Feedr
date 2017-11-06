@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SecondVC: UIViewController {
-
+class SecondVC: UIViewController
+{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -12,18 +12,22 @@ class LoginVC: UIViewController
 {
     @IBOutlet weak var textf_uname: UITextField!
     @IBOutlet weak var textf_pass: UITextField!
+    
     var credentialsMatch: Bool = false
     var name : String = ""
     var user_id = -1
     
-    @IBAction func LoginCheck(_ sender: Any)
+    @IBAction func btn_login(_ sender: Any)
     {
+    
+        print("Going To Recipe, Check Credentials")
         let Iuname = textf_uname.text!
         let Ipassword = textf_pass.text!
         findInDb(uname: Iuname, password: Ipassword)
-    
+        
         if (credentialsMatch == true)
         {
+            print("Going To Recipe, Credentials Match")
             performSegue(withIdentifier: "torecipe", sender: self)
         }
     }
@@ -32,6 +36,7 @@ class LoginVC: UIViewController
     {
         if (segue.identifier == "torecipe")
         {
+            print("Going To Recipe")
 //            let navVC = segue.destination as! RecipeNavController
             let segueVar = segue.destination as! RecipeSearchVC
             segueVar.name = self.name
@@ -39,14 +44,102 @@ class LoginVC: UIViewController
         }
     }
     
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        createTables()
+        self.hideKeyboard()
+    }
+    
     override func viewDidLoad()
 	{
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
     
+    func createTables()
+    {
+        print("creating tables...")
+        let fileManager =  FileManager.default
+        var db : OpaquePointer? = nil
+        var dbURl : NSURL? = nil
+        
+        do
+        {
+            let baseURL = try
+                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+        }
+        catch
+        {
+            print("Error")
+        }
+        
+        if let dbUrl = dbURl
+        {
+            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+            
+            if sqlStatus == SQLITE_OK
+            {
+                let errMsg: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>? =  nil
+                //                let SQLquery2 = "DROP TABLE IF EXISTS allergies"
+                //                if sqlite3_exec(db, SQLquery2,nil, nil, errMsg) == SQLITE_OK
+                //                {
+                //                    print("Table Dropped - allergies")
+                //                }
+                //
+                //                let SQLquery3 = "DROP TABLE IF EXISTS user"
+                //                if sqlite3_exec(db, SQLquery3,nil, nil, errMsg) == SQLITE_OK
+                //                {
+                //                    print("Table Dropped - User")
+                //                }
+                
+                //                let SQLquery4 = "DROP TABLE IF EXISTS favrecipes"
+                //                if sqlite3_exec(db, SQLquery4,nil, nil, errMsg) == SQLITE_OK
+                //                {
+                //                    print("Table Dropped - favrecipes")
+                //                }
+                
+                let createProfileTabelQuery = "CREATE TABLE IF NOT EXISTS user (id Integer Primary Key AutoIncrement UNIQUE, name Text, username Text, password Text, email Text, contact Integer);"
+                if sqlite3_exec(db, createProfileTabelQuery, nil, nil, errMsg) == SQLITE_OK
+                {
+                    print("Profile Table Created/Exist")
+                }
+                
+                let createAllergiesTabelQuery = "CREATE TABLE IF NOT EXISTS allergies (id Integer Primary Key AutoIncrement UNIQUE, allergicfood Integer);"
+                if sqlite3_exec(db, createAllergiesTabelQuery, nil, nil, errMsg) == SQLITE_OK
+                {
+                    print("Allergies Table Created/Exist")
+                }
+                
+                let createUserAllergiesTableQuery = "CREATE TABLE IF NOT EXISTS userallergies (id Integer Primary Key AutoIncrement UNIQUE, user_id Integer, allergy_id Integer);"
+                if sqlite3_exec(db, createUserAllergiesTableQuery, nil, nil, errMsg) == SQLITE_OK
+                {
+                    print("User Allergies Table Created/Exist")
+                }
+                
+                let createFavTabelQuery = "CREATE TABLE IF NOT EXISTS favrecipes (id Integer Primary Key AutoIncrement UNIQUE, user_id Integer, recipe_id Text);"
+                if sqlite3_exec(db, createFavTabelQuery, nil, nil, errMsg) == SQLITE_OK
+                {
+                    print("Fav Table Created/Exist")
+                }
+                print("Done with this class")
+            }
+        }
+    }
+
+    
     func findInDb(uname:String, password:String)
     {
+        
+        print("Going To Recipe, Checking Credentials In findInDb")
         let fileManager =  FileManager.default
         var db : OpaquePointer? = nil
         var dbURl : NSURL? = nil
@@ -64,6 +157,7 @@ class LoginVC: UIViewController
         
         if let dbUrl = dbURl
         {
+            print("Checking Db for \(uname) \(password)")
             let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
             let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
             
@@ -84,7 +178,8 @@ class LoginVC: UIViewController
 
                         let queryResultCol3 = sqlite3_column_text(selectStatement, 3)
                         let pass = String(cString: queryResultCol3!)
-
+                        
+                        print("\(id) \(iname) \(pass)")
 //                        let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
 //                        let name = String(cString: queryResultCol1!)
 //
@@ -115,13 +210,6 @@ class LoginVC: UIViewController
             }
         }
     }
-
-    override func didReceiveMemoryWarning()
-	{
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     /*
     // MARK: - Navigation
