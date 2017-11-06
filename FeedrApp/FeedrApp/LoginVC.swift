@@ -34,8 +34,8 @@ class LoginVC: UIViewController
         if (segue.identifier == "torecipe")
         {
             print("Going To Recipe")
-//            let navVC = segue.destination as! RecipeNavController
-            let segueVar = segue.destination as! RecipeSearchVC
+            let tabVC = segue.destination as! TabBarViewController
+            let segueVar = tabVC.viewControllers?.first as! RecipeSearchVC
             segueVar.name = self.name
             segueVar.user_id = self.user_id
         }
