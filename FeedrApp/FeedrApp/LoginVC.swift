@@ -27,6 +27,19 @@ class LoginVC: UIViewController
         {
             performSegue(withIdentifier: "torecipe", sender: self)
         }
+        else
+        {
+            showAlert(title: "Incorrect Login Credentials", message: "Please try again")
+        }
+    }
+    
+    func showAlert(title: String, message: String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Default action"), style: .cancel, handler: { _ in
+            //            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
