@@ -19,15 +19,12 @@ class LoginVC: UIViewController
     
     @IBAction func btn_login(_ sender: Any)
     {
-    
-        print("Going To Recipe, Check Credentials")
         let Iuname = textf_uname.text!
         let Ipassword = textf_pass.text!
         findInDb(uname: Iuname, password: Ipassword)
         
         if (credentialsMatch == true)
         {
-            print("Going To Recipe, Credentials Match")
             performSegue(withIdentifier: "torecipe", sender: self)
         }
     }
@@ -138,8 +135,6 @@ class LoginVC: UIViewController
     
     func findInDb(uname:String, password:String)
     {
-        
-        print("Going To Recipe, Checking Credentials In findInDb")
         let fileManager =  FileManager.default
         var db : OpaquePointer? = nil
         var dbURl : NSURL? = nil
@@ -157,7 +152,6 @@ class LoginVC: UIViewController
         
         if let dbUrl = dbURl
         {
-            print("Checking Db for \(uname) \(password)")
             let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
             let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
             
