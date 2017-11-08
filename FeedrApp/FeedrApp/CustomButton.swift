@@ -91,7 +91,7 @@ class CustomButton: UIButton {
         })
     }
     
-    // MARK: - Borders
+    // Borders
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
@@ -112,7 +112,7 @@ class CustomButton: UIButton {
         }
     }
     
-    // MARK: - Shadow
+    // Shadow
     
     @IBInspectable public var shadowOpacity: CGFloat = 0
     @IBInspectable public var shadowColor: UIColor = UIColor.clear

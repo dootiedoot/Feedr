@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A002F591FAB92A00065ED67 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A002F581FAB92A00065ED67 /* CustomButton.swift */; };
+		1A3079551FB2D82800310FB8 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3079541FB2D82800310FB8 /* CustomVisualEffectView.swift */; };
 		53AC28881FAED86E005CAFAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC28871FAED867005CAFAC /* libsqlite3.tbd */; };
 		53AC288D1FAEDABD005CAFAC /* CreateAllDatabases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */; };
 		614A77F61FAE7AF1009FFC03 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A77F51FAE7AF1009FFC03 /* HomeViewController.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		1A002F581FAB92A00065ED67 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		1A3079541FB2D82800310FB8 /* CustomVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVisualEffectView.swift; sourceTree = "<group>"; };
 		53AC28871FAED867005CAFAC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		53AC28891FAED8B7005CAFAC /* FeedrApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedrApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAllDatabases.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				9FB9B6C71F8C001A004B26A9 /* UserProfileVC.swift */,
 				9F06246E1F994878003ED25C /* YummlyAPI.swift */,
 				9FB9B6591F8BDE1E004B26A9 /* Main.storyboard */,
+				1A3079541FB2D82800310FB8 /* CustomVisualEffectView.swift */,
 				9FB9B65C1F8BDE1E004B26A9 /* Assets.xcassets */,
 				9FB9B65E1F8BDE1E004B26A9 /* LaunchScreen.storyboard */,
 				9FB9B6611F8BDE1E004B26A9 /* Info.plist */,
@@ -327,6 +330,7 @@
 				9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */,
 				9FB9B6561F8BDE1E004B26A9 /* FirstVC.swift in Sources */,
 				53AC288D1FAEDABD005CAFAC /* CreateAllDatabases.swift in Sources */,
+				1A3079551FB2D82800310FB8 /* CustomVisualEffectView.swift in Sources */,
 				9FB9B6861F8BF305004B26A9 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
