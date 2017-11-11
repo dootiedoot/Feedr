@@ -72,6 +72,7 @@ class RecipeSearchVC: UITableViewController
         super.viewDidLoad()
         self.hideKeyboard()
 		print("Id is \(user_id) Name is \(name)")
+		
         //Looks for single or multiple taps.
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         

@@ -12,6 +12,7 @@
 		53AC28881FAED86E005CAFAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC28871FAED867005CAFAC /* libsqlite3.tbd */; };
 		53AC288D1FAEDABD005CAFAC /* CreateAllDatabases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */; };
 		614A77F61FAE7AF1009FFC03 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A77F51FAE7AF1009FFC03 /* HomeViewController.swift */; };
+		614A77F81FB79AF1009FFC03 /* ingredients.json in Resources */ = {isa = PBXBuildFile; fileRef = 614A77F71FB79AF0009FFC03 /* ingredients.json */; };
 		61D7F8031F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */; };
 		9F06246D1F96A84A003ED25C /* RecipeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */; };
 		9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246E1F994878003ED25C /* YummlyAPI.swift */; };
@@ -55,6 +56,7 @@
 		53AC28891FAED8B7005CAFAC /* FeedrApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedrApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAllDatabases.swift; sourceTree = "<group>"; };
 		614A77F51FAE7AF1009FFC03 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		614A77F71FB79AF0009FFC03 /* ingredients.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ingredients.json; sourceTree = "<group>"; };
 		61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSourceWebsiteVC.swift; sourceTree = "<group>"; };
 		9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailVC.swift; sourceTree = "<group>"; };
 		9F06246E1F994878003ED25C /* YummlyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YummlyAPI.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		9FB9B6521F8BDE1E004B26A9 /* FeedrApp */ = {
 			isa = PBXGroup;
 			children = (
+				614A77F71FB79AF0009FFC03 /* ingredients.json */,
 				614A77F51FAE7AF1009FFC03 /* HomeViewController.swift */,
 				9FB9B6531F8BDE1E004B26A9 /* AppDelegate.swift */,
 				9FB9B6851F8BF305004B26A9 /* LoginVC.swift */,
@@ -289,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				614A77F81FB79AF1009FFC03 /* ingredients.json in Resources */,
 				9FB9B6601F8BDE1E004B26A9 /* LaunchScreen.storyboard in Resources */,
 				9FB9B65D1F8BDE1E004B26A9 /* Assets.xcassets in Resources */,
 				9FB9B65B1F8BDE1E004B26A9 /* Main.storyboard in Resources */,

@@ -108,10 +108,20 @@
              -allowedAttributes
  */
 
+/*
+	To get an array of all the ingredients that exists on Yummly, use YummlyAPI.GetIngredientsMetadata() to return a array of Ingredient
+
+	Example:
+
+		let ingredients = YummlyAPI.GetIngredientsMetadata()
+
+		print(ingredients)	//	This will print all the ingredient and structs. THIS WILL LAG CAUSE ITS A BIG LIST!!!
+*/
+
 import Foundation
 
 /*
- Yummly Enums
+	 Search Enums
  */
 public enum Cuisine
 {
@@ -193,8 +203,9 @@ public enum Holiday
 }
 
 /*
- Yummly JSON structure
- */
+	 Search JSON structure
+*/
+
 struct Result: Codable
 {
     let attribution : Attribution?
@@ -321,7 +332,7 @@ struct Nutrition: Codable
 }
 
 /*
- Recipe structure
+ Recipe JSON structure
  */
 
 struct Recipe : Codable
@@ -409,6 +420,17 @@ struct Source: Codable
 	let sourceRecipeUrl: String?
 }
 
+
+/*
+	Integredients Metadata JSON Structure
+*/
+
+struct Ingredient: Codable
+{
+	let searchValue: String?
+	let description: String?
+	let term: String?
+}
 
 class YummlyAPI
 {
@@ -795,6 +817,8 @@ class YummlyAPI
             //  Try to serialize the JSON data.
             do
             {
+				print("Attempting to fetch recipe search data from:", query)
+				
                 let result = try JSONDecoder().decode(Result.self, from: data)
                 
                 //print("Total matches:", result.totalMatchCount!)
@@ -835,12 +859,13 @@ class YummlyAPI
 			//  Try to serialize the JSON data.
 			do
 			{
-				print("PRINTING DATA")
-				print (data)
+				//print("PRINTING DATA")
+				//print (data)
+				print("Attempting to fetch recipe data from:", query)
 				
 				let recipe = try JSONDecoder().decode(Recipe.self, from: data)
-				print("PRINTING RECIPE")
-				print(recipe)
+				//print("PRINTING RECIPE")
+				//print(recipe)
 				
 				completion(recipe)
 			}
@@ -849,5 +874,48 @@ class YummlyAPI
 				print("Error serializing json:", jsonErr)
 			}
 		}.resume()
+	}
+	
+	//	Function that returns an array of all the ingredients that exist on YummlyAPI
+	static func GetIngredientsMetadata() -> [Ingredient]
+	{
+		//	Create path to JSON file
+		let JSONpath = Bundle.main.path(forResource: "ingredients", ofType: "json")
+		
+		//	Create url var from JSON path
+		let url = URL(fileURLWithPath: JSONpath!)
+		
+		//  Try to serialize the JSON data.
+		//URLSession.shared.dataTask(with: url)
+		//{ (data, response, error) in
+			//  Check error
+			//  Check status code
+			
+		//  Ensure data is not null
+			//guard let data = data else {    return  }
+			
+		//  Try to serialize the JSON data.
+		do
+		{
+			
+			//print("PRINTING DATA")
+			//print (data)
+			print("Attempting to fetch ingredients metadata from:", JSONpath)
+			
+			let data = try Data(contentsOf: url)
+			let ingredients = try JSONDecoder().decode([Ingredient].self, from: data)
+			//print("PRINTING INGREDIENTS")
+			//print(ingredients)
+			
+			//completion(ingredients)
+			return ingredients
+		}
+		catch let jsonErr
+		{
+			print("Error serializing json:", jsonErr)
+		}
+		//}.resume()
+		
+		return []
 	}
 }
