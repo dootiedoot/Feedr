@@ -22,7 +22,7 @@ class RecipeSearchVC: UITableViewController
     @IBAction func btn_Search(_ sender: Any)
     {
         //  if the lbl_searchbar isnt empty...
-        if lbl_searchbar.text != nil
+		if lbl_searchbar.text != nil && lbl_searchbar.text != ""
         {
             //  if the lbl_searchbar isnt empty...
             YummlyAPI.GetSearch(
@@ -39,15 +39,8 @@ class RecipeSearchVC: UITableViewController
                 allowedHoliday: [],
                 excludeHoliday: [],
                 maxTotalTimeInSeconds: -1,
-                maxResults: -1)
+                maxResults: 50)
             { result in
-                
-                /*for match in result.matches!
-                {
-                    //print (match.recipeName!)
-                    //print (match.smallImageUrls![0])
-                }*/
-				
 				//	Error handling. (Use a pop-up)
 				if result.totalMatchCount! <= 0
 				{
@@ -65,6 +58,10 @@ class RecipeSearchVC: UITableViewController
                 }
             }
         }
+		else
+		{
+			print("No search parameter! Doing nothing.")
+		}
     }
     				
     
@@ -156,6 +153,7 @@ class RecipeSearchVC: UITableViewController
     {
         selectedRecipe = result.matches![indexPath.row]
         self.performSegue(withIdentifier: "RecipeDetail", sender: self)
+		print("Tapped on row ", indexPath.row)
     }
     
     

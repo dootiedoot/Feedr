@@ -23,10 +23,10 @@ class LoginVC: UIViewController
         let Ipassword = textf_pass.text!
         findInDb(uname: Iuname, password: Ipassword)
         
-        if (credentialsMatch == true)
-        {
+        //if (credentialsMatch == true)
+        //{
             performSegue(withIdentifier: "torecipe", sender: self)
-        }
+        //}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
