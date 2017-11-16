@@ -29,6 +29,7 @@ class RecipeSearchVC: UITableViewController
                 search: lbl_searchbar.text!,
                 requirePictures: true,
                 allowedIngredients: [],
+				excludedIngredients: [],
                 allowedAllergies: [],
                 allowedDiet: [],
                 allowedCuisines: [],

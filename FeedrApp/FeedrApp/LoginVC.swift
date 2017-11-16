@@ -58,7 +58,48 @@ class LoginVC: UIViewController
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-    }
+		
+		//	CHAD TESING
+		//  if the lbl_searchbar isnt empty...
+		/*YummlyAPI.GetSearch(
+			search: "",
+			requirePictures: true,
+			allowedIngredients: ["garlic","butter"],
+			excludedIngredients: ["mushrooms"],
+			allowedAllergies: [],
+			allowedDiet: [],
+			allowedCuisines: [],
+			excludedCuisines: [],
+			allowedCourses: [],
+			excludeCourses: [],
+			allowedHoliday: [],
+			excludeHoliday: [],
+			maxTotalTimeInSeconds: -1,
+			maxResults: 100)
+		{ result in
+			
+			/*for match in result.matches!
+			{
+			//print (match.recipeName!)
+			//print (match.smallImageUrls![0])
+			}*/
+			//print(result)
+			//	Error handling. (Use a pop-up)
+			if result.totalMatchCount! <= 0
+			{
+				print("No results found!")
+				return
+			}
+			else
+			{
+				print(result.matches?.count)
+				for match in result.matches!
+				{
+					print(match.recipeName)
+				}
+			}
+		}*/
+	}
     
     func createTables()
     {

@@ -222,9 +222,9 @@ struct Result: Codable
         facetCounts = ["":""]
         matches = []
         criteria = Criteria(maxResults: -1,
-                            excludedIngredients: [],
                             excludedAttributes : [],
                             allowedIngredients : [],
+							excludedIngredients: [],
                             attributeRanges : AttributeRanges(flavorPiquant: FlavorPiquant(min: 0.0, max: 0.0)),
                             nutritionRestrictions : NutritionRestrictions(nutrition: []),
                             allowedDiets : [],
@@ -300,9 +300,9 @@ struct Flavors: Codable
 struct Criteria: Codable
 {
     let maxResults : Int?
-    let excludedIngredients : [String]?
     let excludedAttributes : [String]?
     let allowedIngredients : [String]?
+	let excludedIngredients : [String]?
     let attributeRanges : AttributeRanges?
     let nutritionRestrictions : NutritionRestrictions?
     let allowedDiets : [String]?
@@ -444,7 +444,7 @@ class YummlyAPI
     static func GetSearch(search: String?,
                          requirePictures: Bool?,
                          allowedIngredients: [String]?,
-                         //excludedIngredients: [String]?,
+                         excludedIngredients: [String]?,
                          allowedAllergies: [Allergy]?,
                          allowedDiet: [Diet]?,
                          allowedCuisines: [Cuisine]?,
@@ -479,6 +479,7 @@ class YummlyAPI
         {
             query += "&requirePictures=true"
         }
+		
         //  Allowed Ingredients
         if allowedIngredients != nil && allowedIngredients!.count > 0
         {
@@ -488,7 +489,15 @@ class YummlyAPI
             }
         }
 
-        //excludedIngredients: [String]?,
+		//  Excluded Ingredients
+		if excludedIngredients != nil && excludedIngredients!.count > 0
+		{
+			for ingredient in excludedIngredients!
+			{
+				query += "&excludedIngredient[]=" + ingredient
+			}
+		}
+		
         //  Allowed Allergies
         if allowedAllergies != nil && allowedAllergies!.count > 0
         {
@@ -801,7 +810,7 @@ class YummlyAPI
         //  max results to return per page
         if maxResults! > 0
         {
-            query += "&maxResult=" + String(maxResults!) + "0&start=0"
+            query += "&maxResult=" + String(maxResults!) //+ "0&start=0"
         }
         
         let url = URL(string: query)
