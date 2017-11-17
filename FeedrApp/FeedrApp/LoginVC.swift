@@ -25,10 +25,11 @@ class LoginVC: UIViewController
         
         //if (credentialsMatch == true)
         //{
-            performSegue(withIdentifier: "torecipe", sender: self)
+        //JAMES COMMENTED THIS OUT
+            //performSegue(withIdentifier: "torecipe", sender: self)
         //}
     }
-    
+    /* JAMES COMMENTED THIS OUT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if (segue.identifier == "torecipe")
@@ -40,7 +41,7 @@ class LoginVC: UIViewController
             segueVar.user_id = self.user_id
         }
     }
-    
+    */
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
