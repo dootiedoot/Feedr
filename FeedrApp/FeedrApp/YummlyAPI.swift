@@ -815,7 +815,8 @@ class YummlyAPI
         
         let url = URL(string: query)
 		
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        URLSession.shared.dataTask(with: url!)
+		{ (data, response, error) in
             
             //  Check error
             //  Check status code

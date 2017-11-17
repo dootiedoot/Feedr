@@ -116,19 +116,22 @@ class RecipeSearchVC: UITableViewController
         
         //  Assign variables to actual values
         //  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
-        let url = URL(string: result.matches![indexPath.row].smallImageUrls![0])
-        URLSession.shared.dataTask(with: url!, completionHandler:{ (data, reponse, error) in
-            if error != nil
-            {
-                print(error!)
-                return
-            }
-            DispatchQueue.main.async
-            {
-                //  Finally, assign the image if all is successful
-                img_recipeThumbnail.image = UIImage(data: data!)
-            }
-        }).resume()
+		if result.matches![indexPath.row].smallImageUrls != nil
+		{
+			let url = URL(string: result.matches![indexPath.row].smallImageUrls![0])
+			URLSession.shared.dataTask(with: url!, completionHandler:{ (data, reponse, error) in
+				if error != nil
+				{
+					print(error!)
+					return
+				}
+				DispatchQueue.main.async
+					{
+						//  Finally, assign the image if all is successful
+						img_recipeThumbnail.image = UIImage(data: data!)
+				}
+			}).resume()
+		}
         
         //  Recipe Name
         lbl_recipeName.text = result.matches![indexPath.row].recipeName
