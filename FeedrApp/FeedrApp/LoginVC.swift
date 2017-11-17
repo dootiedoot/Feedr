@@ -7,7 +7,10 @@
 //
 
 import UIKit
+struct JamesVariables{
+static var Globalusername = "John"
 
+}
 class LoginVC: UIViewController
 {
     @IBOutlet weak var textf_uname: UITextField!
@@ -22,7 +25,8 @@ class LoginVC: UIViewController
         let Iuname = textf_uname.text!
         let Ipassword = textf_pass.text!
         findInDb(uname: Iuname, password: Ipassword)
-        
+        //JamesVariables.Globalusername = textf_uname.text!
+        print("Before: " + JamesVariables.Globalusername)
         //if (credentialsMatch == true)
         //{
         //JAMES COMMENTED THIS OUT

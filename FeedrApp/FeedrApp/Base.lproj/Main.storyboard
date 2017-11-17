@@ -77,7 +77,7 @@
                                 <rect key="frame" x="0.0" y="128" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jOv-J8-rTt" id="CW4-5a-DUe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gT3-w3-AZ7">
@@ -832,7 +832,7 @@
         <!--User Profile-->
         <scene sceneID="D8V-UQ-Pqv">
             <objects>
-                <viewController title="User Profile" id="5Hi-YC-g0D" customClass="UserProfileVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="User Profile" id="5Hi-YC-g0D" customClass="FirstVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIt-Yc-MDi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -892,6 +892,9 @@
                     <navigationItem key="navigationItem" title="Profile" id="woD-ol-sbs">
                         <barButtonItem key="rightBarButtonItem" title="Preferences" id="hT9-s2-QFl"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="lbl_usernamepf" destination="sVQ-aS-5fH" id="ezh-aw-9si"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

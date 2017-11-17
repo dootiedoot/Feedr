@@ -10,9 +10,11 @@ import UIKit
 
 class FirstVC: UIViewController {
 
+    @IBOutlet var lbl_usernamepf: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        lbl_usernamepf.text = "Hello " + JamesVariables.Globalusername
     }
 
     override func didReceiveMemoryWarning() {
