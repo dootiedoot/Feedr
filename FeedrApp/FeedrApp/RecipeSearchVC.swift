@@ -68,7 +68,7 @@ class RecipeSearchVC: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.hideKeyboard()
+        //self.hideKeyboard()
 		print("Id is \(user_id) Name is \(name)")
 		
         //Looks for single or multiple taps.
