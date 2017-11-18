@@ -381,7 +381,7 @@ struct Recipe : Codable
 	func GetCookingTime() -> String
 	{
 		//	Error handling
-		if totalTimeInSeconds! == nil || totalTimeInSeconds! <= -1
+		if totalTimeInSeconds == nil || totalTimeInSeconds! <= -1
 		{
 			return "-1"
 		}
@@ -435,7 +435,8 @@ struct Ingredient: Codable
 class YummlyAPI
 {
     //  VARIABLES
-    	
+	static let IngredientsMetadata = GetIngredientsMetadata()
+	
 	//  yummly API variables
 	private static let yummlyID = "51013d4c"
 	private static let yummlyKey = "0549dc2605e77741e0feb12736c65087"
@@ -927,5 +928,14 @@ class YummlyAPI
 		//}.resume()
 		
 		return []
+	}
+	
+	static func IsIngredientValid(ingredientName: String) -> Bool
+	{
+		if self.IngredientsMetadata.contains(where: {$0.searchValue?.lowercased() == ingredientName.lowercased()})
+		{
+			return true
+		}
+		return false
 	}
 }
