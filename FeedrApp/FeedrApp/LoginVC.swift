@@ -7,10 +7,12 @@
 //
 
 import UIKit
-struct JamesVariables{
-static var Globalusername = "John"
 
+struct JamesVariables
+{
+    static var Globalusername = "John"
 }
+
 class LoginVC: UIViewController
 {
     @IBOutlet weak var textf_uname: UITextField!
