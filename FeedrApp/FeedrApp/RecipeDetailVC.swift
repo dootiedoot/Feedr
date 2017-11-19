@@ -194,7 +194,7 @@ class RecipeDetailVC: UIViewController
 		}
 	}
     
-    func retrieveSearch()
+    func retrieveFav()
     {
         let fileManager =  FileManager.default
         var db : OpaquePointer? = nil
