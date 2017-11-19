@@ -13,8 +13,7 @@ class RecipeDetailVC: UIViewController
     //  CLASS VARIABLES
     var match = Match()
 	var recipe = Recipe()
-	var favoriteRecipes = [String]()
-    
+	
 	var this_user_id = -1
 	
     //  OUTLET VARIABLES
@@ -141,6 +140,8 @@ class RecipeDetailVC: UIViewController
 					self.lbl_holidays.isHidden = true
 				}
 			}
+			
+			
 		}
     }
 	
@@ -150,7 +151,6 @@ class RecipeDetailVC: UIViewController
 		
 		addRecipeAsFav(user_id: this_user_id, recipe_id: recipe.id!)
 	}
-    
 	func addRecipeAsFav(user_id:Int, recipe_id:String)
 	{
 		let fileManager =  FileManager.default
@@ -188,54 +188,26 @@ class RecipeDetailVC: UIViewController
 					print("Value did not go through")
 				}
 				sqlite3_finalize(statement)
+				
+				var selectStatement : OpaquePointer? = nil
+				let selectQuery = "SELECT * FROM favrecipes"
+				if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
+				{
+					while sqlite3_step(selectStatement) == SQLITE_ROW
+					{
+						let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
+						let uid = String(cString: queryResultCol1!)
+						
+						let queryResultCol2 = sqlite3_column_text(selectStatement, 2)
+						let rid = String(cString: queryResultCol2!)
+						
+						print("\(uid) \(rid)")
+					}
+				}
+				sqlite3_finalize(selectStatement)
 			}
 		}
 	}
-    
-    func retrieveFav()
-    {
-        let fileManager =  FileManager.default
-        var db : OpaquePointer? = nil
-        var dbURl : NSURL? = nil
-        
-        do
-        {
-            let baseURL = try
-                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
-        }
-        catch
-        {
-            print("Error")
-        }
-        
-        if let dbUrl = dbURl
-        {
-            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
-            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
-            
-            if sqlStatus == SQLITE_OK
-            {
-                var selectStatement : OpaquePointer? = nil
-                let selectQuery = "SELECT * FROM favrecipes"
-                if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
-                {
-                    while sqlite3_step(selectStatement) == SQLITE_ROW
-                    {
-                        let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
-                        let uid = String(cString: queryResultCol1!)
-                        
-                        let queryResultCol2 = sqlite3_column_text(selectStatement, 2)
-                        let rid = String(cString: queryResultCol2!)
-                        
-                        favoriteRecipes.append(rid)
-                        print("\(uid) \(rid)")
-                    }
-                }
-                sqlite3_finalize(selectStatement)
-            }
-        }
-    }
 	
     override func didReceiveMemoryWarning()
     {
