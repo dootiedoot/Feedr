@@ -13,7 +13,6 @@ class RecipeDetailVC: UIViewController
     //  CLASS VARIABLES
     var match = Match()
 	var recipe = Recipe()
-	
 	var this_user_id = -1
 	
     //  OUTLET VARIABLES
