@@ -11,9 +11,9 @@ import UIKit
 class RecipeDetailVC: UIViewController
 {
     //  CLASS VARIABLES
-    var match = Match()
+	var recipeID : String = ""
 	var recipe = Recipe()
-	var favRecipes = [String]()
+	static var favRecipes = [String]()
     
 	var this_user_id = -1
 	
@@ -44,11 +44,16 @@ class RecipeDetailVC: UIViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        //print(match)
 		
-		YummlyAPI.GetRecipe(recipeID: match.id!)
-		{ recipe in
+		PopulateView()
+    }
+	
+	func PopulateView()
+	{
+		print("Populating recipe detail view...")
+		
+		YummlyAPI.GetRecipe(recipeID: recipeID)
+		{	recipe in
 			self.recipe = recipe
 			
 			//  Update title
@@ -56,16 +61,17 @@ class RecipeDetailVC: UIViewController
 			
 			//  Load picture in thumbnail
 			let url = URL(string: recipe.images![0].hostedLargeUrl!)
-			URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-				if error != nil
-				{
-					print(error!)
-					return
-				}
-				DispatchQueue.main.async
+			URLSession.shared.dataTask(with: url!, completionHandler:
+				{ (data, response, error) in
+					if error != nil
 					{
-						self.img_recipeThumbnail.image = UIImage(data: data!)
-				}
+						print(error!)
+						return
+					}
+					DispatchQueue.main.async
+						{
+							self.img_recipeThumbnail.image = UIImage(data: data!)
+					}
 			}).resume()
 			
 			//	Update everything inside main
@@ -73,34 +79,34 @@ class RecipeDetailVC: UIViewController
 			{
 				//	Display Ingredient lines
 				var ingredientLines = "Ingredients:"
-				for ingredientLine in recipe.ingredientLines!
+				for ingredientLine in self.recipe.ingredientLines!
 				{
 					ingredientLines += "\n\t" + ingredientLine
 				}
 				self.lbl_ingredients.text = ingredientLines
 				
 				//	Display flavors
-				self.lbl_flavor_piquant.text = "Piuant: " + String(recipe.flavors!.Piquant!)
-				self.lbl_flavor_bitter.text = "Bitter: " + String(recipe.flavors!.Bitter!)
-				self.lbl_flavor_sweet.text = "Sweet: " + String(recipe.flavors!.Sweet!)
-				self.lbl_flavor_meaty.text = "Meaty: " + String(recipe.flavors!.Meaty!)
-				self.lbl_flavor_salty.text = "Salty: " + String(recipe.flavors!.Salty!)
-				self.lbl_flavor_sour.text = "Sour: " + String(recipe.flavors!.Sour!)
+				self.lbl_flavor_piquant.text = "Piuant: " + String(self.recipe.flavors!.Piquant!)
+				self.lbl_flavor_bitter.text = "Bitter: " + String(self.recipe.flavors!.Bitter!)
+				self.lbl_flavor_sweet.text = "Sweet: " + String(self.recipe.flavors!.Sweet!)
+				self.lbl_flavor_meaty.text = "Meaty: " + String(self.recipe.flavors!.Meaty!)
+				self.lbl_flavor_salty.text = "Salty: " + String(self.recipe.flavors!.Salty!)
+				self.lbl_flavor_sour.text = "Sour: " + String(self.recipe.flavors!.Sour!)
 				
 				//	Display cooking time
-				self.lbl_cookingTime.text = recipe.GetCookingTime()
+				self.lbl_cookingTime.text = self.recipe.GetCookingTime()
 				
 				//	Display servings
-				self.lbl_servings.text = "Servings: "+String(recipe.numberOfServings!)
+				self.lbl_servings.text = "Servings: "+String(self.recipe.numberOfServings!)
 				
 				//	Display rating
-				self.lbl_ratings.text = "Rating: "+String(recipe.rating!)
+				self.lbl_ratings.text = "Rating: "+String(self.recipe.rating!)
 				
 				//	Display cuisines
 				var cuisinesLine = "Cuisine(s)"
-				if recipe.attributes.cuisine != nil
+				if self.recipe.attributes.cuisine != nil
 				{
-					for cuisine in recipe.attributes.cuisine!
+					for cuisine in self.recipe.attributes.cuisine!
 					{
 						cuisinesLine += "\n\t" + cuisine
 					}
@@ -113,9 +119,9 @@ class RecipeDetailVC: UIViewController
 				
 				//	Display courses
 				var coursesLine = "Course(s)"
-				if recipe.attributes.course != nil
+				if self.recipe.attributes.course != nil
 				{
-					for course in recipe.attributes.course!
+					for course in self.recipe.attributes.course!
 					{
 						coursesLine += "\n\t" + course
 					}
@@ -128,9 +134,9 @@ class RecipeDetailVC: UIViewController
 				
 				//	Display holidays
 				var holidysLine = "Holidy(s)"
-				if recipe.attributes.holiday != nil
+				if self.recipe.attributes.holiday != nil
 				{
-					for holiday in recipe.attributes.holiday!
+					for holiday in self.recipe.attributes.holiday!
 					{
 						holidysLine += "\n\t" + holiday
 					}
@@ -141,14 +147,13 @@ class RecipeDetailVC: UIViewController
 					self.lbl_holidays.isHidden = true
 				}
 			}
-			
-			
 		}
-    }
+		
+	}
 	
 	@IBAction func RecipeFav(_ sender: Any)
 	{
-		print(recipe.id!)
+		print(self.recipe.id!)
 		
 		addRecipeAsFav(user_id: this_user_id, recipe_id: recipe.id!)
 	}
@@ -192,8 +197,19 @@ class RecipeDetailVC: UIViewController
 				sqlite3_finalize(statement)
             }
 		}
+		
+		//	CHAD'S CODE TO ADD RECIPE ID TO GLOBAL ARRAY. Needed static array and static func to use static global variable.
+		if  RecipeDetailVC.favRecipes.contains(recipe_id)
+		{
+			RecipeDetailVC.favRecipes.append(recipe_id)
+			print("Added",recipe_id," to favorites.")
+		}
+		else
+		{
+			print(recipe_id," already favorited. Doing nothing.")
+		}
 	}
-    
+	
     func retrieveFav()
     {
         let fileManager =  FileManager.default
@@ -230,7 +246,7 @@ class RecipeDetailVC: UIViewController
                         let queryResultCol2 = sqlite3_column_text(selectStatement, 2)
                         let rid = String(cString: queryResultCol2!)
                         
-                        favRecipes.append(rid)
+                        RecipeDetailVC.favRecipes.append(rid)
                     }
                 }
                 sqlite3_finalize(selectStatement)

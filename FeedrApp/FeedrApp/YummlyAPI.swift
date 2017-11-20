@@ -435,7 +435,7 @@ struct Ingredient: Codable
 class YummlyAPI
 {
     //  VARIABLES
-	static let IngredientsMetadata = GetIngredientsMetadata()
+	static let IngredientsMetadata = GetIngredientsMetadata()				//	Cache entire ingredients metadata into a array
 	
 	//  yummly API variables
 	private static let yummlyID = "51013d4c"
@@ -930,6 +930,7 @@ class YummlyAPI
 		return []
 	}
 	
+	//	Given a ingredient string, returns true if it exists in the yummlyAPI database.
 	static func IsIngredientValid(ingredientName: String) -> Bool
 	{
 		if self.IngredientsMetadata.contains(where: {$0.searchValue?.lowercased() == ingredientName.lowercased()})

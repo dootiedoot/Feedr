@@ -14,7 +14,7 @@ class RecipeSearchVC: UITableViewController
     @IBOutlet weak var lbl_searchbar: UITextField!
     
     var result = Result()
-    var selectedRecipe = Match()
+	var selectedRecipeID : String = ""
 	
 	var name = ""
 	var user_id = -1
@@ -81,7 +81,8 @@ class RecipeSearchVC: UITableViewController
         view.addGestureRecognizer(tap)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+	{
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
@@ -148,8 +149,8 @@ class RecipeSearchVC: UITableViewController
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        selectedRecipe = result.matches![indexPath.row]
-        self.performSegue(withIdentifier: "RecipeDetail", sender: self)
+		self.selectedRecipeID = result.matches![indexPath.row].id!
+		self.performSegue(withIdentifier: "RecipeDetail", sender: self)
 		print("Tapped on row ", indexPath.row)
     }
     
@@ -163,9 +164,11 @@ class RecipeSearchVC: UITableViewController
         // Pass the selected object to the new view controller.
         if segue.identifier == "RecipeDetail"
         {
+			print("Prepping segue...")
+			
             //  Cache the recipe detail controller and pass the data over
             let RecipeDetailController = segue.destination as! RecipeDetailVC
-            RecipeDetailController.match = selectedRecipe
+            RecipeDetailController.recipeID = selectedRecipeID
 			RecipeDetailController.this_user_id = user_id
         }
         else
