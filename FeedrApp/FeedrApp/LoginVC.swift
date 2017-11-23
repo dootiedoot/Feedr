@@ -66,7 +66,19 @@ class LoginVC: UIViewController
         
         // Do any additional setup after loading the view.
 		
-		
+		//	TEST DATA
+		YummlyAPI.GetRecipe(recipeID: "Baked-Apples-Simply-Recipes-43096")
+		{	recipe in
+			FavoritesVC.favRecipes.append(recipe)
+			//print(FavoritesVC.favRecipes)
+			
+		}
+		YummlyAPI.GetRecipe(recipeID: "Baked-Apple-Pie-Roll-Ups-593599")
+		{	recipe in
+			FavoritesVC.favRecipes.append(recipe)
+			//print(FavoritesVC.favRecipes)
+			
+		}
 	}
     
     func createTables()

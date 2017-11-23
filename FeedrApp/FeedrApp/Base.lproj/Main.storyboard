@@ -294,7 +294,7 @@
                                                                 </constraints>
                                                                 <state key="normal" title="Add to favorites"/>
                                                                 <connections>
-                                                                    <action selector="RecipeFav:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="m0z-TL-UqM"/>
+                                                                    <action selector="OnFavoriteRecipe:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="m0z-TL-UqM"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -367,6 +367,7 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="btn_Favorite" destination="IZE-eV-tHP" id="HXA-wz-9Iw"/>
                         <outlet property="img_recipeThumbnail" destination="BpB-FX-Ieq" id="oyi-Qg-TM0"/>
                         <outlet property="lbl_cookingTime" destination="738-Ka-8ls" id="zNj-Fd-hpE"/>
                         <outlet property="lbl_courses" destination="YPJ-mg-Who" id="kVB-4v-OHJ"/>
@@ -423,13 +424,13 @@
         <!--Favorites-->
         <scene sceneID="5SO-Zh-haM">
             <objects>
-                <tableViewController id="yTC-fg-eDd" customClass="UserLibraryVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yTC-fg-eDd" customClass="FavoritesVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X3g-0N-OXx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5aH-QT-RgX">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="5aH-QT-RgX">
                                 <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5aH-QT-RgX" id="4so-Dx-ExJ">
@@ -1106,7 +1107,6 @@
         <!--Search-->
         <scene sceneID="0F3-At-CST">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iby-Xj-XCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="C47-Un-cS9" userLabel="Search" customClass="RecipeSearchVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cYu-nH-0EY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1234,6 +1234,7 @@
                         <outlet property="lbl_searchbar" destination="IAC-U7-hTk" id="K5a-gk-ZVB"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iby-Xj-XCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1473" y="-700"/>
         </scene>

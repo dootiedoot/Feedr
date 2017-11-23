@@ -26,10 +26,18 @@ class RecipeSourceWebsiteVC: UIViewController, WKUIDelegate
     {
         super.viewDidLoad()
         
-        let myURL = URL(string: self.url)
-        let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
+		LoadWebsite(url: self.url)
     }
+	
+	func LoadWebsite(url: String)
+	{
+		print("Loading website at",url,"...")
+		
+		let myURL = URL(string: url)
+		let myRequest = URLRequest(url: myURL!)
+		webView.load(myRequest)
+	}
+	
     /*
     // MARK: - Navigation
 

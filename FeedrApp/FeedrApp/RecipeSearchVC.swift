@@ -13,8 +13,8 @@ class RecipeSearchVC: UITableViewController
     //THIS IS THE SEARCH BAR AT THE TOP OF THE VIEW
     @IBOutlet weak var lbl_searchbar: UITextField!
     
-    var result = Result()
-	var selectedRecipeID : String = ""
+    private var result = Result()
+	private var selectedRecipeID : String = ""
 	
 	var name = ""
 	var user_id = -1

@@ -10,21 +10,21 @@ import UIKit
 
 class FavoritesVC: UITableViewController
 {
-	var favRecipes = [Recipe]()
-	var selectedRecipe = Recipe()
-
-	override func viewDidLoad()
+	static var favRecipes = [Recipe]()
+	private var selectedRecipe = Recipe()
+	
+	override func viewDidAppear(_ animated: Bool)
 	{
-		super.viewDidLoad()
+		super.viewDidAppear(animated)
 		
 		//Looks for single or multiple taps.
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+		//let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
 		
 		//Uncomment the line below if you want the tap not not interfere and cancel other interactions.
 		
-		tap.cancelsTouchesInView = false
+		//tap.cancelsTouchesInView = false
 		
-		view.addGestureRecognizer(tap)
+		//view.addGestureRecognizer(tap)
 		
 		//	Populate the table view with data
 		PopulateTable()
@@ -34,20 +34,62 @@ class FavoritesVC: UITableViewController
 	{
 		print("Attempting to populate favorites view...")
 		
-		let favRecipeIDs = RecipeDetailVC.favRecipes
-		
-		for recipeID in favRecipeIDs
-		{
-			YummlyAPI.GetRecipe(recipeID: recipeID)
-			{ recipe in
-				self.favRecipes.append(recipe)
-			}
-		}
+		//let favRecipeIDs = RecipeDetailVC.GetFavoriteRecipeIDs()
 		
 		//  Dispatch queue so table view is refreshed with data
 		DispatchQueue.main.async
 		{
 			self.tableView.reloadData()
+		}
+	}
+	
+	//	Global function to add a Recipe to favorites given a recipeID
+	static func AddToFavorites(id: String)
+	{
+		//	if the id doesnt exists in the favorites. Add it to array
+		if !IsRecipeFavorited(id: id)
+		{
+			YummlyAPI.GetRecipe(recipeID: id)
+			{	recipe in
+				favRecipes.append(recipe)
+				print(id, "has been added to favorites")
+				
+				//RecipeDetailVC.UpdateFavoriteButton(RecipeDetailVC)
+			}
+		}
+		else
+		{
+			print(id,"is already favorited. Doing nothing.")
+			return
+		}
+	}
+	
+	//	Global function to remove a Recipe to favorites given a recipeID
+	static func RemoveFromFavorites(id: String)
+	{
+		//	if the id exists in the favorites. Remove it from array
+		if IsRecipeFavorited(id: id)
+		{
+			favRecipes = favRecipes.filter{$0.id != id}
+			print(id, "has been removed to favorites")
+		}
+		else
+		{
+			print(id, "does not exist in favorites. Doing nothing.")
+			return
+		}
+	}
+	
+	static func IsRecipeFavorited(id: String) -> Bool
+	{
+		let recipeFound = favRecipes.filter{$0.id == id}.count > 0
+		if recipeFound == true
+		{
+			return true
+		}
+		else
+		{
+			return false
 		}
 	}
 	
@@ -74,7 +116,7 @@ class FavoritesVC: UITableViewController
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
 		// #warning Incomplete implementation, return the number of rows
-		return self.favRecipes.count
+		return FavoritesVC.favRecipes.count
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -84,13 +126,13 @@ class FavoritesVC: UITableViewController
 		//  Initialize the variables to tags
 		let img_recipeThumbnail = cell.viewWithTag(1) as! UIImageView
 		let lbl_recipeName = cell.viewWithTag(2) as! UILabel
-		let lbl_cookingTime = cell.viewWithTag(3) as! UILabel
+		//let lbl_cookingTime = cell.viewWithTag(3) as! UILabel
 		
 		//  Assign variables to actual values
 		//  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
-		if favRecipes[indexPath.row].images![0].hostedLargeUrl != nil
+		if FavoritesVC.favRecipes[indexPath.row].images![0].hostedLargeUrl != nil
 		{
-			let url = URL(string: favRecipes[indexPath.row].images![0].hostedLargeUrl!)
+			let url = URL(string: FavoritesVC.favRecipes[indexPath.row].images![0].hostedLargeUrl!)
 			URLSession.shared.dataTask(with: url!, completionHandler:
 			{ (data, reponse, error) in
 				if error != nil
@@ -107,9 +149,9 @@ class FavoritesVC: UITableViewController
 		}
 		
 		//  Recipe Name
-		lbl_recipeName.text = favRecipes[indexPath.row].name
+		lbl_recipeName.text = FavoritesVC.favRecipes[indexPath.row].name
 		//  Cooking Time
-		lbl_cookingTime.text = favRecipes[indexPath.row].GetCookingTime()
+		//lbl_cookingTime.text = FavoritesVC.favRecipes[indexPath.row].GetCookingTime()
 		
 		return cell
 	}
@@ -121,7 +163,7 @@ class FavoritesVC: UITableViewController
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
 	{
-		selectedRecipe = favRecipes[indexPath.row]
+		selectedRecipe = FavoritesVC.favRecipes[indexPath.row]
 		self.performSegue(withIdentifier: "RecipeDetail", sender: self)
 		print("Tapped on row ", indexPath.row)
 	}
@@ -137,8 +179,8 @@ class FavoritesVC: UITableViewController
 		if segue.identifier == "RecipeDetail"
 		{
 			//  Cache the recipe detail controller and pass the data over
-			let RecipeDetailController = segue.destination as! RecipeDetailVC
-			RecipeDetailController.recipe = selectedRecipe
+			let RecipeDetailVC = segue.destination as! RecipeDetailVC
+			RecipeDetailVC.recipeID = selectedRecipe.id!
 			//RecipeDetailController.this_user_id = user_id
 		}
 		else

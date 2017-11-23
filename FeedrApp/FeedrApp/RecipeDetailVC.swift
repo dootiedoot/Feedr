@@ -12,9 +12,7 @@ class RecipeDetailVC: UIViewController
 {
     //  CLASS VARIABLES
 	var recipeID : String = ""
-	var recipe = Recipe()
-	static var favRecipes = [String]()
-    
+	private var recipe = Recipe()
 	var this_user_id = -1
 	
     //  OUTLET VARIABLES
@@ -33,8 +31,9 @@ class RecipeDetailVC: UIViewController
 	@IBOutlet weak var lbl_courses: UILabel!
 	@IBOutlet weak var lbl_cuisines: UILabel!
 	@IBOutlet weak var lbl_ratings: UILabel!
+	@IBOutlet weak var btn_Favorite: UIButton!
 	
-    @IBAction func btn_RecipeWebsite(_ sender: Any)
+	@IBAction func btn_RecipeWebsite(_ sender: Any)
     {
         self.performSegue(withIdentifier: "RecipeWebsite", sender: self)
     }
@@ -86,12 +85,30 @@ class RecipeDetailVC: UIViewController
 				self.lbl_ingredients.text = ingredientLines
 				
 				//	Display flavors
-				self.lbl_flavor_piquant.text = "Piuant: " + String(self.recipe.flavors!.Piquant!)
-				self.lbl_flavor_bitter.text = "Bitter: " + String(self.recipe.flavors!.Bitter!)
-				self.lbl_flavor_sweet.text = "Sweet: " + String(self.recipe.flavors!.Sweet!)
-				self.lbl_flavor_meaty.text = "Meaty: " + String(self.recipe.flavors!.Meaty!)
-				self.lbl_flavor_salty.text = "Salty: " + String(self.recipe.flavors!.Salty!)
-				self.lbl_flavor_sour.text = "Sour: " + String(self.recipe.flavors!.Sour!)
+				if self.recipe.flavors!.Piquant != nil
+				{
+					self.lbl_flavor_piquant.text = "Piuant: " + String(self.recipe.flavors!.Piquant!)
+				}
+				if self.recipe.flavors!.Bitter != nil
+				{
+					self.lbl_flavor_bitter.text = "Bitter: " + String(self.recipe.flavors!.Bitter!)
+				}
+				if self.recipe.flavors!.Sweet != nil
+				{
+					self.lbl_flavor_sweet.text = "Sweet: " + String(self.recipe.flavors!.Sweet!)
+				}
+				if self.recipe.flavors!.Meaty != nil
+				{
+					self.lbl_flavor_meaty.text = "Meaty: " + String(self.recipe.flavors!.Meaty!)
+				}
+				if self.recipe.flavors!.Salty != nil
+				{
+					self.lbl_flavor_salty.text = "Salty: " + String(self.recipe.flavors!.Salty!)
+				}
+				if self.recipe.flavors!.Sour != nil
+				{
+					self.lbl_flavor_sour.text = "Sour: " + String(self.recipe.flavors!.Sour!)
+				}
 				
 				//	Display cooking time
 				self.lbl_cookingTime.text = self.recipe.GetCookingTime()
@@ -146,16 +163,51 @@ class RecipeDetailVC: UIViewController
 				{
 					self.lbl_holidays.isHidden = true
 				}
+				
+				//	Update the favorite button status
+				self.UpdateFavoriteButton()
 			}
 		}
-		
 	}
 	
-	@IBAction func RecipeFav(_ sender: Any)
+	//	Updates the favorite button if it is currently favorited or not.
+	//	CHANGE CODE BELOW TO UPDATE VISUALS AND ICON
+	func UpdateFavoriteButton()
 	{
-		print(self.recipe.id!)
+		//	if the recipe is favorited...
+		if FavoritesVC.IsRecipeFavorited(id: self.recipe.id!) == true
+		{
+			//	Update everything inside main
+			self.btn_Favorite.setTitle("Remove from favorites", for: .normal)
+			print("button says remove to favorites")
+		}
+		else
+		{
+			self.btn_Favorite.setTitle("Add to favorites", for: .normal)
+			print("button says Add to favorites")
+		}
+	}
+	
+	@IBAction func OnFavoriteRecipe(_ sender: Any)
+	{
+		//print(self.recipe.id!)
 		
-		addRecipeAsFav(user_id: this_user_id, recipe_id: recipe.id!)
+		//addRecipeAsFav(user_id: this_user_id, recipe_id: recipe.id!)
+		
+		//	if the recipe is not favorited... Add to favorites. Else remove from favorites.
+		if FavoritesVC.IsRecipeFavorited(id: self.recipe.id!) == false
+		{
+			FavoritesVC.AddToFavorites(id: self.recipe.id!)
+			
+			//	Due to loading issues. RecipeDetailVC.UpdateFavoriteButton() is called from FavoritesVC.AddToFavorites(...)
+		}
+		else
+		{
+			FavoritesVC.RemoveFromFavorites(id: self.recipe.id!)
+			
+			//	Update the favorite button status
+			UpdateFavoriteButton()
+		}
 	}
     
 	func addRecipeAsFav(user_id:Int, recipe_id:String)
@@ -197,25 +249,15 @@ class RecipeDetailVC: UIViewController
 				sqlite3_finalize(statement)
             }
 		}
-		
-		//	CHAD'S CODE TO ADD RECIPE ID TO GLOBAL ARRAY. Needed static array and static func to use static global variable.
-		if  RecipeDetailVC.favRecipes.contains(recipe_id)
-		{
-			RecipeDetailVC.favRecipes.append(recipe_id)
-			print("Added",recipe_id," to favorites.")
-		}
-		else
-		{
-			print(recipe_id," already favorited. Doing nothing.")
-		}
 	}
 	
-    func retrieveFav()
+	func GetFavoriteRecipeIDs() -> [String]
     {
         let fileManager =  FileManager.default
         var db : OpaquePointer? = nil
         var dbURl : NSURL? = nil
-        
+		var favRecipeIDs = [String]()
+
         do
         {
             let baseURL = try
@@ -246,12 +288,13 @@ class RecipeDetailVC: UIViewController
                         let queryResultCol2 = sqlite3_column_text(selectStatement, 2)
                         let rid = String(cString: queryResultCol2!)
                         
-                        RecipeDetailVC.favRecipes.append(rid)
+                        favRecipeIDs.append(rid)
                     }
                 }
                 sqlite3_finalize(selectStatement)
             }
         }
+		return favRecipeIDs
     }
 	
     override func didReceiveMemoryWarning()
