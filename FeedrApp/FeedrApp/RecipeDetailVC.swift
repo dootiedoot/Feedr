@@ -87,33 +87,33 @@ class RecipeDetailVC: UIViewController
                 var availibleFlavors = [String]()
                 
 				//	Display flavors
-				if self.recipe.flavors!.Piquant != nil
+                if (self.recipe.flavors!.Piquant != nil && self.recipe.flavors!.Piquant! > Float(0.00))
 				{
                     allflavorites.append(self.recipe.flavors!.Piquant!)
                     availibleFlavors.append("Piuant")
                     
 				}
-				if self.recipe.flavors!.Bitter != nil
+				if (self.recipe.flavors!.Bitter != nil && self.recipe.flavors!.Bitter! > Float(0.00))
 				{
                     allflavorites.append(self.recipe.flavors!.Bitter!)
                     availibleFlavors.append("Bitter")
 				}
-				if self.recipe.flavors!.Sweet != nil
+				if (self.recipe.flavors!.Sweet != nil && self.recipe.flavors!.Sweet! > Float(0.00))
 				{
                     allflavorites.append(self.recipe.flavors!.Sweet!)
                     availibleFlavors.append("Sweet")
 				}
-				if self.recipe.flavors!.Meaty != nil
+				if (self.recipe.flavors!.Meaty != nil && self.recipe.flavors!.Meaty! > Float(0.00))
 				{
                     allflavorites.append(self.recipe.flavors!.Meaty!)
                     availibleFlavors.append("Meaty")
 				}
-				if self.recipe.flavors!.Salty != nil
+				if (self.recipe.flavors!.Salty != nil && self.recipe.flavors!.Salty! > Float(0.00))
 				{
                     allflavorites.append(self.recipe.flavors!.Salty!)
                     availibleFlavors.append("Salty")
 				}
-				if self.recipe.flavors!.Sour != nil
+				if (self.recipe.flavors!.Sour != nil && self.recipe.flavors!.Sour! > Float(0.00))
 				{
                     allflavorites.append(self.recipe.flavors!.Sour!)
                     availibleFlavors.append("Sour")
