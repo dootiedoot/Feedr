@@ -22,12 +22,7 @@ class RecipeDetailVC: UIViewController
 	@IBOutlet weak var lbl_title: UINavigationItem!
 	@IBOutlet weak var lbl_cookingTime: UILabel!
 	@IBOutlet weak var lbl_ingredients: UILabel!
-	@IBOutlet weak var lbl_flavor_piquant: UILabel!
-	@IBOutlet weak var lbl_flavor_bitter: UILabel!
-	@IBOutlet weak var lbl_flavor_sweet: UILabel!
-	@IBOutlet weak var lbl_flavor_meaty: UILabel!
-	@IBOutlet weak var lbl_flavor_salty: UILabel!
-	@IBOutlet weak var lbl_flavor_sour: UILabel!
+    
 	@IBOutlet weak var lbl_servings: UILabel!
 	@IBOutlet weak var lbl_holidays: UILabel!
 	@IBOutlet weak var lbl_courses: UILabel!
@@ -94,44 +89,45 @@ class RecipeDetailVC: UIViewController
 				//	Display flavors
 				if self.recipe.flavors!.Piquant != nil
 				{
-					self.lbl_flavor_piquant.text = "Piuant: " + String(self.recipe.flavors!.Piquant!)
                     allflavorites.append(self.recipe.flavors!.Piquant!)
                     availibleFlavors.append("Piuant")
                     
 				}
 				if self.recipe.flavors!.Bitter != nil
 				{
-					self.lbl_flavor_bitter.text = "Bitter: " + String(self.recipe.flavors!.Bitter!)
                     allflavorites.append(self.recipe.flavors!.Bitter!)
                     availibleFlavors.append("Bitter")
 				}
 				if self.recipe.flavors!.Sweet != nil
 				{
-					self.lbl_flavor_sweet.text = "Sweet: " + String(self.recipe.flavors!.Sweet!)
                     allflavorites.append(self.recipe.flavors!.Sweet!)
                     availibleFlavors.append("Sweet")
 				}
 				if self.recipe.flavors!.Meaty != nil
 				{
-					self.lbl_flavor_meaty.text = "Meaty: " + String(self.recipe.flavors!.Meaty!)
                     allflavorites.append(self.recipe.flavors!.Meaty!)
                     availibleFlavors.append("Meaty")
 				}
 				if self.recipe.flavors!.Salty != nil
 				{
-					self.lbl_flavor_salty.text = "Salty: " + String(self.recipe.flavors!.Salty!)
                     allflavorites.append(self.recipe.flavors!.Salty!)
                     availibleFlavors.append("Salty")
 				}
 				if self.recipe.flavors!.Sour != nil
 				{
-					self.lbl_flavor_sour.text = "Sour: " + String(self.recipe.flavors!.Sour!)
                     allflavorites.append(self.recipe.flavors!.Sour!)
                     availibleFlavors.append("Sour")
 				}
 				
+                if(allflavorites.isEmpty || availibleFlavors.isEmpty)
+                {
+                    self.flavorChart.isHidden = true;
+                }
+                else
+                {
                 self.flavorChart.axes = availibleFlavors
                 self.flavorChart.addDataSet(values: allflavorites, color: .cyan)
+                }
                 
 				//	Display cooking time
 				self.lbl_cookingTime.text = self.recipe.GetCookingTime()
