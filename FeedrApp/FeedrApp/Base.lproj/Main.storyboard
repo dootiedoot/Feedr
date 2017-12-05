@@ -908,6 +908,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="lbl_usernamepf" destination="sVQ-aS-5fH" id="ezh-aw-9si"/>
+                        <outlet property="profilePic" destination="D2P-g0-ePq" id="oBw-Xd-XrI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1223,7 +1224,7 @@
         <image name="person" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="goP-ma-H8h"/>
+        <segue reference="U0U-fV-uKS"/>
         <segue reference="5Qz-oB-5fk"/>
         <segue reference="qdG-Tv-zli"/>
     </inferredMetricsTieBreakers>
