@@ -30,7 +30,7 @@ class FavoritesVC: UITableViewController
 		PopulateTable()
 	}
 	
-	static func PopulateTable()
+	func PopulateTable()
 	{
 		print("Attempting to populate favorites view...")
 		

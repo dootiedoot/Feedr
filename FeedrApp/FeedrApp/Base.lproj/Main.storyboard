@@ -1061,6 +1061,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="lbl_usernamepf" destination="sVQ-aS-5fH" id="ezh-aw-9si"/>
+                        <outlet property="profilePic" destination="D2P-g0-ePq" id="oBw-Xd-XrI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>

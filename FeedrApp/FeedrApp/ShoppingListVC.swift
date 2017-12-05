@@ -13,7 +13,7 @@ class ShoppingListVC: UITableViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        FavoritesVC.PopulateTable()
+        //FavoritesVC.PopulateTable()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
