@@ -22,6 +22,48 @@ class LoginVC: UIViewController
     var name : String = ""
     var user_id = -1
     
+    func insertIntoAllergyDB(food: String)
+    {
+        let fileManager =  FileManager.default
+        var db : OpaquePointer? = nil
+        var dbURl : NSURL? = nil
+        
+        do
+        {
+            let baseURL = try
+                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+        }
+        catch
+        {
+            print("Error")
+        }
+        
+        if let dbUrl = dbURl
+        {
+            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+            
+            var insert_flag = true
+            if sqlStatus == SQLITE_OK
+            {
+                var statement: OpaquePointer? = nil
+                let insertQuery = "INSERT OR IGNORE INTO allergies (allergicfood) VALUES ('\(food)')"
+                
+                sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil)
+                if sqlite3_step(statement) == SQLITE_DONE
+                {
+                    print("Value Inserted")
+                }
+                else
+                {
+                    print("Value did not go through")
+                }
+                sqlite3_finalize(statement)
+            }
+        }
+    }
+    
     @IBAction func btn_login(_ sender: Any)
     {
         let Iuname = textf_uname.text!
@@ -62,7 +104,22 @@ class LoginVC: UIViewController
     override func viewDidAppear(_ animated: Bool)
     {
         createTables()
+        insertValuesIntoDB()
         self.hideKeyboard()
+    }
+    
+    func insertValuesIntoDB()
+    {
+        insertIntoAllergyDB(food: "Glutten-Free")
+        insertIntoAllergyDB(food: "Peanut-Free")
+        insertIntoAllergyDB(food: "Seafood-Free")
+        insertIntoAllergyDB(food: "Sesame-Free")
+        insertIntoAllergyDB(food: "Soy-Free")
+        insertIntoAllergyDB(food: "Dairy-Free")
+        insertIntoAllergyDB(food: "Egg-Free")
+        insertIntoAllergyDB(food: "Sulfite-Free")
+        insertIntoAllergyDB(food: "Tree Nut-Free")
+        insertIntoAllergyDB(food: "Wheat-Free")
     }
     
     override func viewDidLoad()
@@ -136,7 +193,7 @@ class LoginVC: UIViewController
                     print("Profile Table Created/Exist")
                 }
                 
-                let createAllergiesTabelQuery = "CREATE TABLE IF NOT EXISTS allergies (id Integer Primary Key AutoIncrement UNIQUE, allergicfood Integer UNIQUE);"
+                let createAllergiesTabelQuery = "CREATE TABLE IF NOT EXISTS allergies (id Integer Primary Key AutoIncrement UNIQUE, allergicfood String UNIQUE);"
                 if sqlite3_exec(db, createAllergiesTabelQuery, nil, nil, errMsg) == SQLITE_OK
                 {
                     print("Allergies Table Created/Exist")
@@ -207,6 +264,7 @@ class LoginVC: UIViewController
 //
 //                        let queryResultCol3 = sqlite3_column_text(selectStatement, 3)
 //                        let pass = String(cString: queryResultCol3!)
+                 
                         print("\(id) \(iname) \(username) \(pass)")
                         let queryResultCol4 = sqlite3_column_text(selectStatement, 4)
                         let email = String(cString: queryResultCol4!)
