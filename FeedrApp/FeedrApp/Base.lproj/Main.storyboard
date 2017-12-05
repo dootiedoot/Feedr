@@ -20,7 +20,7 @@
         <scene sceneID="B6m-Do-wG8">
             <objects>
                 <tableViewController id="6LZ-fz-Jbt" userLabel="Search" customClass="RecipeSearchVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WT3-yk-IYz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WT3-yk-IYz" customClass="CustomTableView" customModule="FeedrApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,6 +105,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_RecipeName" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t86-Al-T5s">
                                                             <rect key="frame" x="0.0" y="0.0" width="219" height="88"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -142,9 +143,12 @@
                                         <constraint firstItem="gT3-w3-AZ7" firstAttribute="top" secondItem="CW4-5a-DUe" secondAttribute="topMargin" id="kTS-Br-pni"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="ps_neutral"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="6LZ-fz-Jbt" id="jLn-H1-gPz"/>
                             <outlet property="delegate" destination="6LZ-fz-Jbt" id="Taf-OO-aKV"/>
@@ -1224,6 +1228,7 @@
         <image name="home" width="30" height="30"/>
         <image name="lists" width="30" height="30"/>
         <image name="person" width="30" height="30"/>
+        <image name="ps_neutral" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="goP-ma-H8h"/>
