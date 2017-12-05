@@ -27,27 +27,32 @@ class LoginVC: UIViewController
         let Iuname = textf_uname.text!
         let Ipassword = textf_pass.text!
         findInDb(uname: Iuname, password: Ipassword)
-        //JamesVariables.Globalusername = textf_uname.text!
+//        JamesVariables.Globalusername = textf_uname.text!
+        
         print("Before: " + JamesVariables.Globalusername)
-        //if (credentialsMatch == true)
-        //{
-        //JAMES COMMENTED THIS OUT
-            //performSegue(withIdentifier: "torecipe", sender: self)
-        //}
+        if (credentialsMatch == true)
+        {
+            //JAMES COMMENTED THIS OUT
+            print("Login wiht segues")
+            performSegue(withIdentifier: "torecipe", sender: self)
+        }
     }
-    /* JAMES COMMENTED THIS OUT
+
+// JAMES COMMENTED THIS OUT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if (segue.identifier == "torecipe")
         {
             print("Going To Recipe")
-//            let navVC = segue.destination as! RecipeNavController
-            let segueVar = segue.destination as! RecipeSearchVC
-            segueVar.name = self.name
-            segueVar.user_id = self.user_id
+            let tabBarViewControllers = segue.destination as! TabBarController
+            let nav = tabBarViewControllers.viewControllers![0] as! UINavigationController
+            let destinationViewController = nav.topViewController as! RecipeSearchVC
+            
+            destinationViewController.name = name
+            destinationViewController.user_id = user_id
         }
     }
-    */
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -68,16 +73,16 @@ class LoginVC: UIViewController
 		
 		//	TEST DATA
 		YummlyAPI.GetRecipe(recipeID: "Baked-Apples-Simply-Recipes-43096")
-		{	recipe in
+		{
+            recipe in
 			FavoritesVC.favRecipes.append(recipe)
 			//print(FavoritesVC.favRecipes)
-			
 		}
+        
 		YummlyAPI.GetRecipe(recipeID: "Baked-Apple-Pie-Roll-Ups-593599")
 		{	recipe in
 			FavoritesVC.favRecipes.append(recipe)
 			//print(FavoritesVC.favRecipes)
-			
 		}
 	}
     
@@ -107,43 +112,43 @@ class LoginVC: UIViewController
             if sqlStatus == SQLITE_OK
             {
                 let errMsg: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>? =  nil
-                //                let SQLquery2 = "DROP TABLE IF EXISTS allergies"
-                //                if sqlite3_exec(db, SQLquery2,nil, nil, errMsg) == SQLITE_OK
-                //                {
-                //                    print("Table Dropped - allergies")
-                //                }
-                //
-                //                let SQLquery3 = "DROP TABLE IF EXISTS user"
-                //                if sqlite3_exec(db, SQLquery3,nil, nil, errMsg) == SQLITE_OK
-                //                {
-                //                    print("Table Dropped - User")
-                //                }
+//                let SQLquery2 = "DROP TABLE IF EXISTS allergies"
+//                if sqlite3_exec(db, SQLquery2,nil, nil, errMsg) == SQLITE_OK
+//                {
+//                    print("Table Dropped - allergies")
+//                }
+//
+//                let SQLquery3 = "DROP TABLE IF EXISTS user"
+//                if sqlite3_exec(db, SQLquery3,nil, nil, errMsg) == SQLITE_OK
+//                {
+//                    print("Table Dropped - User")
+//                }
+//
+//                let SQLquery4 = "DROP TABLE IF EXISTS favrecipes"
+//                if sqlite3_exec(db, SQLquery4,nil, nil, errMsg) == SQLITE_OK
+//                {
+//                    print("Table Dropped - favrecipes")
+//                }
                 
-                //                let SQLquery4 = "DROP TABLE IF EXISTS favrecipes"
-                //                if sqlite3_exec(db, SQLquery4,nil, nil, errMsg) == SQLITE_OK
-                //                {
-                //                    print("Table Dropped - favrecipes")
-                //                }
-                
-                let createProfileTabelQuery = "CREATE TABLE IF NOT EXISTS user (id Integer Primary Key AutoIncrement UNIQUE, name Text, username Text, password Text, email Text, contact Integer);"
+                let createProfileTabelQuery = "CREATE TABLE IF NOT EXISTS user (id Integer Primary Key AutoIncrement UNIQUE, name Text, username Text UNIQUE, password Text, email Text, contact Integer);"
                 if sqlite3_exec(db, createProfileTabelQuery, nil, nil, errMsg) == SQLITE_OK
                 {
                     print("Profile Table Created/Exist")
                 }
                 
-                let createAllergiesTabelQuery = "CREATE TABLE IF NOT EXISTS allergies (id Integer Primary Key AutoIncrement UNIQUE, allergicfood Integer);"
+                let createAllergiesTabelQuery = "CREATE TABLE IF NOT EXISTS allergies (id Integer Primary Key AutoIncrement UNIQUE, allergicfood Integer UNIQUE);"
                 if sqlite3_exec(db, createAllergiesTabelQuery, nil, nil, errMsg) == SQLITE_OK
                 {
                     print("Allergies Table Created/Exist")
                 }
                 
-                let createUserAllergiesTableQuery = "CREATE TABLE IF NOT EXISTS userallergies (id Integer Primary Key AutoIncrement UNIQUE, user_id Integer, allergy_id Integer);"
+                let createUserAllergiesTableQuery = "CREATE TABLE IF NOT EXISTS userallergies (id Integer Primary Key AutoIncrement UNIQUE, user_id Integer, allergy_id Integer UNIQUE);"
                 if sqlite3_exec(db, createUserAllergiesTableQuery, nil, nil, errMsg) == SQLITE_OK
                 {
                     print("User Allergies Table Created/Exist")
                 }
                 
-                let createFavTabelQuery = "CREATE TABLE IF NOT EXISTS favrecipes (id Integer Primary Key AutoIncrement UNIQUE, user_id Integer, recipe_id Text);"
+                let createFavTabelQuery = "CREATE TABLE IF NOT EXISTS favrecipes (id Integer Primary Key AutoIncrement UNIQUE, user_id Integer, recipe_id Text UNIQUE);"
                 if sqlite3_exec(db, createFavTabelQuery, nil, nil, errMsg) == SQLITE_OK
                 {
                     print("Fav Table Created/Exist")
@@ -152,7 +157,6 @@ class LoginVC: UIViewController
             }
         }
     }
-
     
     func findInDb(uname:String, password:String)
     {
@@ -179,7 +183,7 @@ class LoginVC: UIViewController
             if sqlStatus == SQLITE_OK
             {
                 var selectStatement : OpaquePointer? = nil
-                let selectQuery = "SELECT * FROM user WHERE username = '\(uname)'"
+                let selectQuery = "SELECT * FROM user" // WHERE username = '\(uname)'"
                 //(uname.trimmingCharacters(in: .whitespacesAndNewlines))
                 if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
                 {
@@ -194,26 +198,26 @@ class LoginVC: UIViewController
                         let queryResultCol3 = sqlite3_column_text(selectStatement, 3)
                         let pass = String(cString: queryResultCol3!)
                         
-                        print("\(id) \(iname) \(pass)")
+                        
 //                        let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
 //                        let name = String(cString: queryResultCol1!)
 //
-//                        let queryResultCol2 = sqlite3_column_text(selectStatement, 2)
-//                        let username = String(cString: queryResultCol2!)
+                        let queryResultCol22 = sqlite3_column_text(selectStatement, 2)
+                        let username = String(cString: queryResultCol22!)
 //
 //                        let queryResultCol3 = sqlite3_column_text(selectStatement, 3)
 //                        let pass = String(cString: queryResultCol3!)
-//
-//                        let queryResultCol4 = sqlite3_column_text(selectStatement, 4)
-//                        let email = String(cString: queryResultCol4!)
-//
-//                        let queryResultCol5 = sqlite3_column_text(selectStatement, 5)
-//                        let phone = String(cString: queryResultCol5!)
+                        print("\(id) \(iname) \(username) \(pass)")
+                        let queryResultCol4 = sqlite3_column_text(selectStatement, 4)
+                        let email = String(cString: queryResultCol4!)
+
+                        let queryResultCol5 = sqlite3_column_text(selectStatement, 5)
+                        let phone = String(cString: queryResultCol5!)
 
 //                        print("\(username.count)")
 //                        print("\(name) \(username) \(pass) \(email) \(phone)")
                         
-                        if (pass == password)
+                        if (username == uname && pass == password)
                         {
                             self.credentialsMatch = true
                             self.name = iname

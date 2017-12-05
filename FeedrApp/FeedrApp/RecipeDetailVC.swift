@@ -4,7 +4,7 @@
 //
 //  Created by James Perry on 10/17/17.
 //  Copyright © 2017 Team9. All rights reserved.
-//
+//	
 
 import UIKit
 import DDSpiderChart
@@ -40,7 +40,7 @@ class RecipeDetailVC: UIViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		
+        print("\(this_user_id) \(recipeID)")
 		PopulateView()
     }
 	
@@ -80,7 +80,6 @@ class RecipeDetailVC: UIViewController
 					ingredientLines += "\n\t" + ingredientLine
 				}
 				self.lbl_ingredients.text = ingredientLines
-				
                 self.flavorChart.color = .darkGray
                 
                 var allflavorites = [Float]()
@@ -125,8 +124,8 @@ class RecipeDetailVC: UIViewController
                 }
                 else
                 {
-                self.flavorChart.axes = availibleFlavors
-                self.flavorChart.addDataSet(values: allflavorites, color: .cyan)
+                    self.flavorChart.axes = availibleFlavors
+                    self.flavorChart.addDataSet(values: allflavorites, color: .cyan)
                 }
                 
 				//	Display cooking time
@@ -193,8 +192,10 @@ class RecipeDetailVC: UIViewController
 	//	CHANGE CODE BELOW TO UPDATE VISUALS AND ICON
 	func UpdateFavoriteButton()
 	{
+        //Duplicate check was cauing button change to only work once
+        
 		//	if the recipe is favorited...
-		if FavoritesVC.IsRecipeFavorited(id: self.recipe.id!) == true
+        if FavoritesVC.IsRecipeFavorited(id: self.recipe.id!) == true
 		{
 			//	Update everything inside main
 			self.btn_Favorite.setTitle("Remove from favorites", for: .normal)
@@ -210,67 +211,28 @@ class RecipeDetailVC: UIViewController
 	@IBAction func OnFavoriteRecipe(_ sender: Any)
 	{
 		//print(self.recipe.id!)
-		
 		//addRecipeAsFav(user_id: this_user_id, recipe_id: recipe.id!)
 		
 		//	if the recipe is not favorited... Add to favorites. Else remove from favorites.
 		if FavoritesVC.IsRecipeFavorited(id: self.recipe.id!) == false
 		{
-			FavoritesVC.AddToFavorites(id: self.recipe.id!)
-			
+			FavoritesVC.AddToFavorites(this_user_id: this_user_id, id: self.recipe.id!)
 			//	Due to loading issues. RecipeDetailVC.UpdateFavoriteButton() is called from FavoritesVC.AddToFavorites(...)
+            self.btn_Favorite.setTitle("Remove from favorites", for: .normal)
+            print("button says remove to favorites")
 		}
 		else
 		{
-			FavoritesVC.RemoveFromFavorites(id: self.recipe.id!)
-			
-			//	Update the favorite button status
-			UpdateFavoriteButton()
+            FavoritesVC.RemoveFromFavorites(id: self.recipe.id!, user_id: this_user_id)
+            self.btn_Favorite.setTitle("Add to favorites", for: .normal)
+            print("button says Add to favorites")
 		}
-	}
-    
-	func addRecipeAsFav(user_id:Int, recipe_id:String)
-	{
-		let fileManager =  FileManager.default
-		var db : OpaquePointer? = nil
-		var dbURl : NSURL? = nil
-		
-		do
-		{
-			let baseURL = try
-				fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-			dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
-		}
-		catch
-		{
-			print("Error")
-		}
-		
-		if let dbUrl = dbURl
-		{
-			let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
-			let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
-			
-			if sqlStatus == SQLITE_OK
-			{
-				var statement: OpaquePointer? = nil
-				let insertQuery = "INSERT INTO favrecipes (user_id, recipe_id) VALUES ('\(user_id)', '\(recipe_id)');"
-				
-				sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil)
-				if sqlite3_step(statement) == SQLITE_DONE
-				{
-					print("Value Inserted")
-				}
-				else
-				{
-					print("Value did not go through")
-				}
-				sqlite3_finalize(statement)
-            }
-		}
+        
+        //    Update the favorite button status
+//        UpdateFavoriteButton()
 	}
 	
-	func GetFavoriteRecipeIDs() -> [String]
+	static func GetFavoriteRecipeIDs() -> [String]
     {
         let fileManager =  FileManager.default
         var db : OpaquePointer? = nil
