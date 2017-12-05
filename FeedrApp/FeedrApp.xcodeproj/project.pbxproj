@@ -33,6 +33,7 @@
 		9FB9B6761F8BDE1F004B26A9 /* FeedrAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B6751F8BDE1F004B26A9 /* FeedrAppUITests.swift */; };
 		9FB9B6861F8BF305004B26A9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B6851F8BF305004B26A9 /* LoginVC.swift */; };
 		9FB9B6C81F8C001A004B26A9 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B6C71F8C001A004B26A9 /* UserProfileVC.swift */; };
+		9FE426251FD74504002954C6 /* TableViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE426241FD74504002954C6 /* TableViewController3.swift */; };
 		CE3C1458BD7FF43D1534F05F /* Pods_FeedrAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3391358FBB141059F63B7D6F /* Pods_FeedrAppUITests.framework */; };
 		E3A71F2BA0C197B48F26B98F /* Pods_FeedrAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777691536ED56AF7C4F5E2A6 /* Pods_FeedrAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -93,6 +94,7 @@
 		9FB9B6771F8BDE1F004B26A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FB9B6851F8BF305004B26A9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		9FB9B6C71F8C001A004B26A9 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		9FE426241FD74504002954C6 /* TableViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController3.swift; sourceTree = "<group>"; };
 		B3A621FE064A2FF38CA16B30 /* Pods-FeedrAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedrAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedrAppTests/Pods-FeedrAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B8D1A32F45FBEF3FBB62B6BD /* Pods-FeedrAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedrAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedrAppTests/Pods-FeedrAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		F0B62A95F058969E17C93912 /* Pods-FeedrAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedrAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedrAppUITests/Pods-FeedrAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				9FAA20811FAAD93200EBADDA /* PreferencesTableViewController.swift */,
 				1A002F581FAB92A00065ED67 /* CustomButton.swift */,
 				53AC28891FAED8B7005CAFAC /* FeedrApp-Bridging-Header.h */,
+				9FE426241FD74504002954C6 /* TableViewController3.swift */,
 			);
 			path = FeedrApp;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 			files = (
 				1A002F591FAB92A00065ED67 /* CustomButton.swift in Sources */,
 				9FB9B6581F8BDE1E004B26A9 /* SecondVC.swift in Sources */,
+				9FE426251FD74504002954C6 /* TableViewController3.swift in Sources */,
 				9F0624711F9BD27F003ED25C /* RecipeSearchVC.swift in Sources */,
 				53CCD3421FD6033E009DDEC4 /* TabBarController.swift in Sources */,
 				9FB9B6C81F8C001A004B26A9 /* UserProfileVC.swift in Sources */,
