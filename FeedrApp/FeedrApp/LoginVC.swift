@@ -8,9 +8,10 @@
 
 import UIKit
 
-struct JamesVariables
+struct User
 {
-    static var Globalusername = "John"
+    static var curr_user_id: Int = 0
+    static var curr_user_name: String = "N/A"
 }
 
 class LoginVC: UIViewController
@@ -68,11 +69,12 @@ class LoginVC: UIViewController
     {
         let Iuname = textf_uname.text!
         let Ipassword = textf_pass.text!
-        findInDb(uname: Iuname, password: Ipassword)
-//        JamesVariables.Globalusername = textf_uname.text!
         
-        print("Before: " + JamesVariables.Globalusername)
-        if (credentialsMatch == true)
+        print("Before: " + User.curr_user_name)
+        findInDb(uname: Iuname, password: Ipassword)
+        print("After: " + User.curr_user_name)
+        
+            if (credentialsMatch == true)
         {
             //JAMES COMMENTED THIS OUT
             print("Login wiht segues")
@@ -110,16 +112,16 @@ class LoginVC: UIViewController
     
     func insertValuesIntoDB()
     {
-        insertIntoAllergyDB(food: "Glutten-Free")
-        insertIntoAllergyDB(food: "Peanut-Free")
-        insertIntoAllergyDB(food: "Seafood-Free")
-        insertIntoAllergyDB(food: "Sesame-Free")
-        insertIntoAllergyDB(food: "Soy-Free")
-        insertIntoAllergyDB(food: "Dairy-Free")
-        insertIntoAllergyDB(food: "Egg-Free")
-        insertIntoAllergyDB(food: "Sulfite-Free")
-        insertIntoAllergyDB(food: "Tree Nut-Free")
-        insertIntoAllergyDB(food: "Wheat-Free")
+        insertIntoAllergyDB(food: "Gluten")
+        insertIntoAllergyDB(food: "Peanut")
+        insertIntoAllergyDB(food: "Seafood")
+        insertIntoAllergyDB(food: "Sesame")
+        insertIntoAllergyDB(food: "Soy")
+        insertIntoAllergyDB(food: "Diary")
+        insertIntoAllergyDB(food: "Egg")
+        insertIntoAllergyDB(food: "Sulfite")
+        insertIntoAllergyDB(food: "TreeNut")
+        insertIntoAllergyDB(food: "Wheat")
     }
     
     override func viewDidLoad()
@@ -169,11 +171,17 @@ class LoginVC: UIViewController
             if sqlStatus == SQLITE_OK
             {
                 let errMsg: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>? =  nil
-//                let SQLquery2 = "DROP TABLE IF EXISTS allergies"
-//                if sqlite3_exec(db, SQLquery2,nil, nil, errMsg) == SQLITE_OK
-//                {
-//                    print("Table Dropped - allergies")
-//                }
+                let SQLquery2 = "DROP TABLE IF EXISTS allergies"
+                if sqlite3_exec(db, SQLquery2,nil, nil, errMsg) == SQLITE_OK
+                {
+                    print("Table Dropped - allergies")
+                }
+                
+                let SQLquery5 = "DROP TABLE IF EXISTS userallergies"
+                if sqlite3_exec(db, SQLquery5,nil, nil, errMsg) == SQLITE_OK
+                {
+                    print("Table Dropped - allergies")
+                }
 //
 //                let SQLquery3 = "DROP TABLE IF EXISTS user"
 //                if sqlite3_exec(db, SQLquery3,nil, nil, errMsg) == SQLITE_OK
@@ -241,7 +249,6 @@ class LoginVC: UIViewController
             {
                 var selectStatement : OpaquePointer? = nil
                 let selectQuery = "SELECT * FROM user" // WHERE username = '\(uname)'"
-                //(uname.trimmingCharacters(in: .whitespacesAndNewlines))
                 if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
                 {
                     while sqlite3_step(selectStatement) == SQLITE_ROW
@@ -255,16 +262,9 @@ class LoginVC: UIViewController
                         let queryResultCol3 = sqlite3_column_text(selectStatement, 3)
                         let pass = String(cString: queryResultCol3!)
                         
-                        
-//                        let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
-//                        let name = String(cString: queryResultCol1!)
-//
-                        let queryResultCol22 = sqlite3_column_text(selectStatement, 2)
-                        let username = String(cString: queryResultCol22!)
-//
-//                        let queryResultCol3 = sqlite3_column_text(selectStatement, 3)
-//                        let pass = String(cString: queryResultCol3!)
-                 
+                        let queryResultCol02 = sqlite3_column_text(selectStatement, 2)
+                        let username = String(cString: queryResultCol02!)
+                
                         print("\(id) \(iname) \(username) \(pass)")
                         let queryResultCol4 = sqlite3_column_text(selectStatement, 4)
                         let email = String(cString: queryResultCol4!)
@@ -272,11 +272,13 @@ class LoginVC: UIViewController
                         let queryResultCol5 = sqlite3_column_text(selectStatement, 5)
                         let phone = String(cString: queryResultCol5!)
 
-//                        print("\(username.count)")
-//                        print("\(name) \(username) \(pass) \(email) \(phone)")
+                        print("\(name) \(username) \(pass) \(email) \(phone)")
                         
                         if (username == uname && pass == password)
                         {
+                            User.curr_user_id = Int(id)!
+                            User.curr_user_name = iname
+                            
                             self.credentialsMatch = true
                             self.name = iname
                             self.user_id = Int(id)!

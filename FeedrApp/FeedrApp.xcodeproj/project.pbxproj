@@ -12,6 +12,9 @@
 		50832F82B409A1A5C6B4EB2D /* Pods_FeedrApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FB5A10ACCF9D498688882B /* Pods_FeedrApp.framework */; };
 		53AC28881FAED86E005CAFAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC28871FAED867005CAFAC /* libsqlite3.tbd */; };
 		53AC288D1FAEDABD005CAFAC /* CreateAllDatabases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */; };
+		53AF7FCA1FD74D0A002F5696 /* ProfileTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AF7FC91FD74D0A002F5696 /* ProfileTabVC.swift */; };
+		53AF7FCC1FD78D3D002F5696 /* ShoppingListSwitchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AF7FCB1FD78D3D002F5696 /* ShoppingListSwitchVC.swift */; };
+		53AF7FCE1FD7A1D9002F5696 /* ShoppingListTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AF7FCD1FD7A1D9002F5696 /* ShoppingListTabVC.swift */; };
 		53CCD3421FD6033E009DDEC4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CCD3411FD6033E009DDEC4 /* TabBarController.swift */; };
 		614A77F61FAE7AF1009FFC03 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A77F51FAE7AF1009FFC03 /* HomeViewController.swift */; };
 		614A77F81FB79AF1009FFC03 /* ingredients.json in Resources */ = {isa = PBXBuildFile; fileRef = 614A77F71FB79AF0009FFC03 /* ingredients.json */; };
@@ -21,7 +24,6 @@
 		9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06246E1F994878003ED25C /* YummlyAPI.swift */; };
 		9F0624711F9BD27F003ED25C /* RecipeSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0624701F9BD27F003ED25C /* RecipeSearchVC.swift */; };
 		9F0624731F9BD3C1003ED25C /* UserLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0624721F9BD3C1003ED25C /* UserLibraryVC.swift */; };
-		9F0624751F9BD3E1003ED25C /* ShoppingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0624741F9BD3E1003ED25C /* ShoppingListVC.swift */; };
 		9FAA20821FAAD93200EBADDA /* PreferencesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA20811FAAD93200EBADDA /* PreferencesTableViewController.swift */; };
 		9FB9B6541F8BDE1E004B26A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B6531F8BDE1E004B26A9 /* AppDelegate.swift */; };
 		9FB9B6561F8BDE1E004B26A9 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B6551F8BDE1E004B26A9 /* FirstVC.swift */; };
@@ -64,6 +66,9 @@
 		53AC28871FAED867005CAFAC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		53AC28891FAED8B7005CAFAC /* FeedrApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedrApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAllDatabases.swift; sourceTree = "<group>"; };
+		53AF7FC91FD74D0A002F5696 /* ProfileTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabVC.swift; sourceTree = "<group>"; };
+		53AF7FCB1FD78D3D002F5696 /* ShoppingListSwitchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListSwitchVC.swift; sourceTree = "<group>"; };
+		53AF7FCD1FD7A1D9002F5696 /* ShoppingListTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTabVC.swift; sourceTree = "<group>"; };
 		53CCD3411FD6033E009DDEC4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		55FB5A10ACCF9D498688882B /* Pods_FeedrApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedrApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6125126367FCF7B8590F21E6 /* Pods-FeedrApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedrApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedrApp/Pods-FeedrApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,7 +81,6 @@
 		9F06246E1F994878003ED25C /* YummlyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YummlyAPI.swift; sourceTree = "<group>"; };
 		9F0624701F9BD27F003ED25C /* RecipeSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchVC.swift; sourceTree = "<group>"; };
 		9F0624721F9BD3C1003ED25C /* UserLibraryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLibraryVC.swift; sourceTree = "<group>"; };
-		9F0624741F9BD3E1003ED25C /* ShoppingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListVC.swift; sourceTree = "<group>"; };
 		9FAA20811FAAD93200EBADDA /* PreferencesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewController.swift; sourceTree = "<group>"; };
 		9FB9B6501F8BDE1E004B26A9 /* FeedrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB9B6531F8BDE1E004B26A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,12 +193,14 @@
 				9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */,
 				61D7F8021F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift */,
 				53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */,
-				9F0624741F9BD3E1003ED25C /* ShoppingListVC.swift */,
 				9F0624721F9BD3C1003ED25C /* UserLibraryVC.swift */,
 				9FB9B6C71F8C001A004B26A9 /* UserProfileVC.swift */,
 				53CCD3411FD6033E009DDEC4 /* TabBarController.swift */,
 				9F06246E1F994878003ED25C /* YummlyAPI.swift */,
 				9FB9B6591F8BDE1E004B26A9 /* Main.storyboard */,
+				53AF7FCD1FD7A1D9002F5696 /* ShoppingListTabVC.swift */,
+				53AF7FCB1FD78D3D002F5696 /* ShoppingListSwitchVC.swift */,
+				53AF7FC91FD74D0A002F5696 /* ProfileTabVC.swift */,
 				1A3079541FB2D82800310FB8 /* CustomVisualEffectView.swift */,
 				9FB9B65C1F8BDE1E004B26A9 /* Assets.xcassets */,
 				9FB9B65E1F8BDE1E004B26A9 /* LaunchScreen.storyboard */,
@@ -520,12 +526,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53AF7FCC1FD78D3D002F5696 /* ShoppingListSwitchVC.swift in Sources */,
 				1A002F591FAB92A00065ED67 /* CustomButton.swift in Sources */,
 				9FB9B6581F8BDE1E004B26A9 /* SecondVC.swift in Sources */,
+				53AF7FCE1FD7A1D9002F5696 /* ShoppingListTabVC.swift in Sources */,
 				9FE426251FD74504002954C6 /* TableViewController3.swift in Sources */,
 				9F0624711F9BD27F003ED25C /* RecipeSearchVC.swift in Sources */,
 				53CCD3421FD6033E009DDEC4 /* TabBarController.swift in Sources */,
 				9FB9B6C81F8C001A004B26A9 /* UserProfileVC.swift in Sources */,
+				53AF7FCA1FD74D0A002F5696 /* ProfileTabVC.swift in Sources */,
 				9F0624731F9BD3C1003ED25C /* UserLibraryVC.swift in Sources */,
 				614A77F61FAE7AF1009FFC03 /* HomeViewController.swift in Sources */,
 				61C8C94C1FC29946008EBD9B /* FavoritesVC.swift in Sources */,
@@ -533,7 +542,6 @@
 				9FB9B6541F8BDE1E004B26A9 /* AppDelegate.swift in Sources */,
 				61D7F8031F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift in Sources */,
 				9F06246D1F96A84A003ED25C /* RecipeDetailVC.swift in Sources */,
-				9F0624751F9BD3E1003ED25C /* ShoppingListVC.swift in Sources */,
 				9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */,
 				9FB9B6561F8BDE1E004B26A9 /* FirstVC.swift in Sources */,
 				53AC288D1FAEDABD005CAFAC /* CreateAllDatabases.swift in Sources */,

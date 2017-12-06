@@ -17,7 +17,7 @@ class FirstVC: UIViewController {
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        lbl_usernamepf.text = "Hello " + JamesVariables.Globalusername
+        lbl_usernamepf.text = "Hello " + User.curr_user_name
         
         profilePic.layer.borderWidth = 2
         profilePic.layer.masksToBounds = false

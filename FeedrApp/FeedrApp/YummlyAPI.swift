@@ -163,6 +163,7 @@ public enum Allergy
     case Sulfite
     case TreeNut
     case Wheat
+    case Egg
 }
 
 public enum Diet
@@ -526,6 +527,8 @@ class YummlyAPI
                         query += "395^Tree Nut-Free"
                     case Allergy.Wheat:
                         query += "392^Wheat-Free"
+                    case Allergy.Egg:
+                        query += "397^Egg-Free"
                 }
             }
         }
@@ -753,7 +756,6 @@ class YummlyAPI
             for holiday in allowedHoliday!
             {
                 query += "&excludedCourse[]="
-                
                 switch holiday
                 {
                 case Holiday.Christmas:

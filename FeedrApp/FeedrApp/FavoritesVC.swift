@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+struct UserRecipe
+{
+    static var favRecipes = [Recipe]()
+}
+
 class FavoritesVC: UITableViewController
 {
 	static var favRecipes = [Recipe]()
@@ -73,7 +79,7 @@ class FavoritesVC: UITableViewController
                 sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil)
                 if sqlite3_step(statement) == SQLITE_DONE
                 {
-                    print("Value Inserted" + recipe_id)
+                    print("Value Inserted -> " + recipe_id)
                 }
                 else
                 {

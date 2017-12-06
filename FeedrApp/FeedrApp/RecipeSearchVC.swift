@@ -15,7 +15,9 @@ class RecipeSearchVC: UITableViewController
     
     private var result = Result()
 	private var selectedRecipeID : String = ""
-	
+    var allergyNames = [String]()
+    var userAllergyEnums = [Allergy]()
+    
 	var name = ""
 	var user_id = -1
 	
@@ -63,7 +65,11 @@ class RecipeSearchVC: UITableViewController
 			print("No search parameter! Doing nothing.")
 		}
     }
-    				
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Finding userAllergyEnums Next")
+        findUserAllergies(uid: user_id)
+    }
     
     override func viewDidLoad()
     {
@@ -77,7 +83,6 @@ class RecipeSearchVC: UITableViewController
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         
         tap.cancelsTouchesInView = false
-        
         view.addGestureRecognizer(tap)
     }
     
@@ -154,7 +159,6 @@ class RecipeSearchVC: UITableViewController
 		print("Tapped on row ", indexPath.row)
     }
     
-    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -174,6 +178,166 @@ class RecipeSearchVC: UITableViewController
         else
         {
             print("Could not find segue identifier")
+        }
+    }
+    
+    func findInAllergy(allergy_id: Int)
+    {
+        let fileManager =  FileManager.default
+        var db : OpaquePointer? = nil
+        var dbURl : NSURL? = nil
+        //var aid: String = "-1"
+        
+        do
+        {
+            let baseURL = try
+                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+        }
+        catch
+        {
+            print("Error")
+        }
+        
+        if let dbUrl = dbURl
+        {
+            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+            
+            if sqlStatus == SQLITE_OK
+            {
+                var selectStatement : OpaquePointer? = nil
+                let selectQuery = "SELECT * FROM allergies WHERE id = '\(allergy_id)';"
+                
+                if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
+                {
+                    while sqlite3_step(selectStatement) == SQLITE_ROW
+                    {
+                        let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
+                        let aname = String(cString: queryResultCol1!)
+                        print(aname)
+                        self.allergyNames.append(aname)
+                    }
+                }
+                sqlite3_finalize(selectStatement)
+            }
+        }
+    }
+    
+    func findUserAllergies(uid:Int)
+    {
+        let fileManager =  FileManager.default
+        var db : OpaquePointer? = nil
+        var dbURl : NSURL? = nil
+        var aid: String = "-1"
+        var allergyIDs = [Int]()
+        
+        self.allergyNames.removeAll()
+        self.userAllergyEnums.removeAll()
+        
+        do
+        {
+            let baseURL = try
+                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+        }
+        catch
+        {
+            print("Error")
+        }
+        
+        if let dbUrl = dbURl
+        {
+            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+            
+            if sqlStatus == SQLITE_OK
+            {
+                var selectStatement : OpaquePointer? = nil
+                let selectQuery = "SELECT * FROM userallergies WHERE user_id = '\(uid)';"
+                
+                if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
+                {
+                    while sqlite3_step(selectStatement) == SQLITE_ROW
+                    {
+                        let queryResultCol1 = sqlite3_column_text(selectStatement, 0)
+                        aid = String(cString: queryResultCol1!)
+                        
+                        allergyIDs.append(Int(aid)!)
+                    }
+                }
+                sqlite3_finalize(selectStatement)
+            }
+        }
+        
+        for allergyID in allergyIDs
+        {
+            findInAllergy(allergy_id: allergyID)
+        }
+        
+        for allergyName in allergyNames
+        {
+            convertToEnum(allergyName: allergyName)
+        }
+        
+        print(allergyNames)
+        print(userAllergyEnums)
+    }
+    
+    func convertToEnum(allergyName: String)
+    {
+        let allergyFound = allergyNames.contains(where: {
+            $0.range(of: allergyName, options: .caseInsensitive) != nil
+        })
+        
+        if allergyFound == true && allergyName == "Gluten"
+        {
+            userAllergyEnums.append(Allergy.Gluten)
+        }
+        else
+        if allergyFound == true && allergyName == "Egg"
+        {
+            userAllergyEnums.append(Allergy.Egg)
+        }
+        else
+        if allergyFound == true && allergyName == "Sesame"
+        {
+            userAllergyEnums.append(Allergy.Sesame)
+        }
+        else
+        if allergyFound == true && allergyName == "Seafood"
+        {
+            userAllergyEnums.append(Allergy.Seafood)
+        }
+        else
+        if allergyFound == true && allergyName == "TreeNut"
+        {
+            userAllergyEnums.append(Allergy.TreeNut)
+        }
+        else
+        if allergyFound == true && allergyName == "Wheat"
+        {
+            userAllergyEnums.append(Allergy.Wheat)
+        }
+        else
+        if allergyFound == true && allergyName == "Peanut"
+        {
+            userAllergyEnums.append(Allergy.Peanut)
+        }
+        else
+        if allergyFound == true && allergyName == "Soy"
+        {
+            userAllergyEnums.append(Allergy.Soy)
+        }
+        else
+        if allergyFound == true && allergyName == "Sulfite"
+        {
+        userAllergyEnums.append(Allergy.Sulfite)
+        }
+        else
+        if allergyFound == true && allergyName == "Diary"
+        {
+            userAllergyEnums.append(Allergy.Diary)
         }
     }
 

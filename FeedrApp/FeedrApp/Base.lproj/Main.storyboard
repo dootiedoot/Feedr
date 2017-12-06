@@ -646,7 +646,7 @@
         <!--Shopping List-->
         <scene sceneID="65H-Ad-zIR">
             <objects>
-                <tableViewController id="4Am-tD-dAr" customClass="ShoppingListVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4Am-tD-dAr" customClass="ShoppingListTabVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lxc-Wm-dEu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -673,29 +673,11 @@
                                                     <rect key="frame" x="140" y="0.0" width="235" height="120"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lbl_RecipeName" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmV-yf-fqt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="235" height="88"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="235" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="kXo-gD-mBU">
-                                                            <rect key="frame" x="0.0" y="88" width="235" height="32"/>
-                                                            <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cookingTimer" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PP0-Jj-SaG">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="32" id="DKs-mB-KXO"/>
-                                                                        <constraint firstAttribute="width" constant="32" id="uka-rG-pwj"/>
-                                                                    </constraints>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lbl_CookTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDz-Dv-aK0">
-                                                                    <rect key="frame" x="39" y="0.0" width="196" height="32"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -716,6 +698,9 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="noY-yZ-lK1">
                         <barButtonItem key="rightBarButtonItem" title="Add+" id="dLy-Ut-hj4"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="g5G-c6-RgW" kind="show" identifier="shoppinglist" id="MKm-7e-3Kv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8j-3U-SD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -938,7 +923,7 @@
         <!--User Profile-->
         <scene sceneID="D8V-UQ-Pqv">
             <objects>
-                <viewController title="User Profile" id="5Hi-YC-g0D" customClass="FirstVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="User Profile" id="5Hi-YC-g0D" customClass="ProfileTabVC" customModule="FeedrApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIt-Yc-MDi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -961,7 +946,7 @@
                                             <constraint firstAttribute="height" constant="80" id="GNv-6P-L9G"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-aS-5fH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-aS-5fH">
                                         <rect key="frame" x="105" y="0.0" width="240" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -989,35 +974,75 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FcB-7c-nkw">
                                         <rect key="frame" x="0.0" y="0.0" width="49" height="355"/>
                                         <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1f9-Rd-Rgd">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1f9-Rd-Rgd">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_gluten:" destination="rsX-sU-pfQ" eventType="valueChanged" id="KBZ-44-lNH"/>
+                                                    <action selector="switch_gluten:" destination="5Hi-YC-g0D" eventType="valueChanged" id="wOy-xK-Pnm"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zlq-TI-Am5">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zlq-TI-Am5">
                                                 <rect key="frame" x="0.0" y="36" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_peanut:" destination="5Hi-YC-g0D" eventType="valueChanged" id="Bbg-s5-mhq"/>
+                                                    <action selector="switch_peanuts:" destination="rsX-sU-pfQ" eventType="valueChanged" id="mnS-lM-bB5"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6N5-Pn-EBd">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6N5-Pn-EBd">
                                                 <rect key="frame" x="0.0" y="72" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_seafood:" destination="5Hi-YC-g0D" eventType="valueChanged" id="6jc-su-hNe"/>
+                                                    <action selector="switch_seafood:" destination="rsX-sU-pfQ" eventType="valueChanged" id="paA-c4-SbZ"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j63-O3-fLD">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j63-O3-fLD">
                                                 <rect key="frame" x="0.0" y="108" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_sesame:" destination="rsX-sU-pfQ" eventType="valueChanged" id="Boy-Ko-2gZ"/>
+                                                    <action selector="switch_sesame:" destination="5Hi-YC-g0D" eventType="valueChanged" id="gkS-Nc-zLs"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehB-xz-iMi">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ehB-xz-iMi">
                                                 <rect key="frame" x="0.0" y="144" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_soy:" destination="rsX-sU-pfQ" eventType="valueChanged" id="hK1-59-pd1"/>
+                                                    <action selector="switch_soy:" destination="5Hi-YC-g0D" eventType="valueChanged" id="rVa-5j-3qT"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Wi-1b-nep">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6Wi-1b-nep">
                                                 <rect key="frame" x="0.0" y="180" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_dairy:" destination="5Hi-YC-g0D" eventType="valueChanged" id="4Rd-QV-12S"/>
+                                                    <action selector="switch_dairy:" destination="rsX-sU-pfQ" eventType="valueChanged" id="QKm-mE-iIa"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vho-O3-YpW">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vho-O3-YpW">
                                                 <rect key="frame" x="0.0" y="216" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_Egg:" destination="5Hi-YC-g0D" eventType="valueChanged" id="Du8-f1-VQo"/>
+                                                    <action selector="switch_egg:" destination="rsX-sU-pfQ" eventType="valueChanged" id="SC8-w2-Hml"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FsD-1E-k4w">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FsD-1E-k4w">
                                                 <rect key="frame" x="0.0" y="252" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_sulfite:" destination="5Hi-YC-g0D" eventType="valueChanged" id="BzT-s8-c8L"/>
+                                                    <action selector="switch_sulfite:" destination="rsX-sU-pfQ" eventType="valueChanged" id="mNb-fp-QOp"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QIQ-cc-S5w">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QIQ-cc-S5w">
                                                 <rect key="frame" x="0.0" y="288" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_treenut:" destination="5Hi-YC-g0D" eventType="valueChanged" id="pSP-o5-yAd"/>
+                                                    <action selector="switch_treenuts:" destination="rsX-sU-pfQ" eventType="valueChanged" id="Pfu-kb-lmq"/>
+                                                </connections>
                                             </switch>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YEe-95-hYb">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YEe-95-hYb">
                                                 <rect key="frame" x="0.0" y="324" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switch_wheat:" destination="5Hi-YC-g0D" eventType="valueChanged" id="cez-ni-t4D"/>
+                                                    <action selector="switch_wheat:" destination="rsX-sU-pfQ" eventType="valueChanged" id="w9Y-dO-OFM"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                     </stackView>
@@ -1105,11 +1130,12 @@
                         <barButtonItem key="rightBarButtonItem" title="Preferences" id="hT9-s2-QFl"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="lbl_usernamepf" destination="sVQ-aS-5fH" id="ezh-aw-9si"/>
-                        <outlet property="profilePic" destination="D2P-g0-ePq" id="oBw-Xd-XrI"/>
+                        <outlet property="profileName" destination="sVQ-aS-5fH" id="IPE-72-Qj2"/>
+                        <outlet property="profilepic" destination="D2P-g0-ePq" id="e5L-ia-Bb2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rsX-sU-pfQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2.3999999999999999" y="765.96701649175418"/>
         </scene>
