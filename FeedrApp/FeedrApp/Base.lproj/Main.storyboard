@@ -151,7 +151,7 @@
                             </tableViewCell>
                         </prototypes>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="escheresque"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="fabrizio-conti-434105"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="6LZ-fz-Jbt" id="jLn-H1-gPz"/>
@@ -1228,7 +1228,7 @@
         <image name="bg1_Blur" width="720" height="1280"/>
         <image name="bg2" width="1632" height="2464"/>
         <image name="cookingTimer" width="32" height="32"/>
-        <image name="escheresque" width="23" height="14"/>
+        <image name="fabrizio-conti-434105" width="3648" height="5472"/>
         <image name="filer-55" width="55" height="55"/>
         <image name="home" width="30" height="30"/>
         <image name="lists" width="30" height="30"/>
