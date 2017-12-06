@@ -1,16 +1,20 @@
 //
-//  ShoppingListTableViewController.swift
+//  ShoppingListSwitchVC.swift
 //  FeedrApp
 //
-//  Created by James Perry on 10/21/17.
+//  Created by Navneet Pandey on 12/5/17.
 //  Copyright © 2017 Team9. All rights reserved.
 //
 
 import UIKit
 
-class ShoppingListVC: UITableViewController {
-
-    override func viewDidLoad() {
+class ShoppingListSwitchVC: UITableViewController {
+    
+    var this_recipe = Recipe()
+    var ingredients = [String]()
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -18,6 +22,14 @@ class ShoppingListVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    override func viewDidAppear(_ animated: Bool)
+    {
+        for ingredientLine in this_recipe.ingredientLines!
+        {
+            ingredients.append(ingredientLine)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,24 +41,26 @@ class ShoppingListVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        print(ingredients.count)
+        return ingredients.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        // Configure the cell...
-
+        let switch_buy = cell.viewWithTag(1) as! UIImageView
+        let lbl_ingredientName = cell.viewWithTag(2) as! UILabel
+        
+        lbl_ingredientName.text = ingredients[indexPath.row] as! String
         return cell
     }
-    */
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

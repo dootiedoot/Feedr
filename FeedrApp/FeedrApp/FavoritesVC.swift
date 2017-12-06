@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+struct UserRecipe
+{
+    static var favRecipes = [Recipe]()
+}
+
 class FavoritesVC: UITableViewController
 {
 	static var favRecipes = [Recipe]()
@@ -35,7 +41,7 @@ class FavoritesVC: UITableViewController
 	{
 		print("Attempting to populate favorites view...")
 		
-		//let favRecipeIDs = RecipeDetailVC.GetFavoriteRecipeIDs()
+        let favRecipeIDs = RecipeDetailVC.GetFavoriteRecipeIDs()
 		
 		//  Dispatch queue so table view is refreshed with data
 		DispatchQueue.main.async
@@ -43,9 +49,141 @@ class FavoritesVC: UITableViewController
 			self.tableView.reloadData()
 		}
 	}
-	
+    
+    static func addRecipeAsFav(user_id:Int, recipe_id:String)
+    {
+        let fileManager =  FileManager.default
+        var db : OpaquePointer? = nil
+        var dbURl : NSURL? = nil
+        
+        do
+        {
+            let baseURL = try
+                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+        }
+        catch
+        {
+            print("Error")
+        }
+        
+        if let dbUrl = dbURl
+        {
+            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+            
+            if sqlStatus == SQLITE_OK
+            {
+                var statement: OpaquePointer? = nil
+                let insertQuery = "INSERT INTO favrecipes (user_id, recipe_id) VALUES ('\(user_id)', '\(recipe_id)');"
+                
+                sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil)
+                if sqlite3_step(statement) == SQLITE_DONE
+                {
+                    print("Value Inserted -> " + recipe_id)
+                }
+                else
+                {
+                    print("Value did not go through")
+                }
+                sqlite3_finalize(statement)
+            }
+        }
+    }
+    
+//    static func FindRecipeAsFav(user_id:Int, recipe_id:String)
+//    {
+//        let fileManager =  FileManager.default
+//        var db : OpaquePointer? = nil
+//        var dbURl : NSURL? = nil
+//
+//        do
+//        {
+//            let baseURL = try
+//                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+//            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+//        }
+//        catch
+//        {
+//            print("Error")
+//        }
+//
+//        if let dbUrl = dbURl
+//        {
+//            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+//            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+//
+//            if sqlStatus == SQLITE_OK
+//            {
+//                var statement: OpaquePointer? = nil
+//                let insertQuery = "SELECT * FROM favrecipes" // WHERE recipe_id = '\(recipe_id)'"
+//
+////                sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil)
+//                if sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil) == SQLITE_OK
+//                {
+//                    while sqlite3_step(statement) == SQLITE_ROW
+//                    {
+//                        let queryResultCol1 = sqlite3_column_text(statement, 0)
+//                        var id = String(cString: queryResultCol1!)
+//
+//                        let queryResultCol2 = sqlite3_column_text(statement, 1)
+//                        var uid = String(cString: queryResultCol2!)
+//
+//                        let queryResultCol3 = sqlite3_column_text(statement, 2)
+//                        let rid = String(cString: queryResultCol3!)
+//
+//                        print("\(uid)  and  \(rid)")
+//                    }
+//
+//                }
+//                sqlite3_finalize(statement)
+//            }
+//        }
+//    }
+    
+    static func removeRecipeAsFav(user_id:Int, recipe_id:String)
+    {
+        let fileManager =  FileManager.default
+        var db : OpaquePointer? = nil
+        var dbURl : NSURL? = nil
+        
+        do
+        {
+            let baseURL = try
+                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+        }
+        catch
+        {
+            print("Error")
+        }
+        
+        if let dbUrl = dbURl
+        {
+            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+            
+            if sqlStatus == SQLITE_OK
+            {
+                var statement: OpaquePointer? = nil
+                let insertQuery = "DELETE FROM favrecipes WHERE recipe_id = '\(recipe_id)'"
+                
+                sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil)
+                if sqlite3_step(statement) == SQLITE_DONE
+                {
+                    print("Value Deleted " + recipe_id)
+                }
+                else
+                {
+                    print("Value could not be deleted")
+                }
+                sqlite3_finalize(statement)
+            }
+        }
+    }
+    
 	//	Global function to add a Recipe to favorites given a recipeID
-	static func AddToFavorites(id: String)
+    static func AddToFavorites(this_user_id: Int, id: String)
 	{
 		//	if the id doesnt exists in the favorites. Add it to array
 		if !IsRecipeFavorited(id: id)
@@ -53,9 +191,10 @@ class FavoritesVC: UITableViewController
 			YummlyAPI.GetRecipe(recipeID: id)
 			{	recipe in
 				favRecipes.append(recipe)
+                addRecipeAsFav(user_id: this_user_id, recipe_id: id)
 				print(id, "has been added to favorites")
-				
-				//RecipeDetailVC.UpdateFavoriteButton(RecipeDetailVC)
+//                FindRecipeAsFav(user_id: this_user_id, recipe_id: id)
+//                RecipeDetailVC.UpdateFavoriteButton(RecipeDetailVC)
 			}
 		}
 		else
@@ -66,13 +205,15 @@ class FavoritesVC: UITableViewController
 	}
 	
 	//	Global function to remove a Recipe to favorites given a recipeID
-	static func RemoveFromFavorites(id: String)
+    static func RemoveFromFavorites(id: String, user_id: Int)
 	{
 		//	if the id exists in the favorites. Remove it from array
 		if IsRecipeFavorited(id: id)
 		{
-			favRecipes = favRecipes.filter{$0.id != id}
-			print(id, "has been removed to favorites")
+            favRecipes = favRecipes.filter{$0.id != id}
+            removeRecipeAsFav(user_id: user_id, recipe_id: id)
+//            FindRecipeAsFav(user_id: user_id, recipe_id: id)
+            print(id, "has been removed from favorites")
 		}
 		else
 		{
@@ -84,13 +225,20 @@ class FavoritesVC: UITableViewController
     //  Returns true if Recipe is favorited given its Recipe ID
 	static func IsRecipeFavorited(id: String) -> Bool
 	{
-		let recipeFound = favRecipes.filter{$0.id == id}.count > 0
+//        let recipeFound = favRecipes.filter{$0.id == id}.count > 0
+        let favRecipeIDs = RecipeDetailVC.GetFavoriteRecipeIDs()
+        let recipeFound = favRecipeIDs.contains(where: {
+            $0.range(of: id, options: .caseInsensitive) != nil
+        })
+        
 		if recipeFound == true
 		{
+            print("\(id) was found")
 			return true
 		}
 		else
 		{
+            print("\(id) was not found")
 			return false
 		}
 	}
@@ -132,6 +280,8 @@ class FavoritesVC: UITableViewController
 		
 		//  Assign variables to actual values
 		//  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
+        
+        let favRecipeIDs = RecipeDetailVC.GetFavoriteRecipeIDs()
 		if FavoritesVC.favRecipes[indexPath.row].images![0].hostedLargeUrl != nil
 		{
 			let url = URL(string: FavoritesVC.favRecipes[indexPath.row].images![0].hostedLargeUrl!)
@@ -152,7 +302,8 @@ class FavoritesVC: UITableViewController
 		
 		//  Recipe Name
 		lbl_recipeName.text = FavoritesVC.favRecipes[indexPath.row].name
-		//  Cooking Time
+	
+        //  Cooking Time
 		//lbl_cookingTime.text = FavoritesVC.favRecipes[indexPath.row].GetCookingTime()
 		
 		return cell

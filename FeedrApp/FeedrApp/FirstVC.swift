@@ -10,11 +10,20 @@ import UIKit
 
 class FirstVC: UIViewController {
 
+    @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet var lbl_usernamepf: UILabel!
-    override func viewDidLoad() {
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        lbl_usernamepf.text = "Hello " + JamesVariables.Globalusername
+        lbl_usernamepf.text = "Hello " + User.curr_user_name
+        
+        profilePic.layer.borderWidth = 2
+        profilePic.layer.masksToBounds = false
+        profilePic.layer.borderColor = UIColor.black.cgColor
+        profilePic.layer.cornerRadius = profilePic.frame.height/2
+        profilePic.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
