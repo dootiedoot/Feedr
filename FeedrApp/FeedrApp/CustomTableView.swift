@@ -13,7 +13,7 @@ class CustomTableView: UITableView {
         didSet {
             if let image = backgroundImage {
                 let backgroundImage = UIImageView(image: image)
-                backgroundImage.contentMode = UIViewContentMode.scaleToFill
+                backgroundImage.contentMode = UIViewContentMode.scaleAspectFit
                 backgroundImage.clipsToBounds = false
                 self.backgroundView = backgroundImage
             }

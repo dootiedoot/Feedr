@@ -60,6 +60,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="KBt-vy-nFv"/>
                                     </constraints>
@@ -75,12 +76,13 @@
                                             </segments>
                                         </segmentedControl>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="KMJ-AP-5F4"/>
                                     </constraints>
                                 </stackView>
                             </subviews>
+                            <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="jOv-J8-rTt">
@@ -105,9 +107,9 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_RecipeName" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t86-Al-T5s">
                                                             <rect key="frame" x="0.0" y="0.0" width="219" height="88"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bET-y0-jER">
@@ -123,7 +125,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_CookTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nh8-De-7Bo">
                                                                     <rect key="frame" x="39" y="0.0" width="180" height="32"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -135,19 +137,21 @@
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </stackView>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="gT3-w3-AZ7" firstAttribute="leading" secondItem="CW4-5a-DUe" secondAttribute="leadingMargin" id="0bP-l8-D3j"/>
                                         <constraint firstItem="gT3-w3-AZ7" firstAttribute="centerX" secondItem="CW4-5a-DUe" secondAttribute="centerX" id="5QQ-bJ-ZY8"/>
                                         <constraint firstItem="gT3-w3-AZ7" firstAttribute="top" secondItem="CW4-5a-DUe" secondAttribute="topMargin" id="kTS-Br-pni"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="ps_neutral"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="escheresque"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="6LZ-fz-Jbt" id="jLn-H1-gPz"/>
@@ -1224,11 +1228,11 @@
         <image name="bg1_Blur" width="720" height="1280"/>
         <image name="bg2" width="1632" height="2464"/>
         <image name="cookingTimer" width="32" height="32"/>
+        <image name="escheresque" width="23" height="14"/>
         <image name="filer-55" width="55" height="55"/>
         <image name="home" width="30" height="30"/>
         <image name="lists" width="30" height="30"/>
         <image name="person" width="30" height="30"/>
-        <image name="ps_neutral" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="goP-ma-H8h"/>
