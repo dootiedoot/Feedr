@@ -435,13 +435,15 @@ struct Ingredient: Codable
 
 class YummlyAPI
 {
-    //  VARIABLES
+    //  GLOBAL VARIABLES
 	static let IngredientsMetadata = GetIngredientsMetadata()				//	Cache entire ingredients metadata into a array
-	
+    static var RecipeDetailHistory = [Recipe]()                             //  Contains the history of all recipes that were viewed
+    static var ResultsSearchHistory = [Match]()                             //  Contains the history of all search results that were searched.
+    
 	//  yummly API variables
 	private static let yummlyID = "51013d4c"
 	private static let yummlyKey = "0549dc2605e77741e0feb12736c65087"
-	
+    
     //	Function that returns a search result enum that contains all the data
     static func GetSearch(search: String?,
                          requirePictures: Bool?,
@@ -941,4 +943,32 @@ class YummlyAPI
 		}
 		return false
 	}
+    
+    //  Try add recipe to recipe history
+    static func AddRecipeToHistory(recipe: Recipe)
+    {
+        // found
+        if RecipeDetailHistory.contains(where: { $0.id == recipe.id })
+        {
+            print("Recipe \(recipe.name) already in history. Doing nothing.")
+            return
+        }
+        // not found
+        else
+        {
+            RecipeDetailHistory.append(recipe)
+            
+            print("Recipe \(recipe.name) added to history.")
+        }
+    }
+    
+    //  Returns array of recipes recommended
+    static func GetRecommendedRecipes() -> [Recipe]
+    {
+        var recommendations = [Recipe]()
+        //  Test
+        recommendations.append(contentsOf: RecipeDetailHistory)
+        recommendations.append(contentsOf: FavoritesVC.favRecipes)
+        return recommendations
+    }
 }
