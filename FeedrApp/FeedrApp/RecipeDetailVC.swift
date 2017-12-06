@@ -44,6 +44,7 @@ class RecipeDetailVC: UIViewController
 		PopulateView()
     }
 	
+    //  Populate the view controller with data
 	func PopulateView()
 	{
 		print("Populating recipe detail view...")
@@ -65,8 +66,8 @@ class RecipeDetailVC: UIViewController
 						return
 					}
 					DispatchQueue.main.async
-						{
-							self.img_recipeThumbnail.image = UIImage(data: data!)
+                    {
+                        self.img_recipeThumbnail.image = UIImage(data: data!)
 					}
 			}).resume()
 			
@@ -91,7 +92,6 @@ class RecipeDetailVC: UIViewController
 				{
                     allflavorites.append(self.recipe.flavors!.Piquant!)
                     availibleFlavors.append("Piuant")
-                    
 				}
 				if (self.recipe.flavors!.Bitter != nil && self.recipe.flavors!.Bitter! > Float(0.00))
 				{
@@ -186,6 +186,10 @@ class RecipeDetailVC: UIViewController
 				//	Update the favorite button status
 				self.UpdateFavoriteButton()
 			}
+            
+            
+            //  Add to recipe history
+            YummlyAPI.AddRecipeToHistory(recipe: self.recipe)
 		}
 	}
 	
@@ -198,12 +202,12 @@ class RecipeDetailVC: UIViewController
 		{
 			//	Update everything inside main
 			self.btn_Favorite.setTitle("Remove from favorites", for: .normal)
-			print("button says remove to favorites")
+			//print("button says remove to favorites")
 		}
 		else
 		{
 			self.btn_Favorite.setTitle("Add to favorites", for: .normal)
-			print("button says Add to favorites")
+			//print("button says Add to favorites")
 		}
 	}
 	

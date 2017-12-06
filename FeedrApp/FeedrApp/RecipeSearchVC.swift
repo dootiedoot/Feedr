@@ -10,12 +10,14 @@ import UIKit
 
 class RecipeSearchVC: UITableViewController
 {
-    //THIS IS THE SEARCH BAR AT THE TOP OF THE VIEW
+    //  BUTTONS
     @IBOutlet weak var lbl_searchbar: UITextField!
     
     private var result = Result()
+    private var recommendations = [Recipe]()
 	private var selectedRecipeID : String = ""
-	
+    private var currentSelectedTab = 0
+    
 	var name = ""
 	var user_id = -1
 	
@@ -63,7 +65,31 @@ class RecipeSearchVC: UITableViewController
 			print("No search parameter! Doing nothing.")
 		}
     }
-    				
+    
+    //  Controls the logic for segmented tabs under search bar
+    @IBAction func OnTabSelected(_ sender: UISegmentedControl)
+    {
+        switch sender.selectedSegmentIndex
+        {
+        case 0:
+            //print("Browsing...")
+            currentSelectedTab = 0
+            break
+        case 1:
+            //print("Recomendations...")
+            currentSelectedTab = 1
+            recommendations = YummlyAPI.GetRecommendedRecipes()
+            break
+        default:
+            //print("Unknown tab selected...")
+            break
+        }
+        //  Dispatch queue so table view is refreshed with data
+        DispatchQueue.main.async
+        {
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad()
     {
@@ -104,10 +130,18 @@ class RecipeSearchVC: UITableViewController
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // #warning Incomplete implementation, return the number of rows
-        return self.result.matches!.count
+        if currentSelectedTab == 0
+        {
+            return self.result.matches!.count
+        }
+        else
+        {
+            return recommendations.count
+        }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         //  Initialize the variables to tags
@@ -116,28 +150,60 @@ class RecipeSearchVC: UITableViewController
         let lbl_cookingTime = cell.viewWithTag(3) as! UILabel
         
         //  Assign variables to actual values
-        //  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
-		if result.matches![indexPath.row].smallImageUrls != nil
-		{
-			let url = URL(string: result.matches![indexPath.row].smallImageUrls![0])
-			URLSession.shared.dataTask(with: url!, completionHandler:{ (data, reponse, error) in
-				if error != nil
-				{
-					print(error!)
-					return
-				}
-				DispatchQueue.main.async
-					{
-						//  Finally, assign the image if all is successful
-						img_recipeThumbnail.image = UIImage(data: data!)
-				}
-			}).resume()
-		}
-        
-        //  Recipe Name
-        lbl_recipeName.text = result.matches![indexPath.row].recipeName
-        //  Cooking Time
-        lbl_cookingTime.text = result.matches![indexPath.row].GetCookingTime()
+        //  if current tab is browsing...
+        if currentSelectedTab == 0
+        {
+            //  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
+            if result.matches![indexPath.row].smallImageUrls != nil
+            {
+                let url = URL(string: result.matches![indexPath.row].smallImageUrls![0])
+                URLSession.shared.dataTask(with: url!, completionHandler:
+                { (data, reponse, error) in
+                    if error != nil
+                    {
+                        print(error!)
+                        return
+                    }
+                    DispatchQueue.main.async
+                    {
+                        //  Finally, assign the image if all is successful
+                        img_recipeThumbnail.image = UIImage(data: data!)
+                    }
+                }).resume()
+            }
+            
+            //  Recipe Name
+            lbl_recipeName.text = result.matches![indexPath.row].recipeName
+            //  Cooking Time
+            lbl_cookingTime.text = result.matches![indexPath.row].GetCookingTime()
+        }
+        //  if current tab is recommended....
+        else
+        {
+            //  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
+            if recommendations[indexPath.row].images![0] != nil
+            {
+                let url = URL(string: recommendations[indexPath.row].images![0].hostedLargeUrl!)
+                URLSession.shared.dataTask(with: url!, completionHandler:
+                    { (data, reponse, error) in
+                        if error != nil
+                        {
+                            print(error!)
+                            return
+                        }
+                        DispatchQueue.main.async
+                        {
+                            //  Finally, assign the image if all is successful
+                            img_recipeThumbnail.image = UIImage(data: data!)
+                        }
+                }).resume()
+            }
+            
+            //  Recipe Name
+            lbl_recipeName.text = recommendations[indexPath.row].name
+            //  Cooking Time
+            lbl_cookingTime.text = recommendations[indexPath.row].GetCookingTime()
+        }
         
         return cell
     }
@@ -154,7 +220,6 @@ class RecipeSearchVC: UITableViewController
 		print("Tapped on row ", indexPath.row)
     }
     
-    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -164,7 +229,7 @@ class RecipeSearchVC: UITableViewController
         // Pass the selected object to the new view controller.
         if segue.identifier == "RecipeDetail"
         {
-			print("Prepping segue...")
+			//print("Prepping segue...")
 			
             //  Cache the recipe detail controller and pass the data over
             let RecipeDetailController = segue.destination as! RecipeDetailVC

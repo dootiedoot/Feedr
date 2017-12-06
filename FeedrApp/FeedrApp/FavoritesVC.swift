@@ -29,7 +29,8 @@ class FavoritesVC: UITableViewController
 		//	Populate the table view with data
 		PopulateTable()
 	}
-	
+    
+	//  Load the table with data
 	func PopulateTable()
 	{
 		print("Attempting to populate favorites view...")
@@ -80,6 +81,7 @@ class FavoritesVC: UITableViewController
 		}
 	}
 	
+    //  Returns true if Recipe is favorited given its Recipe ID
 	static func IsRecipeFavorited(id: String) -> Bool
 	{
 		let recipeFound = favRecipes.filter{$0.id == id}.count > 0
