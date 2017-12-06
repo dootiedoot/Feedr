@@ -8,11 +8,20 @@
 
 import UIKit
 
-class ProfileTabVC: UIViewController {
+class ProfileTabVC: UIViewController
+{
     @IBOutlet weak var profilepic: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     
-    @IBAction func switch_gluten(_ sender: UISwitch){
+    //  when the user taps the logout button...
+    @IBAction func OnLogoutBtn(_ sender: UIButton)
+    {
+        //  Clear data
+        FavoritesVC.favRecipes = [Recipe]()
+    }
+    
+    @IBAction func switch_gluten(_ sender: UISwitch)
+    {
         print("In Glutton")
         let item = findInAllergy(allergy_name: "Gluten")
         if sender.isOn

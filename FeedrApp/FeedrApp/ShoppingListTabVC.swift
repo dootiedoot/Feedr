@@ -30,7 +30,7 @@ class ShoppingListTabVC: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool)
     {
-        let favRecipeIDs = RecipeDetailVC.GetFavoriteRecipeIDs()
+        /*let favRecipeIDs = FavoritesVC.GetFavoriteRecipeIDs()
         print("Fav Recipe IDs are -> ")
         print(favRecipeIDs)
 
@@ -41,7 +41,7 @@ class ShoppingListTabVC: UITableViewController {
                 //self.favRecipes.append(recipe)
                 self.favRecipes.append(recipe)
             }
-        }
+        }*/
     }
 
     // MARK: - Table view data source

@@ -74,11 +74,22 @@ class LoginVC: UIViewController
         findInDb(uname: Iuname, password: Ipassword)
         print("After: " + User.curr_user_name)
         
-            if (credentialsMatch == true)
+        if (credentialsMatch == true)
         {
             //JAMES COMMENTED THIS OUT
-            print("Login wiht segues")
+            print("Login with segues")
             performSegue(withIdentifier: "torecipe", sender: self)
+            
+            //  (CHAD) Retrive favorites from database and populate the favorites array at start
+            let recipeIDS = FavoritesVC.GetFavoriteRecipeIDsFromDatabase()
+            for recipeID in recipeIDS
+            {
+                YummlyAPI.GetRecipe(recipeID: recipeID)
+                {   recipe in
+                    FavoritesVC.favRecipes.append(recipe)
+                    print("Recipe found in user favorites: \(recipe.name)")
+                }
+            }
         }
     }
 
@@ -129,20 +140,6 @@ class LoginVC: UIViewController
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-		
-		//	TEST DATA
-		YummlyAPI.GetRecipe(recipeID: "Baked-Apples-Simply-Recipes-43096")
-		{
-            recipe in
-			FavoritesVC.favRecipes.append(recipe)
-			//print(FavoritesVC.favRecipes)
-		}
-        
-		YummlyAPI.GetRecipe(recipeID: "Baked-Apple-Pie-Roll-Ups-593599")
-		{	recipe in
-			FavoritesVC.favRecipes.append(recipe)
-			//print(FavoritesVC.favRecipes)
-		}
 	}
     
     func createTables()

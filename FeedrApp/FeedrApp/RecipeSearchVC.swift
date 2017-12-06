@@ -22,7 +22,6 @@ class RecipeSearchVC: UITableViewController
 
     private var currentSelectedTab = 0
 
-    
 	var name = ""
 	var user_id = -1
 	
@@ -72,10 +71,12 @@ class RecipeSearchVC: UITableViewController
     }
     
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool)
+    {
         print("Finding userAllergyEnums Next")
         findUserAllergies(uid: user_id)
-
+    }
+        
     //  Controls the logic for segmented tabs under search bar
     @IBAction func OnTabSelected(_ sender: UISegmentedControl)
     {
@@ -99,7 +100,6 @@ class RecipeSearchVC: UITableViewController
         {
             self.tableView.reloadData()
         }
-
     }
     
     override func viewDidLoad()
