@@ -10,7 +10,6 @@ import UIKit
 
 class ShoppingListSwitchVC: UITableViewController {
     
-    var this_recipe = Recipe()
     var ingredients = [String]()
     
     override func viewDidLoad()
@@ -26,10 +25,7 @@ class ShoppingListSwitchVC: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool)
     {
-        for ingredientLine in this_recipe.ingredientLines!
-        {
-            ingredients.append(ingredientLine)
-        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +50,7 @@ class ShoppingListSwitchVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let switch_buy = cell.viewWithTag(1) as! UIImageView
+        let switch_buy = cell.viewWithTag(1) as! UISwitch
         let lbl_ingredientName = cell.viewWithTag(2) as! UILabel
         
         lbl_ingredientName.text = ingredients[indexPath.row] as! String

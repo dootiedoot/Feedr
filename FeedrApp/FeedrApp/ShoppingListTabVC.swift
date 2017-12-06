@@ -12,6 +12,7 @@ class ShoppingListTabVC: UITableViewController {
 
     var favRecipes: [Recipe] = []
     private var selectedRecipe = Recipe()
+    var recipeIngredients = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,14 +93,24 @@ class ShoppingListTabVC: UITableViewController {
         print("Tapped on row ", indexPath.row)
     }
     
+    func fetchIngredientsFromRecipe()
+    {
+        for ingredientLine in self.selectedRecipe.ingredientLines!
+        {
+            self.recipeIngredients.append(ingredientLine)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "shoppinglist"
         {
             let shoplist = segue.destination as! ShoppingListSwitchVC
-            shoplist.this_recipe = self.selectedRecipe
+            print("Fetching Ingredients")
+            fetchIngredientsFromRecipe()
+            shoplist.ingredients = self.recipeIngredients
         }
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

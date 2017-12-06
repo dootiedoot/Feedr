@@ -76,8 +76,6 @@ class LoginVC: UIViewController
         
         if (credentialsMatch == true)
         {
-            //JAMES COMMENTED THIS OUT
-            print("Login with segues")
             performSegue(withIdentifier: "torecipe", sender: self)
             
             //  (CHAD) Retrive favorites from database and populate the favorites array at start
@@ -93,7 +91,6 @@ class LoginVC: UIViewController
         }
     }
 
-// JAMES COMMENTED THIS OUT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if (segue.identifier == "torecipe")
@@ -168,17 +165,18 @@ class LoginVC: UIViewController
             if sqlStatus == SQLITE_OK
             {
                 let errMsg: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>? =  nil
-                let SQLquery2 = "DROP TABLE IF EXISTS allergies"
-                if sqlite3_exec(db, SQLquery2,nil, nil, errMsg) == SQLITE_OK
-                {
-                    print("Table Dropped - allergies")
-                }
                 
-                let SQLquery5 = "DROP TABLE IF EXISTS userallergies"
-                if sqlite3_exec(db, SQLquery5,nil, nil, errMsg) == SQLITE_OK
-                {
-                    print("Table Dropped - allergies")
-                }
+//                let SQLquery2 = "DROP TABLE IF EXISTS allergies"
+//                if sqlite3_exec(db, SQLquery2,nil, nil, errMsg) == SQLITE_OK
+//                {
+//                    print("Table Dropped - allergies")
+//                }
+                
+//                let SQLquery5 = "DROP TABLE IF EXISTS userallergies"
+//                if sqlite3_exec(db, SQLquery5,nil, nil, errMsg) == SQLITE_OK
+//                {
+//                    print("Table Dropped - allergies")
+//                }
 //
 //                let SQLquery3 = "DROP TABLE IF EXISTS user"
 //                if sqlite3_exec(db, SQLquery3,nil, nil, errMsg) == SQLITE_OK
