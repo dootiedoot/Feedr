@@ -33,11 +33,12 @@ class ShoppingListTabVC: UITableViewController {
         let favRecipeIDs = RecipeDetailVC.GetFavoriteRecipeIDs()
         print("Fav Recipe IDs are -> ")
         print(favRecipeIDs)
-        
+
         for rid in favRecipeIDs
         {
             print(favRecipes.count)
             YummlyAPI.GetRecipe(recipeID: rid) { recipe in
+                //self.favRecipes.append(recipe)
                 self.favRecipes.append(recipe)
             }
         }
@@ -46,12 +47,12 @@ class ShoppingListTabVC: UITableViewController {
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return FavoritesVC.favRecipes.count
     }
 
     
@@ -62,10 +63,9 @@ class ShoppingListTabVC: UITableViewController {
         let img_recipeThumbnail = cell.viewWithTag(1) as! UIImageView
         let lbl_recipeName = cell.viewWithTag(2) as! UILabel
         
-        print("API CALLS")
-        if favRecipes[indexPath.row].images![0].hostedLargeUrl != nil
+        if FavoritesVC.favRecipes[indexPath.row].images![0].hostedLargeUrl != nil
         {
-            let url = URL(string: favRecipes[indexPath.row].images![0].hostedLargeUrl!)
+            let url = URL(string: FavoritesVC.favRecipes[indexPath.row].images![0].hostedLargeUrl!)
             URLSession.shared.dataTask(with: url!, completionHandler:
                 { (data, reponse, error) in
                     if error != nil
@@ -84,6 +84,21 @@ class ShoppingListTabVC: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        selectedRecipe = FavoritesVC.favRecipes[indexPath.row]
+        self.performSegue(withIdentifier: "shoppinglist", sender: self)
+        print("Tapped on row ", indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "shoppinglist"
+        {
+            let shoplist = segue.destination as! ShoppingListSwitchVC
+            shoplist.this_recipe = self.selectedRecipe
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
