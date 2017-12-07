@@ -58,7 +58,7 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
                 requirePictures: true,
                 allowedIngredients: [],
 				excludedIngredients: [],
-                allowedAllergies: [Allergy.Egg],
+                allowedAllergies: [],
                 allowedDiet: [],
                 allowedCuisines: [],
                 excludedCuisines: [],

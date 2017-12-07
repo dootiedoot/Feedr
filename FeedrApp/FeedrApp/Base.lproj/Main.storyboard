@@ -29,16 +29,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-hk-yZJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="  Type text here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-Jd-ayv">
-                                            <rect key="frame" x="0.0" y="0.0" width="275" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="275" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9w-t8-tKQ" customClass="CustomButton" customModule="FeedrApp" customModuleProvider="target">
-                                            <rect key="frame" x="275" y="0.0" width="100" height="45"/>
+                                            <rect key="frame" x="275" y="0.0" width="100" height="30"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.4959332191780822" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="tEU-Iw-kNa"/>
@@ -65,10 +65,10 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zgq-gg-0oq">
-                                    <rect key="frame" x="0.0" y="46" width="375" height="54"/>
+                                    <rect key="frame" x="0.0" y="31" width="375" height="70"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-7i-ppE">
-                                            <rect key="frame" x="0.0" y="13" width="375" height="29"/>
+                                            <rect key="frame" x="0.0" y="21" width="375" height="29"/>
                                             <segments>
                                                 <segment title="Browse"/>
                                                 <segment title="Recomended"/>
@@ -1332,7 +1332,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="baY-bm-0wD"/>
-        <segue reference="5Qz-oB-5fk"/>
+        <segue reference="31c-lk-x4b"/>
         <segue reference="qdG-Tv-zli"/>
     </inferredMetricsTieBreakers>
 </document>
