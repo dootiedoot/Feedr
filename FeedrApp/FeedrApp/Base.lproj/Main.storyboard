@@ -65,10 +65,10 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zgq-gg-0oq">
-                                    <rect key="frame" x="0.0" y="46" width="375" height="28"/>
+                                    <rect key="frame" x="0.0" y="46" width="375" height="54"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-7i-ppE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
+                                            <rect key="frame" x="0.0" y="13" width="375" height="29"/>
                                             <segments>
                                                 <segment title="Browse"/>
                                                 <segment title="Recomended"/>
@@ -156,13 +156,14 @@
                     <navigationItem key="navigationItem" id="daV-6c-kMg">
                         <barButtonItem key="rightBarButtonItem" title="Filters" image="filer-55" id="tjH-Ew-QBA">
                             <connections>
-                                <segue destination="gyN-jU-xO9" kind="show" id="wkn-LB-05U"/>
+                                <action selector="selectFilter:" destination="6LZ-fz-Jbt" id="cEi-xg-sIt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="lbl_searchbar" destination="SHc-Jd-ayv" id="SXF-Pb-OZ6"/>
                         <segue destination="Xvd-cF-ap2" kind="show" identifier="RecipeDetail" id="31c-lk-x4b"/>
+                        <segue destination="gyN-jU-xO9" kind="show" identifier="RecipeFilter" id="bPK-7f-SBS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mD-pU-bDD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1136,8 +1137,17 @@
                         <barButtonItem key="rightBarButtonItem" title="Preferences" id="hT9-s2-QFl"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="SwitchDairy" destination="vho-O3-YpW" id="Wii-75-Iec"/>
+                        <outlet property="SwitchEgg" destination="vho-O3-YpW" id="A8x-el-tFL"/>
+                        <outlet property="SwitchSoy" destination="ehB-xz-iMi" id="ELr-jz-7Rb"/>
+                        <outlet property="SwitchTreenut" destination="QIQ-cc-S5w" id="b7I-Vk-lN2"/>
+                        <outlet property="SwitchWheat" destination="YEe-95-hYb" id="oXF-w7-Je4"/>
                         <outlet property="profileName" destination="sVQ-aS-5fH" id="IPE-72-Qj2"/>
                         <outlet property="profilepic" destination="D2P-g0-ePq" id="e5L-ia-Bb2"/>
+                        <outlet property="switchGluten" destination="1f9-Rd-Rgd" id="0Zp-fF-SoY"/>
+                        <outlet property="switchPeanuts" destination="zlq-TI-Am5" id="vlZ-dz-aOR"/>
+                        <outlet property="switchSeafood" destination="6N5-Pn-EBd" id="DWK-tj-yDY"/>
+                        <outlet property="switchSeasame" destination="j63-O3-fLD" id="G8w-xE-iAu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v13-ZM-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1154,7 +1164,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WHO-gJ-YNZ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="WHO-gJ-YNZ">
                                 <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WHO-gJ-YNZ" id="ooF-Hb-l6U">
@@ -1164,14 +1174,15 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Jnp-6Z-4re">
                                             <rect key="frame" x="36" y="9.5" width="303" height="31"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZ0-eo-Nki">
+                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZ0-eo-Nki">
                                                     <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aF-IX-Mx3">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aF-IX-Mx3">
                                                     <rect key="frame" x="79" y="0.0" width="224" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
@@ -1321,7 +1332,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="baY-bm-0wD"/>
-        <segue reference="31c-lk-x4b"/>
+        <segue reference="5Qz-oB-5fk"/>
         <segue reference="qdG-Tv-zli"/>
     </inferredMetricsTieBreakers>
 </document>

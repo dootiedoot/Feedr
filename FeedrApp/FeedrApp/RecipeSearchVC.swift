@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipeSearchVC: UITableViewController
+class RecipeSearchVC: UITableViewController, DataSendingDelegate
 {
     //  BUTTONS
     @IBOutlet weak var lbl_searchbar: UITextField!
@@ -24,7 +24,29 @@ class RecipeSearchVC: UITableViewController
 
 	var name = ""
 	var user_id = -1
+    
+    var excludeCuisines = [Cuisine]()
+    var excludeCourses = [Course]()
+    var excludeHolidays = [Holiday]()
 	
+    func userDidSendData(cuisine: [Cuisine], course: [Course], holiday: [Holiday])
+    {
+        print("Data Received")
+        excludeCuisines = cuisine
+        excludeCourses = course
+        excludeHolidays = holiday
+        
+        print(excludeCuisines)
+        print(excludeCourses)
+        print(excludeHolidays)
+    }
+    
+    @IBAction func selectFilter(_ sender: UIBarButtonItem)
+    {
+        print("Go For it")
+        performSegue(withIdentifier: "RecipeFilter", sender: self)
+    }
+    
     @IBAction func btn_Search(_ sender: Any)
     {
         //  if the lbl_searchbar isnt empty...
@@ -36,7 +58,7 @@ class RecipeSearchVC: UITableViewController
                 requirePictures: true,
                 allowedIngredients: [],
 				excludedIngredients: [],
-                allowedAllergies: [],
+                allowedAllergies: [Allergy.Egg],
                 allowedDiet: [],
                 allowedCuisines: [],
                 excludedCuisines: [],
@@ -235,6 +257,7 @@ class RecipeSearchVC: UITableViewController
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+       
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "RecipeDetail"
@@ -245,6 +268,15 @@ class RecipeSearchVC: UITableViewController
             let RecipeDetailController = segue.destination as! RecipeDetailVC
             RecipeDetailController.recipeID = selectedRecipeID
 			RecipeDetailController.this_user_id = user_id
+        }
+        else
+        if segue.identifier == "RecipeFilter"
+        {
+            let RecipeFilterController = segue.destination as! PreferencesTableViewController
+            
+            if let backToSearch = segue.destination as? PreferencesTableViewController {
+                backToSearch.delegate = self
+            }
         }
         else
         {

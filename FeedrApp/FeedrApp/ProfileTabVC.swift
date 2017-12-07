@@ -13,6 +13,19 @@ class ProfileTabVC: UIViewController
     @IBOutlet weak var profilepic: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     
+    @IBOutlet weak var switchGluten: UISwitch!
+    @IBOutlet weak var switchPeanuts: UISwitch!
+    @IBOutlet weak var switchSeafood: UISwitch!
+    @IBOutlet weak var switchSeasame: UISwitch!
+    @IBOutlet weak var SwitchSoy: UISwitch!
+    @IBOutlet weak var SwitchDairy: UISwitch!
+    @IBOutlet weak var SwitchEgg: UISwitch!
+    @IBOutlet weak var SwitchTreenut: UISwitch!
+    @IBOutlet weak var SwitchSulfite: UISwitch!
+    @IBOutlet weak var SwitchWheat: UISwitch!
+    
+    var listAllergy = [String]()
+    
     //  when the user taps the logout button...
     @IBAction func OnLogoutBtn(_ sender: UIButton)
     {
@@ -22,17 +35,27 @@ class ProfileTabVC: UIViewController
     
     @IBAction func switch_gluten(_ sender: UISwitch)
     {
-        print("In Glutton")
         let item = findInAllergy(allergy_name: "Gluten")
         if sender.isOn
         {
-            print("sender is On Now")
             addAsAllergies(uid: User.curr_user_id, aid: item)
-        } else
+        }
+        else
         {
-            print("sender is Off Now")
             removeAsAllergies(uid: User.curr_user_id, aid: item)
         }
+        
+//        let allergyFound = self.listAllergy.contains(where: {
+//            $0.range(of: "Gluten", options: .caseInsensitive) != nil
+//        })
+//        if allergyFound == true
+//        {
+//            sender.setOn(true, animated: true)
+//        }
+//        else
+//        {
+//
+//        }
     }
     
     @IBAction func switch_peanut(_ sender: UISwitch) {
@@ -170,6 +193,70 @@ class ProfileTabVC: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        listAllergy = findUserAllergies(uid: User.curr_user_id)
+        for allergy in listAllergy
+        {
+            let allergyFound = self.listAllergy.contains(where: {
+                $0.range(of: allergy, options: .caseInsensitive) != nil
+            })
+            
+            if allergyFound == true		
+            {
+                if allergy == "Gluten"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "Peanut"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "Seafood"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "Sesame"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "Soy"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "Diary"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "Egg"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "Sulfite"
+                {
+                switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "TreeNut"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+                else
+                if allergy == "Wheat"
+                {
+                    switchGluten.setOn(true, animated: true)
+                }
+            }
+        }
+    }
+    
     func addAsAllergies(uid:Int, aid:Int)
     {
         let fileManager =  FileManager.default
@@ -250,6 +337,102 @@ class ProfileTabVC: UIViewController
                 sqlite3_finalize(statement)
             }
         }
+    }
+    
+    
+    func findAllergyName(allergy_id: Int) -> String
+    {
+        let fileManager =  FileManager.default
+        var db : OpaquePointer? = nil
+        var dbURl : NSURL? = nil
+        //var aid: String = "-1"
+        
+        do
+        {
+            let baseURL = try
+                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+        }
+        catch
+        {
+            print("Error")
+        }
+        
+        var allergyName = ""
+        if let dbUrl = dbURl
+        {
+            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+            
+            if sqlStatus == SQLITE_OK
+            {
+                var selectStatement : OpaquePointer? = nil
+                let selectQuery = "SELECT * FROM allergies WHERE id = '\(allergy_id)';"
+                
+                if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
+                {
+                    while sqlite3_step(selectStatement) == SQLITE_ROW
+                    {
+                        let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
+                        let aname = String(cString: queryResultCol1!)
+                        
+                        allergyName = aname
+                    }
+                }
+                sqlite3_finalize(selectStatement)
+            }
+        }
+        
+        return allergyName
+    }
+    
+    func findUserAllergies(uid:Int) -> [String]
+    {
+        let fileManager =  FileManager.default
+        var db : OpaquePointer? = nil
+        var dbURl : NSURL? = nil
+        var aid: String = "-1"
+        var allergyIDs = [Int]()
+        
+        var userAllergies = [String]()
+        
+        do
+        {
+            let baseURL = try
+                fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            dbURl = baseURL.appendingPathComponent("swift.sqlite") as NSURL
+        }
+        catch
+        {
+            print("Error")
+        }
+        
+        if let dbUrl = dbURl
+        {
+            let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
+            let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
+            
+            if sqlStatus == SQLITE_OK
+            {
+                var selectStatement : OpaquePointer? = nil
+                let selectQuery = "SELECT * FROM userallergies WHERE user_id = '\(uid)';"
+                
+                if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
+                {
+                    while sqlite3_step(selectStatement) == SQLITE_ROW
+                    {
+                        let queryResultCol1 = sqlite3_column_text(selectStatement, 0)
+                        aid = String(cString: queryResultCol1!)
+                        
+                        let allergyName = findAllergyName(allergy_id: Int(aid)!)
+                        userAllergies.append(allergyName)
+                    }
+                }
+                sqlite3_finalize(selectStatement)
+            }
+        }
+    
+        return userAllergies
     }
     
     func findInAllergy(allergy_name: String) -> Int
