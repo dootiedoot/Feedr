@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A002F591FAB92A00065ED67 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A002F581FAB92A00065ED67 /* CustomButton.swift */; };
 		1A3079551FB2D82800310FB8 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3079541FB2D82800310FB8 /* CustomVisualEffectView.swift */; };
-		1A47E57E1FD87BE40013164A /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47E57D1FD87BE40013164A /* CustomTableView.swift */; };
-		1A47E5801FD87CAE0013164A /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47E57F1FD87CAE0013164A /* CustomLabel.swift */; };
 		50832F82B409A1A5C6B4EB2D /* Pods_FeedrApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FB5A10ACCF9D498688882B /* Pods_FeedrApp.framework */; };
 		53AC28881FAED86E005CAFAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC28871FAED867005CAFAC /* libsqlite3.tbd */; };
 		53AC288D1FAEDABD005CAFAC /* CreateAllDatabases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */; };
@@ -63,8 +61,6 @@
 		181B7369D4DD76A6B1A62716 /* Pods-FeedrAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedrAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedrAppUITests/Pods-FeedrAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A002F581FAB92A00065ED67 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1A3079541FB2D82800310FB8 /* CustomVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVisualEffectView.swift; sourceTree = "<group>"; };
-		1A47E57D1FD87BE40013164A /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
-		1A47E57F1FD87CAE0013164A /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		3391358FBB141059F63B7D6F /* Pods_FeedrAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedrAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3445F274D5BC1B6DDD6BAA7E /* Pods-FeedrApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedrApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedrApp/Pods-FeedrApp.debug.xcconfig"; sourceTree = "<group>"; };
 		53AC28871FAED867005CAFAC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -202,7 +198,6 @@
 				53CCD3411FD6033E009DDEC4 /* TabBarController.swift */,
 				9F06246E1F994878003ED25C /* YummlyAPI.swift */,
 				9FB9B6591F8BDE1E004B26A9 /* Main.storyboard */,
-				1A47E57D1FD87BE40013164A /* CustomTableView.swift */,
 				53AF7FCD1FD7A1D9002F5696 /* ShoppingListTabVC.swift */,
 				53AF7FCB1FD78D3D002F5696 /* ShoppingListSwitchVC.swift */,
 				53AF7FC91FD74D0A002F5696 /* ProfileTabVC.swift */,
@@ -214,7 +209,6 @@
 				1A002F581FAB92A00065ED67 /* CustomButton.swift */,
 				53AC28891FAED8B7005CAFAC /* FeedrApp-Bridging-Header.h */,
 				9FE426241FD74504002954C6 /* TableViewController3.swift */,
-				1A47E57F1FD87CAE0013164A /* CustomLabel.swift */,
 			);
 			path = FeedrApp;
 			sourceTree = "<group>";
@@ -540,7 +534,6 @@
 				9F0624711F9BD27F003ED25C /* RecipeSearchVC.swift in Sources */,
 				53CCD3421FD6033E009DDEC4 /* TabBarController.swift in Sources */,
 				9FB9B6C81F8C001A004B26A9 /* UserProfileVC.swift in Sources */,
-				1A47E57E1FD87BE40013164A /* CustomTableView.swift in Sources */,
 				53AF7FCA1FD74D0A002F5696 /* ProfileTabVC.swift in Sources */,
 				9F0624731F9BD3C1003ED25C /* UserLibraryVC.swift in Sources */,
 				614A77F61FAE7AF1009FFC03 /* HomeViewController.swift in Sources */,
@@ -548,7 +541,6 @@
 				9FAA20821FAAD93200EBADDA /* PreferencesTableViewController.swift in Sources */,
 				9FB9B6541F8BDE1E004B26A9 /* AppDelegate.swift in Sources */,
 				61D7F8031F9FBAF900AF317F /* RecipeSourceWebsiteVC.swift in Sources */,
-				1A47E5801FD87CAE0013164A /* CustomLabel.swift in Sources */,
 				9F06246D1F96A84A003ED25C /* RecipeDetailVC.swift in Sources */,
 				9F06246F1F994878003ED25C /* YummlyAPI.swift in Sources */,
 				9FB9B6561F8BDE1E004B26A9 /* FirstVC.swift in Sources */,

@@ -123,84 +123,84 @@ import Foundation
 /*
 	 Search Enums
  */
-public enum Cuisine: String
+public enum Cuisine
 {
-    case American = "American"
-    case Italian = "Italian"
-    case Asian = "Asian"
-    case Mexican = "Mexican"
-    case Southern = "Southern"
-    case French = "French"
-    case Southwestern = "Southwestern"
-    case Barbecue = "Barbecue"
-    case Indian = "Indian"
-    case Chinese = "Chinese"
-    case Cajun = "Cajun"
-    case English = "English"
-    case Mediterranean = "Mediterranean"
-    case Greek = "Greek"
-    case Spanish = "Spanish"
-    case German = "German"
-    case Thai = "Thai"
-    case Moroccan = "Moroccan"
-    case Irish = "Irish"
-    case Japanese = "Japanese"
-    case Cuban = "Cuban"
-    case Hawaiin = "Hawaiin"
-    case Swedish = "Swedish"
-    case Hungarian = "Hungarian"
-    case Portugese  = "Portugese"
+    case American
+    case Italian
+    case Asian
+    case Mexican
+    case Southern
+    case French
+    case Southwestern
+    case Barbecue
+    case Indian
+    case Chinese
+    case Cajun
+    case English
+    case Mediterranean
+    case Greek
+    case Spanish
+    case German
+    case Thai
+    case Moroccan
+    case Irish
+    case Japanese
+    case Cuban
+    case Hawaiin
+    case Swedish
+    case Hungarian
+    case Portugese
 }
 
-public enum Allergy: String
+public enum Allergy
 {
-    case Diary = "Diary"
-    case Gluten = "Gluten"
-    case Peanut = "Peanut"
-    case Seafood = "Seafood"
-    case Sesame = "Sesame"
-    case Soy = "Soy"
-    case Sulfite = "Sulfite"
-    case TreeNut = "TreeNut"
-    case Wheat = "Wheat"
-    case Egg = "Egg"
+    case Diary
+    case Gluten
+    case Peanut
+    case Seafood
+    case Sesame
+    case Soy
+    case Sulfite
+    case TreeNut
+    case Wheat
+    case Egg
 }
 
-public enum Diet: String
+public enum Diet
 {
-    case LactoVegetarian = "LactoVegetarian"
-    case OvoVegetarian = "OvoVegetarian"
-    case Pescetarian = "Pescetarian"
-    case Vegen = "Vegen"
-    case Vegetarian = "Vegetarian"
+    case LactoVegetarian
+    case OvoVegetarian
+    case Pescetarian
+    case Vegen
+    case Vegetarian
 }
 
-public enum Course: String
+public enum Course
 {
-    case Main = "Main"
-    case Desserts = "Desserts"
-    case Sides = "Sides"
-    case Lunch = "Lunch"
-    case Appetizers = "Appetizers"
-    case Salads = "Salads"
-    case Breads = "Breads"
-    case Breakfast = "Breakfast"
-    case Soups = "Soups"
-    case Beverages = "Beverages"
-    case Condiments = "Condiments"
-    case Cocktails = "Cocktails"
+    case Main
+    case Desserts
+    case Sides
+    case Lunch
+    case Appetizers
+    case Salads
+    case Breads
+    case Breakfast
+    case Soups
+    case Beverages
+    case Condiments
+    case Cocktails
 }
 
-public enum Holiday: String
+public enum Holiday
 {
-    case Christmas = "Christmas"
-    case Summer = "Summer"
-    case Thanksgiving = "Thanksgiving"
-    case NewYear = "NewYear"
-    case SuperBowl = "SuperBowl"
-    case Halloween = "Halloween"
-    case Hanukkah = "Hanukkah"
-    case FourthOfJuly = "FourthOfJuly"
+    case Christmas
+    case Summer
+    case Thanksgiving
+    case NewYear
+    case SuperBowl
+    case Halloween
+    case Hanukkah
+    case FourthOfJuly
 }
 
 /*
