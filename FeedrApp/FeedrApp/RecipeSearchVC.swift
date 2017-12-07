@@ -363,8 +363,8 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
                 {
                     while sqlite3_step(selectStatement) == SQLITE_ROW
                     {
-                        let queryResultCol1 = sqlite3_column_text(selectStatement, 0)
-                        aid = String(cString: queryResultCol1!)
+                        let queryResultCol = sqlite3_column_text(selectStatement, 2)
+                        aid = String(cString: queryResultCol!)
                         
                         allergyIDs.append(Int(aid)!)
                     }
@@ -382,9 +382,6 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
         {
             convertToEnum(allergyName: allergyName)
         }
-        
-        print(allergyNames)
-        print(userAllergyEnums)
     }
     
     func convertToEnum(allergyName: String)

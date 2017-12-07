@@ -124,7 +124,7 @@ class UserProfileVC: UIViewController
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Default action"), style: .cancel, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
     }

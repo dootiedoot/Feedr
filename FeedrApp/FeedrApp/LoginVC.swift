@@ -54,7 +54,7 @@ class LoginVC: UIViewController
                 sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil)
                 if sqlite3_step(statement) == SQLITE_DONE
                 {
-                    print("Value Inserted")
+                    //print("Value Inserted")
                 }
                 else
                 {
@@ -63,6 +63,15 @@ class LoginVC: UIViewController
                 sqlite3_finalize(statement)
             }
         }
+    }
+    
+    func showAlert(title: String, message: String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Default action"), style: .cancel, handler: { _ in
+            //self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func btn_login(_ sender: Any)
@@ -88,6 +97,10 @@ class LoginVC: UIViewController
                     print("Recipe found in user favorites: \(recipe.name)")
                 }
             }
+        }
+        else
+        {
+            showAlert(title: "Login Failed", message: "Incorrect Credentials")
         }
     }
 
@@ -162,7 +175,7 @@ class LoginVC: UIViewController
             let flags = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
             let sqlStatus = sqlite3_open_v2(dbURl?.absoluteString?.cString(using: String.Encoding.utf8), &db, flags, nil)
             
-            if sqlStatus == SQLITE_OK
+            if sqlStatus == SQLITE_OK	
             {
                 let errMsg: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>? =  nil
                 

@@ -819,6 +819,7 @@ class YummlyAPI
         }
         
         let url = URL(string: query)
+		
         URLSession.shared.dataTask(with: url!)
 		{ (data, response, error) in
             

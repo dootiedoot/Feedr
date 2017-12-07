@@ -8,23 +8,25 @@
 
 import UIKit
 
-class ProfileTabVC: UIViewController
+class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate
 {
     @IBOutlet weak var profilepic: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     
-    @IBOutlet weak var switchGluten: UISwitch!
-    @IBOutlet weak var switchPeanuts: UISwitch!
-    @IBOutlet weak var switchSeafood: UISwitch!
-    @IBOutlet weak var switchSeasame: UISwitch!
+    @IBOutlet weak var imgView: UIImageView!
+
     @IBOutlet weak var SwitchSoy: UISwitch!
+    @IBOutlet weak var switchSesame: UISwitch!
+    @IBOutlet weak var switchGluten: UISwitch!
+    @IBOutlet weak var switchSeafood: UISwitch!
+    @IBOutlet weak var switchPeanuts: UISwitch!
     @IBOutlet weak var SwitchDairy: UISwitch!
     @IBOutlet weak var SwitchEgg: UISwitch!
-    @IBOutlet weak var SwitchTreenut: UISwitch!
     @IBOutlet weak var SwitchSulfite: UISwitch!
+    @IBOutlet weak var SwitchTreenut: UISwitch!
     @IBOutlet weak var SwitchWheat: UISwitch!
     
-    var listAllergy = [String]()
+    let picker = UIImagePickerController()
     
     //  when the user taps the logout button...
     @IBAction func OnLogoutBtn(_ sender: UIButton)
@@ -33,7 +35,15 @@ class ProfileTabVC: UIViewController
         FavoritesVC.favRecipes = [Recipe]()
     }
     
-    @IBAction func switch_gluten(_ sender: UISwitch)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+    {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imgView.contentMode = UIViewContentMode.scaleAspectFit
+        imgView.image = chosenImage
+        dismiss(animated:true, completion: nil)
+    }
+    
+    @IBAction func switch_Gluten(_ sender: UISwitch)
     {
         let item = findInAllergy(allergy_name: "Gluten")
         if sender.isOn
@@ -44,21 +54,10 @@ class ProfileTabVC: UIViewController
         {
             removeAsAllergies(uid: User.curr_user_id, aid: item)
         }
-        
-//        let allergyFound = self.listAllergy.contains(where: {
-//            $0.range(of: "Gluten", options: .caseInsensitive) != nil
-//        })
-//        if allergyFound == true
-//        {
-//            sender.setOn(true, animated: true)
-//        }
-//        else
-//        {
-//
-//        }
     }
     
-    @IBAction func switch_peanut(_ sender: UISwitch) {
+    @IBAction func switch_Peanut(_ sender: UISwitch)
+    {
         let item = findInAllergy(allergy_name: "Peanut")
         if sender.isOn
         {
@@ -69,7 +68,8 @@ class ProfileTabVC: UIViewController
         }
     }
     
-    @IBAction func switch_seafood(_ sender: UISwitch) {
+    @IBAction func switch_Seafood(_ sender: UISwitch)
+    {
         let item = findInAllergy(allergy_name: "Seafood")
         if sender.isOn
         {
@@ -80,7 +80,8 @@ class ProfileTabVC: UIViewController
         }
     }
     
-    @IBAction func switch_sesame(_ sender: UISwitch) {
+    @IBAction func switch_sesame(_ sender: UISwitch)
+    {
         let item = findInAllergy(allergy_name: "Sesame")
         if sender.isOn
         {
@@ -160,16 +161,70 @@ class ProfileTabVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        imgView.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
-        print("Allergy is ->")
-        print(self.allergy)
+//        print("Allergy is ->")
+//        print(self.listAllergy)
         profileName.text = "Hello, " + User.curr_user_name
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(popUpOnTap(gesture:)))
+        tap.numberOfTapsRequired = 1
+        imgView.addGestureRecognizer(tap)
         
         profilepic.layer.borderWidth = 2
         profilepic.layer.masksToBounds = false
         profilepic.layer.borderColor = UIColor.black.cgColor
         profilepic.layer.cornerRadius = profilepic.frame.height/2
         profilepic.clipsToBounds = true
+    }
+    
+    func openCamera()
+    {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            picker.cameraCaptureMode = .photo
+            present(picker,animated: true,completion: nil)
+        }
+        else {
+            let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style:.default, handler: nil)
+            alertVC.addAction(okAction)
+            present(alertVC, animated: true, completion: nil)
+        }
+    }
+    
+    func loadImageFromGallery()
+    {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            picker.allowsEditing = false
+            picker.sourceType = .photoLibrary
+            present(picker, animated: true, completion: nil)
+        }
+        else {
+            let alertVC = UIAlertController(title: "No Photo Library", message: "Sorry, this device does not have a supported photo library", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style:.default, handler: nil)
+            alertVC.addAction(okAction)
+            present(alertVC, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func popUpOnTap(gesture: UITapGestureRecognizer)
+    {
+        if gesture.state == .ended
+        {
+            let alert = UIAlertController(title: "Picker", message: "Choose One", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Open Camera", comment: "Default action"), style: .default, handler: { _ in
+                self.openCamera()
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Open Gallery", comment: "Default action"), style: .default, handler: { _ in
+                self.loadImageFromGallery()
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     enum stringToEnum: String
@@ -195,14 +250,16 @@ class ProfileTabVC: UIViewController
     
     override func viewWillAppear(_ animated: Bool)
     {
-        listAllergy = findUserAllergies(uid: User.curr_user_id)
+        print("Will Appear as User \(User.curr_user_id)")
+        var listAllergy = findUserAllergies(uid: User.curr_user_id)
+        print(listAllergy)
         for allergy in listAllergy
         {
-            let allergyFound = self.listAllergy.contains(where: {
+            let allergyFound = listAllergy.contains(where: {
                 $0.range(of: allergy, options: .caseInsensitive) != nil
             })
             
-            if allergyFound == true		
+            if allergyFound == true
             {
                 if allergy == "Gluten"
                 {
@@ -211,47 +268,47 @@ class ProfileTabVC: UIViewController
                 else
                 if allergy == "Peanut"
                 {
-                    switchGluten.setOn(true, animated: true)
+                    switchPeanuts.setOn(true, animated: true)
                 }
                 else
                 if allergy == "Seafood"
                 {
-                    switchGluten.setOn(true, animated: true)
+                    switchSeafood.setOn(true, animated: true)
                 }
                 else
                 if allergy == "Sesame"
                 {
-                    switchGluten.setOn(true, animated: true)
+                    switchSesame.setOn(true, animated: true)
                 }
                 else
                 if allergy == "Soy"
                 {
-                    switchGluten.setOn(true, animated: true)
+                    SwitchSoy.setOn(true, animated: true)
                 }
                 else
                 if allergy == "Diary"
                 {
-                    switchGluten.setOn(true, animated: true)
+                    SwitchDairy.setOn(true, animated: true)
                 }
                 else
                 if allergy == "Egg"
                 {
-                    switchGluten.setOn(true, animated: true)
+                    SwitchEgg.setOn(true, animated: true)
                 }
                 else
                 if allergy == "Sulfite"
                 {
-                switchGluten.setOn(true, animated: true)
+                    SwitchSulfite.setOn(true, animated: true)
                 }
                 else
                 if allergy == "TreeNut"
                 {
-                    switchGluten.setOn(true, animated: true)
+                    SwitchTreenut.setOn(true, animated: true)
                 }
                 else
                 if allergy == "Wheat"
                 {
-                    switchGluten.setOn(true, animated: true)
+                    SwitchWheat.setOn(true, animated: true)
                 }
             }
         }
@@ -296,6 +353,7 @@ class ProfileTabVC: UIViewController
                 sqlite3_finalize(statement)
             }
         }
+        print(findUserAllergies(uid: User.curr_user_id))
     }
     
     func removeAsAllergies(uid:Int, aid:Int)
@@ -339,7 +397,6 @@ class ProfileTabVC: UIViewController
         }
     }
     
-    
     func findAllergyName(allergy_id: Int) -> String
     {
         let fileManager =  FileManager.default
@@ -375,14 +432,12 @@ class ProfileTabVC: UIViewController
                     {
                         let queryResultCol1 = sqlite3_column_text(selectStatement, 1)
                         let aname = String(cString: queryResultCol1!)
-                        
                         allergyName = aname
                     }
                 }
                 sqlite3_finalize(selectStatement)
             }
         }
-        
         return allergyName
     }
     
@@ -415,15 +470,15 @@ class ProfileTabVC: UIViewController
             if sqlStatus == SQLITE_OK
             {
                 var selectStatement : OpaquePointer? = nil
-                let selectQuery = "SELECT * FROM userallergies WHERE user_id = '\(uid)';"
+                let selectQuery = "SELECT * FROM userallergies WHERE user_id = '\(uid)'"
                 
                 if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
                 {
                     while sqlite3_step(selectStatement) == SQLITE_ROW
                     {
-                        let queryResultCol1 = sqlite3_column_text(selectStatement, 0)
-                        aid = String(cString: queryResultCol1!)
-                        
+                        let queryResultCol = sqlite3_column_text(selectStatement, 2)
+                        aid = String(cString: queryResultCol!)
+        
                         let allergyName = findAllergyName(allergy_id: Int(aid)!)
                         userAllergies.append(allergyName)
                     }
@@ -431,7 +486,6 @@ class ProfileTabVC: UIViewController
                 sqlite3_finalize(selectStatement)
             }
         }
-    
         return userAllergies
     }
     
