@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,16 +28,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-hk-yZJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="  Type text here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-Jd-ayv">
-                                            <rect key="frame" x="0.0" y="0.0" width="275" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="275" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9w-t8-tKQ" customClass="CustomButton" customModule="FeedrApp" customModuleProvider="target">
-                                            <rect key="frame" x="275" y="0.0" width="100" height="45"/>
+                                            <rect key="frame" x="275" y="0.0" width="100" height="30"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.4959332191780822" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="tEU-Iw-kNa"/>
@@ -65,10 +64,10 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zgq-gg-0oq">
-                                    <rect key="frame" x="0.0" y="46" width="375" height="28"/>
+                                    <rect key="frame" x="0.0" y="31" width="375" height="70"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-7i-ppE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
+                                            <rect key="frame" x="0.0" y="21" width="375" height="29"/>
                                             <segments>
                                                 <segment title="Browse"/>
                                                 <segment title="Recomended"/>
@@ -262,14 +261,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-nk-y48">
-                                                        <rect key="frame" x="0.0" y="805" width="269" height="195"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-nk-y48">
+                                                        <rect key="frame" x="0.0" y="805" width="375" height="195"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
-                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="150" id="oI8-eD-AFc"/>
+                                                                    <constraint firstAttribute="width" constant="180" id="SRv-xd-oPe"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Cook">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -278,11 +277,20 @@
                                                                     <action selector="btn_RecipeWebsite:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="ews-ew-OxE"/>
                                                                 </connections>
                                                             </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-DQ-jvv" userLabel="Lbl_Blank">
+                                                                <rect key="frame" x="180" y="0.0" width="15" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="e6H-0k-lmO"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite" colorLabel="IBBuiltInLabel-Blue">
-                                                                <rect key="frame" x="160" y="0.0" width="109" height="30"/>
+                                                                <rect key="frame" x="195" y="0.0" width="180" height="30"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="WTt-X7-f7T"/>
+                                                                    <constraint firstAttribute="width" constant="180" id="hPs-7E-sNv"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Add to favorites">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -298,6 +306,7 @@
                                                     <constraint firstItem="BpB-FX-Ieq" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="1nM-71-1hm"/>
                                                     <constraint firstItem="YPJ-mg-Who" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="3Vx-fE-Qje"/>
                                                     <constraint firstAttribute="trailing" secondItem="BpB-FX-Ieq" secondAttribute="trailing" id="6T3-YF-LlW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="JTQ-nk-y48" secondAttribute="trailing" id="7rQ-8N-Agv"/>
                                                     <constraint firstAttribute="trailing" secondItem="ieL-qQ-F8M" secondAttribute="trailing" id="9um-Jt-FGp"/>
                                                     <constraint firstItem="bk7-m0-pEJ" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="AyO-o5-YrF"/>
                                                     <constraint firstAttribute="trailing" secondItem="bk7-m0-pEJ" secondAttribute="trailing" id="GUW-G6-8Im"/>
@@ -312,6 +321,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="qal-Xc-x6y" secondAttribute="trailing" id="mkC-LS-HKg"/>
                                                     <constraint firstItem="gOx-NN-1dE" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="qo7-Uu-Ofx"/>
                                                     <constraint firstAttribute="trailing" secondItem="gOx-NN-1dE" secondAttribute="trailing" id="rMo-AN-m87"/>
+                                                    <constraint firstItem="JTQ-nk-y48" firstAttribute="leading" secondItem="vDl-pT-b6f" secondAttribute="leading" id="u3I-FM-seH"/>
                                                     <constraint firstAttribute="trailing" secondItem="0gw-Jw-2Po" secondAttribute="trailing" id="vwx-G4-Re6"/>
                                                 </constraints>
                                             </stackView>
@@ -795,7 +805,7 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6F7-04-f23">
-                                <rect key="frame" x="113" y="154" width="150" height="359"/>
+                                <rect key="frame" x="112.5" y="154" width="150" height="359"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOo-QS-Q7W">
                                         <rect key="frame" x="22" y="0.0" width="106.5" height="36"/>
@@ -1124,10 +1134,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31l-Xr-DL6">
-                                <rect key="frame" x="163" y="562" width="49" height="45"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31l-Xr-DL6">
+                                <rect key="frame" x="163" y="563" width="49" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="31l-Xr-DL6" secondAttribute="height" multiplier="23:15" id="qDn-3b-Em7"/>
+                                    <constraint firstAttribute="height" constant="45" id="9QK-XS-bTI"/>
+                                    <constraint firstAttribute="width" constant="49" id="SKc-JB-o9P"/>
                                 </constraints>
                                 <state key="normal" image="exit">
                                     <color key="titleColor" red="1" green="0.10258613905456671" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1352,7 +1363,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="baY-bm-0wD"/>
-        <segue reference="31c-lk-x4b"/>
+        <segue reference="5Qz-oB-5fk"/>
         <segue reference="qdG-Tv-zli"/>
     </inferredMetricsTieBreakers>
 </document>
