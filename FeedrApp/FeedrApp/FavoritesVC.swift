@@ -317,7 +317,7 @@ class FavoritesVC: UITableViewController
 		//  Initialize the variables to tags
 		let img_recipeThumbnail = cell.viewWithTag(1) as! UIImageView
 		let lbl_recipeName = cell.viewWithTag(2) as! UILabel
-		//let lbl_cookingTime = cell.viewWithTag(3) as! UILabel
+        let lbl_cookingTime = cell.viewWithTag(3) as! UILabel
 		
 		//  Assign variables to actual values
 		//  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
@@ -344,7 +344,7 @@ class FavoritesVC: UITableViewController
 		lbl_recipeName.text = FavoritesVC.favRecipes[indexPath.row].name
 	
         //  Cooking Time
-		//lbl_cookingTime.text = FavoritesVC.favRecipes[indexPath.row].GetCookingTime()
+        lbl_cookingTime.text = FavoritesVC.favRecipes[indexPath.row].GetCookingTime()
 		
 		return cell
 	}
