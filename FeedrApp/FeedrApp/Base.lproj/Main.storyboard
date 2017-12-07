@@ -262,31 +262,31 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-nk-y48">
-                                                        <rect key="frame" x="0.0" y="805" width="375" height="195"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-nk-y48">
+                                                        <rect key="frame" x="0.0" y="805" width="269" height="195"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="oI8-eD-AFc"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Cook"/>
+                                                                <state key="normal" title="Cook">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
                                                                 <connections>
                                                                     <action selector="btn_RecipeWebsite:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="ews-ew-OxE"/>
                                                                 </connections>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xh-Kh-1dv" userLabel="Lbl_Blank">
-                                                                <rect key="frame" x="150" y="0.0" width="225" height="195"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite" colorLabel="IBBuiltInLabel-Blue">
-                                                                <rect key="frame" x="375" y="0.0" width="0.0" height="30"/>
+                                                                <rect key="frame" x="160" y="0.0" width="109" height="30"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="WTt-X7-f7T"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Add to favorites"/>
+                                                                <state key="normal" title="Add to favorites">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
                                                                 <connections>
                                                                     <action selector="OnFavoriteRecipe:" destination="Xvd-cF-ap2" eventType="touchUpInside" id="m0z-TL-UqM"/>
                                                                 </connections>
@@ -350,6 +350,7 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="btn_Favorite" destination="IZE-eV-tHP" id="HXA-wz-9Iw"/>
+                        <outlet property="btn_cook" destination="vYq-Rb-LUs" id="fhQ-eJ-Rs8"/>
                         <outlet property="flavorChart" destination="Nnd-rO-c5w" id="aDR-uS-il8"/>
                         <outlet property="img_recipeThumbnail" destination="BpB-FX-Ieq" id="oyi-Qg-TM0"/>
                         <outlet property="lbl_cookingTime" destination="738-Ka-8ls" id="zNj-Fd-hpE"/>

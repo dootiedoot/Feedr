@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate
+class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     @IBOutlet weak var profilepic: UIImageView!
     @IBOutlet weak var profileName: UILabel!
@@ -37,8 +37,10 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
+        print("Selecting an Image")
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imgView.contentMode = UIViewContentMode.scaleAspectFit
+        print(chosenImage.imageOrientation)
         imgView.image = chosenImage
         dismiss(animated:true, completion: nil)
     }
@@ -167,6 +169,7 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate
 //        print(self.listAllergy)
         profileName.text = "Hello, " + User.curr_user_name
         
+        picker.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(popUpOnTap(gesture:)))
         tap.numberOfTapsRequired = 1
         imgView.addGestureRecognizer(tap)
@@ -250,7 +253,6 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate
     
     override func viewWillAppear(_ animated: Bool)
     {
-        print("Will Appear as User \(User.curr_user_id)")
         var listAllergy = findUserAllergies(uid: User.curr_user_id)
         print(listAllergy)
         for allergy in listAllergy

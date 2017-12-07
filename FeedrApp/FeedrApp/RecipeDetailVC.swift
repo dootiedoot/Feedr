@@ -29,7 +29,8 @@ class RecipeDetailVC: UIViewController
 	@IBOutlet weak var lbl_cuisines: UILabel!
 	@IBOutlet weak var lbl_ratings: UILabel!
 	@IBOutlet weak var btn_Favorite: UIButton!
-	
+    @IBOutlet weak var btn_cook: UIButton!
+    
 	@IBAction func btn_RecipeWebsite(_ sender: Any)
     {
         self.performSegue(withIdentifier: "RecipeWebsite", sender: self)
@@ -38,7 +39,8 @@ class RecipeDetailVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        btn_Favorite.layer.cornerRadius = 4
+        btn_cook.layer.cornerRadius = 4
         // Do any additional setup after loading the view.
         print("\(this_user_id) \(recipeID)")
 		PopulateView()
