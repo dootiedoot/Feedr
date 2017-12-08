@@ -13,10 +13,12 @@ class RecipeDetailVC: UIViewController
 {
     //  CLASS VARIABLES
 	var recipeID : String = ""
+    var ratingImageName: String = ""
 	private var recipe = Recipe()
 	var this_user_id = -1
     
     @IBOutlet weak var flavorChart: DDSpiderChartView!
+    @IBOutlet weak var Image_rating: UIImageView!
     //  OUTLET VARIABLES
 	@IBOutlet weak var img_recipeThumbnail: UIImageView!
 	@IBOutlet weak var lbl_title: UINavigationItem!
@@ -27,7 +29,6 @@ class RecipeDetailVC: UIViewController
 	@IBOutlet weak var lbl_holidays: UILabel!
 	@IBOutlet weak var lbl_courses: UILabel!
 	@IBOutlet weak var lbl_cuisines: UILabel!
-	@IBOutlet weak var lbl_ratings: UILabel!
 	@IBOutlet weak var btn_Favorite: UIButton!
     @IBOutlet weak var btn_cook: UIButton!
     
@@ -137,7 +138,11 @@ class RecipeDetailVC: UIViewController
 				self.lbl_servings.text = "Servings: "+String(self.recipe.numberOfServings!)
 				
 				//	Display rating
-				self.lbl_ratings.text = "Rating: "+String(self.recipe.rating!)
+				//self.lbl_ratings.text = "Rating: "+String(self.recipe.rating!)
+                
+                self.ratingImageName = String(self.recipe.rating!)
+                self.Image_rating.image = UIImage(named:self.ratingImageName)
+                
 				
 				//	Display cuisines
 				var cuisinesLine = "Cuisine(s)"
