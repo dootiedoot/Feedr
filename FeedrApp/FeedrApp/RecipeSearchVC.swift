@@ -62,7 +62,7 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
                 allowedDiet: [],
                 allowedCuisines: [],
                 excludedCuisines: [],
-                allowedCourses: [],
+                allowedCourses: [Course.Appetizers],
                 excludeCourses: [],
                 allowedHoliday: [],
                 excludeHoliday: [],

@@ -696,11 +696,11 @@ class YummlyAPI
                 case Course.Breads:
                     query += "course^course-Breads"
                 case Course.Breakfast:
-                    query += "course^course-Breakfast and Brunch"
+                    query += "course^course-Breakfast%20and%20Brunch"
                 case Course.Cocktails:
                     query += "course^course-Cocktails"
                 case Course.Condiments:
-                    query += "course^course-Condiments and Sauces"
+                    query += "course^course-Condiments%20and%20Sauces"
                 case Course.Desserts:
                     query += "course^course-Desserts"
                 case Course.Lunch:
@@ -732,11 +732,11 @@ class YummlyAPI
                 case Course.Breads:
                     query += "course^course-Breads"
                 case Course.Breakfast:
-                    query += "course^course-Breakfast and Brunch"
+                    query += "course^course-Breakfast%20an%20Brunch"
                 case Course.Cocktails:
                     query += "course^course-Cocktails"
                 case Course.Condiments:
-                    query += "course^course-Condiments and Sauces"
+                    query += "course^course-Condiments%20and%20Sauces"
                 case Course.Desserts:
                     query += "course^course-Desserts"
                 case Course.Lunch:
@@ -817,7 +817,9 @@ class YummlyAPI
         {
             query += "&maxResult=" + String(maxResults!) //+ "0&start=0"
         }
-        
+		
+		print("Attempting query search: \(query)")
+		
         let url = URL(string: query)
 		
         URLSession.shared.dataTask(with: url!)
