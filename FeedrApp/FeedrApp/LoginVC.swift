@@ -129,6 +129,7 @@ class LoginVC: UIViewController
         createTables()
         insertValuesIntoDB()
         self.hideKeyboard()
+		
     }
     
     func insertValuesIntoDB()

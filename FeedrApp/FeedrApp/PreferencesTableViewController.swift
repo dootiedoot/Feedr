@@ -377,11 +377,12 @@ class PreferencesTableViewController: UITableViewController
                 row2 = String(tagName[tagName.index(tagName.startIndex, offsetBy:2)])
                 row = Int(row1 + row2)!
             }
-            
-            print(sender.tag)
+			
+			//	COMMENTED OUT BY CHAD. It was spamming console when scrolling.
+            /*print(sender.tag)
             print(sec)
             print(row)
-            print(self.items[sec][row])
+            print(self.items[sec][row])*/
             
             if sec == 0
             {
@@ -392,12 +393,12 @@ class PreferencesTableViewController: UITableViewController
             if sec == 1
             {
                 AddCourseToList(courseName: self.items[sec][row])
-                  print(PreferencesTableViewController.listCourse)
+				print(PreferencesTableViewController.listCourse)
             }
             else
             {
                 AddHolidayToList(holidayName: self.items[sec][row])
-                  print(PreferencesTableViewController.listHoliday)
+				print(PreferencesTableViewController.listHoliday)
             }
         }
     }
@@ -428,7 +429,7 @@ class PreferencesTableViewController: UITableViewController
         switch_choice.restorationIdentifier = tagName
         switch_choice.addTarget(self, action: #selector(self.switchValueDidChange), for: .valueChanged)
         
-        print(tagName + lbl_filtername.text!)
+        //print(tagName + lbl_filtername.text!)
         let cuisineFound = PreferencesTableViewController.listCuisine.contains(where: {
             $0.range(of: itemName, options: .caseInsensitive) != nil
         })

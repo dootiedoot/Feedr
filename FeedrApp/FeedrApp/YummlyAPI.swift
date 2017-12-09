@@ -9,9 +9,9 @@
 /*
      Example of how to use the global yummlyAPI search function.
  
-     Call anywhere with: YummlyAPI.GetSearch(_Parameters_)
- 
-     Parameters to fill are:
+     Call anywhere with: YummlyAPI.GetSearch(_Parameters_
+https://api.yummly.com/v1/api/recipes?_app_id=51013d4c&_app_key=0549dc2605e77741e0feb12736c65087&q=egg&requirePictures=true&allowedCourse[]=course^course-Appetizers&maxResult=50
+https://api.yummly.com/v1/api/recipes?_app_id=51013d4c&_app_key=0549dc2605e77741e0feb12736c65087&q=egg&requirePictures=true&allowedCourse[]=course^course-Appetizers&maxResult=50     Parameters to fill are:
  
          search: String                         //  General string to search with. Examples: "Soup", "Garlic", "Chocolate Cake" etc. USE SINGLE SPACE ONLY.
          requirePictures: Bool                  //  should the search only return results with pictures? (Most likey will be using True all the time)
@@ -818,9 +818,9 @@ class YummlyAPI
             query += "&maxResult=" + String(maxResults!) //+ "0&start=0"
         }
 		
-		print("Attempting query search: \(query)")
+		//print("Attempting query search: \(query)")
 		
-        let url = URL(string: query)
+		let url = URL(string: query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
 		
         URLSession.shared.dataTask(with: url!)
 		{ (data, response, error) in
