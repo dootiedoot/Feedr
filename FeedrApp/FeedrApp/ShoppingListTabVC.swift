@@ -31,18 +31,15 @@ class ShoppingListTabVC: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool)
     {
-        /*let favRecipeIDs = FavoritesVC.GetFavoriteRecipeIDs()
-        print("Fav Recipe IDs are -> ")
-        print(favRecipeIDs)
-
-        for rid in favRecipeIDs
-        {
-            print(favRecipes.count)
-            YummlyAPI.GetRecipe(recipeID: rid) { recipe in
-                //self.favRecipes.append(recipe)
-                self.favRecipes.append(recipe)
-            }
-        }*/
+        PopulateTable()
+    }
+    
+    func PopulateTable()
+    {
+        DispatchQueue.main.async
+            {
+                self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -81,6 +78,7 @@ class ShoppingListTabVC: UITableViewController {
                     }
             }).resume()
         }
+        lbl_recipeName.text = FavoritesVC.favRecipes[indexPath.row].name
 
         return cell
     }
@@ -155,5 +153,4 @@ class ShoppingListTabVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
