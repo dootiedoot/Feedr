@@ -1018,10 +1018,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AAe-pa-Sqz">
-                                        <rect key="frame" x="39.5" y="175.5" width="296" height="175"/>
+                                        <rect key="frame" x="34.5" y="175.5" width="306" height="175"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Z4P-Bk-ufG">
-                                                <rect key="frame" x="0.0" y="0.0" width="143" height="175"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Z4P-Bk-ufG">
+                                                <rect key="frame" x="0.0" y="0.0" width="153" height="175"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FcB-7c-nkw">
                                                         <rect key="frame" x="0.0" y="0.0" width="49" height="175"/>
@@ -1064,7 +1064,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3jz-QX-Feb">
-                                                        <rect key="frame" x="79" y="0.0" width="64" height="175"/>
+                                                        <rect key="frame" x="89" y="0.0" width="64" height="175"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Glutten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHs-st-Est">
                                                                 <rect key="frame" x="0.0" y="0.0" width="64" height="29"/>
@@ -1101,7 +1101,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="muh-VY-l5p">
-                                                <rect key="frame" x="143" y="0.0" width="153" height="175"/>
+                                                <rect key="frame" x="153" y="0.0" width="153" height="175"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uXF-hZ-rMb">
                                                         <rect key="frame" x="0.0" y="0.0" width="49" height="175"/>

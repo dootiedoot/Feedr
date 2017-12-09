@@ -35,10 +35,6 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
         excludeCuisines = cuisine
         excludeCourses = course
         excludeHolidays = holiday
-        
-        print(excludeCuisines)
-        print(excludeCourses)
-        print(excludeHolidays)
     }
     
     @IBAction func selectFilter(_ sender: UIBarButtonItem)
