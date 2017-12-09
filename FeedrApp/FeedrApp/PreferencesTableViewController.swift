@@ -48,6 +48,7 @@ class PreferencesTableViewController: UITableViewController
     {
         
     }
+    
     override func viewWillDisappear(_ animated: Bool)
     {
         if delegate != nil
@@ -73,332 +74,354 @@ class PreferencesTableViewController: UITableViewController
     }
     
     
-    func AddCuisineToList(cuisineName: String)
+    func StringToEnumCuisine(cuisineName: String) -> Cuisine
     {
         if cuisineName == "American"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.American)
-            PreferencesTableViewController.listCuisine.append("American")
+            return Cuisine.American
         }
         else
         if cuisineName == "Asian"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Asian)
-            PreferencesTableViewController.listCuisine.append("Asian")
+          return Cuisine.Asian
         }
         else
         if cuisineName == "Barbecue"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Barbecue)
-            PreferencesTableViewController.listCuisine.append("Barbecue")
+          return Cuisine.Barbecue
         }
         else
         if cuisineName == "Cajun"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Cajun)
-            PreferencesTableViewController.listCuisine.append("Cajun")
+            return Cuisine.Cajun
         }
         else
         if cuisineName == "Chinese"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Chinese)
-            PreferencesTableViewController.listCuisine.append("Chinese")
+            return Cuisine.Chinese
         }
         else
         if cuisineName == "Cuban"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Cuban)
-            PreferencesTableViewController.listCuisine.append("Cuban")
+            return Cuisine.Cuban
         }
         else
         if cuisineName == "English"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.English)
-            PreferencesTableViewController.listCuisine.append("English")
+            return Cuisine.English
         }
         else
         if cuisineName == "French"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.French)
-            PreferencesTableViewController.listCuisine.append("French")
+            return Cuisine.French
         }
         else
         if cuisineName == "German"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.German)
-            PreferencesTableViewController.listCuisine.append("German")
+            return Cuisine.German
         }
         else
         if cuisineName == "Greek"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Greek)
-            PreferencesTableViewController.listCuisine.append("Greek")
+            return Cuisine.Greek
         }
         else
         if cuisineName == "Hawaiin"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Hawaiin)
-            PreferencesTableViewController.listCuisine.append("Hawaiin")
+            return Cuisine.Hawaiin
         }
         else
         if cuisineName == "Hungarian"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Hungarian)
-            PreferencesTableViewController.listCuisine.append("Hungarian")
+            return Cuisine.Hungarian
         }
         else
         if cuisineName == "Indian"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Indian)
-            PreferencesTableViewController.listCuisine.append("Indian")
+            return Cuisine.Indian
         }
         else
         if cuisineName == "Irish"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Irish)
-            PreferencesTableViewController.listCuisine.append("Irish")
+            return Cuisine.Irish
         }
         else
         if cuisineName == "Italian"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Italian)
-            PreferencesTableViewController.listCuisine.append("Italian")
+            return Cuisine.Italian
         }
         else
         if cuisineName == "Japanese"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Japanese)
-            PreferencesTableViewController.listCuisine.append("Japanese")
+            return Cuisine.Japanese
         }
         else
         if cuisineName == "Mediterranean"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Mediterranean)
-            PreferencesTableViewController.listCuisine.append("Mediterranean")
+            return Cuisine.Mediterranean
         }
         else
         if cuisineName == "Mexican"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Mexican)
-            PreferencesTableViewController.listCuisine.append("Mexican")
+            return Cuisine.Mexican
         }
         else
         if cuisineName == "Moroccan"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Moroccan)
-            PreferencesTableViewController.listCuisine.append("Moroccan")
+            return Cuisine.Moroccan
         }
         else
         if cuisineName == "Portugese"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Portugese)
-            PreferencesTableViewController.listCuisine.append("Portugese")
+            return Cuisine.Portugese
         }
         else
         if cuisineName == "Southern"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Southern)
-            PreferencesTableViewController.listCuisine.append("Southern")
+            return Cuisine.Southern
         }
         else
         if cuisineName == "Southwestern"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Southwestern)
-            PreferencesTableViewController.listCuisine.append("Southwestern")
+             return Cuisine.Southwestern
         }
         else
         if cuisineName == "Spanish"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Spanish)
-            PreferencesTableViewController.listCuisine.append("Spanish")
+            return Cuisine.Spanish
         }
         else
         if cuisineName == "Swedish"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Swedish)
-            PreferencesTableViewController.listCuisine.append("Swedish")
+              return Cuisine.Swedish
         }
         else
         if cuisineName == "Thai"
         {
-            PreferencesTableViewController.excludeCuisineList.append(Cuisine.Thai)
-            PreferencesTableViewController.listCuisine.append("Thai")
+              return Cuisine.Thai
         }
+        
+        return Cuisine.Thai
     }
     
-    func AddCourseToList(courseName: String)
+    func StringToEnumCourse(courseName: String) -> Course
     {
         if courseName == "Appetizers"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Appetizers)
-            PreferencesTableViewController.listCourse.append("Appetizers")
+            return Course.Appetizers
         }
         else
         if courseName == "Beverages"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Beverages)
-            PreferencesTableViewController.listCourse.append("Beverages")
+            return Course.Beverages
         }
         else
         if courseName == "Breads"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Breads)
-            PreferencesTableViewController.listCourse.append("Breads")
+            return Course.Breads
         }
         else
         if courseName == "Breakfast"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Breakfast)
-            PreferencesTableViewController.listCourse.append("Breakfast")
+            return Course.Breakfast
         }
         else
         if courseName == "Cocktails"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Cocktails)
-            PreferencesTableViewController.listCourse.append("Cocktails")
+            return Course.Cocktails
         }
         else
         if courseName == "Desserts"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Desserts)
-            PreferencesTableViewController.listCourse.append("Desserts")
+            return Course.Desserts
         }
         else
         if courseName == "Lunch"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Lunch)
-            PreferencesTableViewController.listCourse.append("Lunch")
+              return Course.Lunch
         }
         else
         if courseName == "Main"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Main)
-            PreferencesTableViewController.listCourse.append("Main")
+              return Course.Main
         }
         else
         if courseName == "Salads"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Salads)
-            PreferencesTableViewController.listCourse.append("Salads")
+            return Course.Salads
         }
         else
         if courseName == "Sides"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Sides)
-            PreferencesTableViewController.listCourse.append("Sides")
+            return Course.Sides
         }
         else
         if courseName == "Soups"
         {
-            PreferencesTableViewController.excludeCourseList.append(Course.Soups)
-            PreferencesTableViewController.listCourse.append("Soups")
+            return Course.Soups
         }
+        
+        return Course.Soups
     }
     
-    func AddHolidayToList(holidayName: String)
+    func StringToEnumHoliday(holidayName: String) -> Holiday
     {
         if holidayName == "Christmas"
         {
-            PreferencesTableViewController.excludeHolidayList.append(Holiday.Christmas)
-            PreferencesTableViewController.listHoliday.append("Christmas")
+            return Holiday.Christmas
         }
         else
         if holidayName == "FourthOfJuly"
         {
-            PreferencesTableViewController.excludeHolidayList.append(Holiday.FourthOfJuly)
-            PreferencesTableViewController.listHoliday.append("FourthOfJuly")
-
+            return Holiday.FourthOfJuly
         }
         else
         if holidayName == "Halloween"
         {
-            PreferencesTableViewController.excludeHolidayList.append(Holiday.Halloween)
-            PreferencesTableViewController.listHoliday.append("Halloween")
-
+            return Holiday.Halloween
         }
         else
         if holidayName == "Hanukkah"
         {
-            PreferencesTableViewController.excludeHolidayList.append(Holiday.Hanukkah)
-            PreferencesTableViewController.listHoliday.append("Hanukkah")
-
+             return Holiday.Hanukkah
         }
         else
         if holidayName == "NewYear"
         {
-            PreferencesTableViewController.excludeHolidayList.append(Holiday.NewYear)
-            PreferencesTableViewController.listHoliday.append("NewYear")
+             return Holiday.NewYear
         }
         else
         if holidayName == "Summer"
         {
-            PreferencesTableViewController.excludeHolidayList.append(Holiday.Summer)
-            PreferencesTableViewController.listHoliday.append("Summer")
-
+            return Holiday.Summer
         }
         else
         if holidayName == "SuperBowl"
         {
-            PreferencesTableViewController.excludeHolidayList.append(Holiday.SuperBowl)
-            PreferencesTableViewController.listHoliday.append("SuperBowl")
+            return Holiday.SuperBowl
         }
         else
         if holidayName == "Thanksgiving"
         {
-            PreferencesTableViewController.excludeHolidayList.append(Holiday.Thanksgiving)
-            PreferencesTableViewController.listHoliday.append("Thanksgiving")
+            return Holiday.Thanksgiving
         }
+        
+        return Holiday.Thanksgiving
+    }
+    
+    func RemoveCuisineFromList(item: String)
+    {
+        let itemEnum = StringToEnumCuisine(cuisineName: item)
+        if let index = PreferencesTableViewController.excludeCuisineList.index(of: itemEnum) {
+            PreferencesTableViewController.excludeCuisineList.remove(at: index)
+        }
+        
+        if let index = PreferencesTableViewController.listCuisine.index(of: item) {
+            PreferencesTableViewController.listCuisine.remove(at: index)
+        }
+    }
+    
+    func RemoveCourseFromList(item: String)
+    {
+        let itemEnum = StringToEnumCourse(courseName: item)
+        if let index = PreferencesTableViewController.excludeCourseList.index(of: itemEnum) {
+            PreferencesTableViewController.excludeCourseList.remove(at: index)
+        }
+        
+        if let index = PreferencesTableViewController.listCourse.index(of: item) {
+            PreferencesTableViewController.listCourse.remove(at: index)
+        }
+    }
+    
+    func RemoveHolidayFromList(item: String)
+    {
+        let itemEnum = StringToEnumHoliday(holidayName: item)
+        if let index = PreferencesTableViewController.excludeHolidayList.index(of: itemEnum) {
+            PreferencesTableViewController.excludeHolidayList.remove(at: index)
+        }
+        
+        if let index = PreferencesTableViewController.listHoliday.index(of: item) {
+            PreferencesTableViewController.listHoliday.remove(at: index)
+        }
+    }
+    
+    func AddCuisineToList(item: String)
+    {
+        let itemEnum = StringToEnumCuisine(cuisineName: item)
+        PreferencesTableViewController.excludeCuisineList.append(itemEnum)
+        PreferencesTableViewController.listCuisine.append(item)
+    }
+    
+    func AddCourseToList(item: String)
+    {
+        let itemEnum = StringToEnumCourse(courseName: item)
+        PreferencesTableViewController.excludeCourseList.append(itemEnum)
+        PreferencesTableViewController.listCourse.append(item)
+    }
+    
+    func AddHolidayToList(item: String)
+    {
+        let itemEnum = StringToEnumHoliday(holidayName: item)
+        PreferencesTableViewController.excludeHolidayList.append(itemEnum)
+        PreferencesTableViewController.listHoliday.append(item)
     }
     
     @objc func switchValueDidChange(sender:UISwitch!)
     {
+        let tagName = sender.restorationIdentifier!
+        
+        var sec = 0
+        var row = 0
+        var row1 = ""
+        var row2 = ""
+        
+        if tagName.count == 2
+        {
+            sec = Int(String(tagName[tagName.startIndex]))!
+            row = Int(String(tagName[tagName.index(tagName.startIndex, offsetBy:1)]))!
+        }
+        else
+        if tagName.count == 3
+        {
+            
+            sec = Int(String(tagName[tagName.startIndex]))!
+            row1 = String(tagName[tagName.index(tagName.startIndex, offsetBy:1)])
+            row2 = String(tagName[tagName.index(tagName.startIndex, offsetBy:2)])
+            row = Int(row1 + row2)!
+        }
+        
+        let itemName = self.items[sec][row]
+        
         if !sender.isOn
         {
-            print("Change")
-            var tagName = sender.restorationIdentifier!
-
-            var sec = 0
-            var row = 0
-            var row1 = ""
-            var row2 = ""
-            
-            if tagName.characters.count == 2
-            {
-                
-                sec = Int(String(tagName[tagName.startIndex]))!
-                row = Int(String(tagName[tagName.index(tagName.startIndex, offsetBy:1)]))!
-            }
-            else
-            if tagName.characters.count == 3
-            {
-              
-                sec = Int(String(tagName[tagName.startIndex]))!
-                row1 = String(tagName[tagName.index(tagName.startIndex, offsetBy:1)])
-                row2 = String(tagName[tagName.index(tagName.startIndex, offsetBy:2)])
-                row = Int(row1 + row2)!
-            }
-			
-			//	COMMENTED OUT BY CHAD. It was spamming console when scrolling.
-            /*print(sender.tag)
-            print(sec)
-            print(row)
-            print(self.items[sec][row])*/
-            
             if sec == 0
             {
-                 AddCuisineToList(cuisineName: self.items[sec][row])
-                    print(PreferencesTableViewController.listCuisine)
+                AddCuisineToList(item: itemName)
             }
             else
             if sec == 1
             {
-                AddCourseToList(courseName: self.items[sec][row])
-				print(PreferencesTableViewController.listCourse)
+                AddCourseToList(item: itemName)
             }
             else
             {
-                AddHolidayToList(holidayName: self.items[sec][row])
-				print(PreferencesTableViewController.listHoliday)
+                AddHolidayToList(item: itemName)
+            }
+        }
+        else
+        {
+            if sec == 0
+            {
+                RemoveCuisineFromList(item: itemName)
+            }
+            else
+            if sec == 1
+            {
+                RemoveCourseFromList(item: itemName)
+            }
+            else
+            {
+                RemoveHolidayFromList(item: itemName)
             }
         }
     }
@@ -422,9 +445,9 @@ class PreferencesTableViewController: UITableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let lbl_filtername = cell.viewWithTag(1) as! UILabel
         let switch_choice = cell.viewWithTag(2) as! UISwitch
-        var tagName = String(indexPath.section) + String(indexPath.row)
+        let tagName = String(indexPath.section) + String(indexPath.row)
         
-        var itemName = self.items[indexPath.section][indexPath.row]
+        let itemName = self.items[indexPath.section][indexPath.row]
         lbl_filtername.text = itemName
         switch_choice.restorationIdentifier = tagName
         switch_choice.addTarget(self, action: #selector(self.switchValueDidChange), for: .valueChanged)
