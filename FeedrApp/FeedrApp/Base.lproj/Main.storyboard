@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bPk-3Y-F9H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bPk-3Y-F9H">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -29,16 +29,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-hk-yZJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50.333333333333336"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="39"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="  Type text here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-Jd-ayv">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="50.333333333333336"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="39"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9w-t8-tKQ" customClass="CustomButton" customModule="FeedrApp" customModuleProvider="target">
-                                            <rect key="frame" x="314" y="0.0" width="100" height="50.333333333333336"/>
+                                            <rect key="frame" x="314" y="0.0" width="100" height="39"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.4959332191780822" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="tEU-Iw-kNa"/>
@@ -65,10 +65,10 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dah-vx-aQC">
-                                    <rect key="frame" x="0.0" y="50.333333333333329" width="414" height="28"/>
+                                    <rect key="frame" x="0.0" y="39" width="414" height="30"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-7i-ppE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <segments>
                                                 <segment title="Browse"/>
@@ -94,7 +94,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gT3-w3-AZ7">
-                                            <rect key="frame" x="0.0" y="0.0" width="398" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="120"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6q8-iA-jXi">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -104,17 +104,17 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kpl-2M-rOl">
-                                                    <rect key="frame" x="140" y="0.0" width="258" height="120"/>
+                                                    <rect key="frame" x="140" y="0.0" width="234" height="120"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_RecipeName" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t86-Al-T5s">
-                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="88"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="234" height="88"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bET-y0-jER">
-                                                            <rect key="frame" x="0.0" y="88" width="258" height="32"/>
+                                                            <rect key="frame" x="0.0" y="88" width="234" height="32"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cookingTimer" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCD-9i-vbQ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -124,7 +124,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl_CookTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nh8-De-7Bo">
-                                                                    <rect key="frame" x="39" y="0.0" width="219" height="32"/>
+                                                                    <rect key="frame" x="39" y="0.0" width="195" height="32"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -294,7 +294,7 @@
                                                         <rect key="frame" x="0.0" y="872.33333333333337" width="375" height="127.66666666666663"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
-                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="180" id="SRv-xd-oPe"/>
@@ -307,7 +307,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-DQ-jvv" userLabel="Lbl_Blank">
-                                                                <rect key="frame" x="180" y="0.0" width="86" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="159" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="e6H-0k-lmO"/>
                                                                 </constraints>
@@ -316,7 +316,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite" colorLabel="IBBuiltInLabel-Blue">
-                                                                <rect key="frame" x="266" y="0.0" width="0.0" height="30"/>
+                                                                <rect key="frame" x="195" y="0.0" width="180" height="30"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="180" id="hPs-7E-sNv"/>
@@ -1263,13 +1263,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Jnp-6Z-4re">
-                                            <rect key="frame" x="28" y="9.6666666666666643" width="358" height="31"/>
+                                            <rect key="frame" x="40" y="9.6666666666666643" width="334" height="31"/>
                                             <subviews>
                                                 <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZ0-eo-Nki">
                                                     <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aF-IX-Mx3">
-                                                    <rect key="frame" x="79" y="0.0" width="279" height="31"/>
+                                                    <rect key="frame" x="79" y="0.0" width="255" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1353,11 +1353,11 @@
             </objects>
             <point key="canvasLocation" x="758" y="0.0"/>
         </scene>
-        <!--Home-->
+        <!--Search-->
         <scene sceneID="gUe-pH-8AA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eeJ-Cs-xIT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="WUe-vj-5yW"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="WUe-vj-5yW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ccn-lZ-hmB">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1382,13 +1382,13 @@
         <image name="cookingTimer" width="32" height="32"/>
         <image name="exit" width="128" height="128"/>
         <image name="filer-55" width="55" height="55"/>
-        <image name="home" width="30" height="30"/>
         <image name="lists" width="30" height="30"/>
         <image name="person" width="30" height="30"/>
+        <image name="search" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="baY-bm-0wD"/>
-        <segue reference="31c-lk-x4b"/>
+        <segue reference="5Qz-oB-5fk"/>
         <segue reference="dTT-jI-adV"/>
     </inferredMetricsTieBreakers>
 </document>
