@@ -29,16 +29,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-hk-yZJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50.333333333333336"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="  Type text here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-Jd-ayv">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="50.333333333333336"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9w-t8-tKQ" customClass="CustomButton" customModule="FeedrApp" customModuleProvider="target">
-                                            <rect key="frame" x="314" y="0.0" width="100" height="50.333333333333336"/>
+                                            <rect key="frame" x="314" y="0.0" width="100" height="30"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.4959332191780822" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="tEU-Iw-kNa"/>
@@ -65,10 +65,10 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dah-vx-aQC">
-                                    <rect key="frame" x="0.0" y="50.333333333333329" width="414" height="28"/>
+                                    <rect key="frame" x="0.0" y="30" width="414" height="30"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-7i-ppE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <segments>
                                                 <segment title="Browse"/>
@@ -294,7 +294,7 @@
                                                         <rect key="frame" x="0.0" y="872.33333333333337" width="375" height="127.66666666666663"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-Rb-LUs" userLabel="btn_Cook">
-                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="180" id="SRv-xd-oPe"/>
@@ -307,7 +307,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-DQ-jvv" userLabel="Lbl_Blank">
-                                                                <rect key="frame" x="0.0" y="0.0" width="159" height="30"/>
+                                                                <rect key="frame" x="180" y="0.0" width="86" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="e6H-0k-lmO"/>
                                                                 </constraints>
@@ -316,7 +316,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-eV-tHP" userLabel="btn_Favorite" colorLabel="IBBuiltInLabel-Blue">
-                                                                <rect key="frame" x="195" y="0.0" width="180" height="30"/>
+                                                                <rect key="frame" x="266" y="0.0" width="0.0" height="30"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="180" id="hPs-7E-sNv"/>
