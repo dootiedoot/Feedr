@@ -79,10 +79,7 @@ class LoginVC: UIViewController
         let Iuname = textf_uname.text!
         let Ipassword = textf_pass.text!
         
-        print("Before: " + User.curr_user_name)
         findInDb(uname: Iuname, password: Ipassword)
-        print("After: " + User.curr_user_name)
-        
         if (credentialsMatch == true)
         {
             performSegue(withIdentifier: "torecipe", sender: self)
@@ -127,6 +124,7 @@ class LoginVC: UIViewController
     override func viewDidAppear(_ animated: Bool)
     {
         createTables()
+        findInDb(uname: "1", password: "2")
         insertValuesIntoDB()
         self.hideKeyboard()
 		
@@ -260,8 +258,10 @@ class LoginVC: UIViewController
                 let selectQuery = "SELECT * FROM user" // WHERE username = '\(uname)'"
                 if sqlite3_prepare_v2(db, selectQuery, -1, &selectStatement, nil) == SQLITE_OK
                 {
+                    print("Check DB BC")
                     while sqlite3_step(selectStatement) == SQLITE_ROW
                     {
+                        
                         let queryResultCol1 = sqlite3_column_text(selectStatement, 0)
                         var id = String(cString: queryResultCol1!)
                         
@@ -274,20 +274,20 @@ class LoginVC: UIViewController
                         let queryResultCol02 = sqlite3_column_text(selectStatement, 2)
                         let username = String(cString: queryResultCol02!)
                 
-                        print("\(id) \(iname) \(username) \(pass)")
+                        //print("\(id) \(iname) \(username) \(pass)")
                         let queryResultCol4 = sqlite3_column_text(selectStatement, 4)
                         let email = String(cString: queryResultCol4!)
 
                         let queryResultCol5 = sqlite3_column_text(selectStatement, 5)
                         let phone = String(cString: queryResultCol5!)
 
-                        print("\(name) \(username) \(pass) \(email) \(phone)")
+                        print("\(iname) \(username) \(pass) \(email) \(phone)")
                         
                         if (username == uname && pass == password)
                         {
                             User.curr_user_id = Int(id)!
                             User.curr_user_name = iname
-                            
+                            print("Check DB BC In")
                             self.credentialsMatch = true
                             self.name = iname
                             self.user_id = Int(id)!

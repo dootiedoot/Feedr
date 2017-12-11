@@ -10,6 +10,8 @@
 		1A002F591FAB92A00065ED67 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A002F581FAB92A00065ED67 /* CustomButton.swift */; };
 		1A3079551FB2D82800310FB8 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3079541FB2D82800310FB8 /* CustomVisualEffectView.swift */; };
 		50832F82B409A1A5C6B4EB2D /* Pods_FeedrApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FB5A10ACCF9D498688882B /* Pods_FeedrApp.framework */; };
+		5315C9371FDF05EC0060F937 /* ResetPassowrdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5315C9361FDF05EC0060F937 /* ResetPassowrdVC.swift */; };
+		5315C9391FDF071A0060F937 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5315C9381FDF071A0060F937 /* MessageUI.framework */; };
 		53AC28881FAED86E005CAFAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC28871FAED867005CAFAC /* libsqlite3.tbd */; };
 		53AC288D1FAEDABD005CAFAC /* CreateAllDatabases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */; };
 		53AF7FCA1FD74D0A002F5696 /* ProfileTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AF7FC91FD74D0A002F5696 /* ProfileTabVC.swift */; };
@@ -64,6 +66,8 @@
 		1A3079541FB2D82800310FB8 /* CustomVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVisualEffectView.swift; sourceTree = "<group>"; };
 		3391358FBB141059F63B7D6F /* Pods_FeedrAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedrAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3445F274D5BC1B6DDD6BAA7E /* Pods-FeedrApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedrApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedrApp/Pods-FeedrApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5315C9361FDF05EC0060F937 /* ResetPassowrdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassowrdVC.swift; sourceTree = "<group>"; };
+		5315C9381FDF071A0060F937 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		53AC28871FAED867005CAFAC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		53AC28891FAED8B7005CAFAC /* FeedrApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedrApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		53AC288C1FAEDABD005CAFAC /* CreateAllDatabases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAllDatabases.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5315C9391FDF071A0060F937 /* MessageUI.framework in Frameworks */,
 				53AC28881FAED86E005CAFAC /* libsqlite3.tbd in Frameworks */,
 				50832F82B409A1A5C6B4EB2D /* Pods_FeedrApp.framework in Frameworks */,
 			);
@@ -138,6 +143,7 @@
 		53AC28861FAED866005CAFAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5315C9381FDF071A0060F937 /* MessageUI.framework */,
 				53AC28871FAED867005CAFAC /* libsqlite3.tbd */,
 				55FB5A10ACCF9D498688882B /* Pods_FeedrApp.framework */,
 				777691536ED56AF7C4F5E2A6 /* Pods_FeedrAppTests.framework */,
@@ -199,6 +205,7 @@
 				9FB9B65E1F8BDE1E004B26A9 /* LaunchScreen.storyboard */,
 				9FB9B6851F8BF305004B26A9 /* LoginVC.swift */,
 				9FB9B6591F8BDE1E004B26A9 /* Main.storyboard */,
+				5315C9361FDF05EC0060F937 /* ResetPassowrdVC.swift */,
 				9FAA20811FAAD93200EBADDA /* PreferencesTableViewController.swift */,
 				53AF7FC91FD74D0A002F5696 /* ProfileTabVC.swift */,
 				9F06246C1F96A84A003ED25C /* RecipeDetailVC.swift */,
@@ -540,6 +547,7 @@
 				ABEB1DB11FD9D479009AB867 /* CustomTableView.swift in Sources */,
 				53AF7FCA1FD74D0A002F5696 /* ProfileTabVC.swift in Sources */,
 				9F0624731F9BD3C1003ED25C /* UserLibraryVC.swift in Sources */,
+				5315C9371FDF05EC0060F937 /* ResetPassowrdVC.swift in Sources */,
 				614A77F61FAE7AF1009FFC03 /* HomeViewController.swift in Sources */,
 				61C8C94C1FC29946008EBD9B /* FavoritesVC.swift in Sources */,
 				9FAA20821FAAD93200EBADDA /* PreferencesTableViewController.swift in Sources */,
@@ -718,12 +726,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25GJ9WD25L;
+				DEVELOPMENT_TEAM = CT57RGV5JN;
 				INFOPLIST_FILE = FeedrApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JamesPerry.FeedrApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Navneet.Feedr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeedrApp/FeedrApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -737,12 +747,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25GJ9WD25L;
+				DEVELOPMENT_TEAM = CT57RGV5JN;
 				INFOPLIST_FILE = FeedrApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JamesPerry.FeedrApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Navneet.Feedr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeedrApp/FeedrApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
