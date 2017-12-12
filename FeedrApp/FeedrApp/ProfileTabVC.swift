@@ -13,8 +13,6 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet weak var profilepic: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     
-    @IBOutlet weak var imgView: UIImageView!
-
     @IBOutlet weak var SwitchSoy: UISwitch!
     @IBOutlet weak var switchSesame: UISwitch!
     @IBOutlet weak var switchGluten: UISwitch!
@@ -27,7 +25,7 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet weak var SwitchWheat: UISwitch!
     
     let picker = UIImagePickerController()
-    
+    static var chosenImage : UIImage?
     //  when the user taps the logout button...
     @IBAction func OnLogoutBtn(_ sender: UIButton)
     {
@@ -38,10 +36,10 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         print("Selecting an Image")
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imgView.contentMode = UIViewContentMode.scaleAspectFit
-        print(chosenImage.imageOrientation)
-        imgView.image = chosenImage
+        ProfileTabVC.chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        profilepic.contentMode = UIViewContentMode.scaleAspectFit
+        print(ProfileTabVC.chosenImage?.imageOrientation)
+        profilepic.image = ProfileTabVC.chosenImage
         dismiss(animated:true, completion: nil)
     }
     
@@ -163,7 +161,7 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        imgView.isUserInteractionEnabled = true
+        profilepic.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
 //        print("Allergy is ->")
 //        print(self.listAllergy)
@@ -172,7 +170,7 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         picker.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(popUpOnTap(gesture:)))
         tap.numberOfTapsRequired = 1
-        imgView.addGestureRecognizer(tap)
+        profilepic.addGestureRecognizer(tap)
         
         profilepic.layer.borderWidth = 2
         profilepic.layer.masksToBounds = false
@@ -229,23 +227,7 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-    enum stringToEnum: String
-    {
-        case Gluten = "Gluten"
-        case Peanut = "Peanut"
-        case Diary = "Diary"
-        case Soy = "Soy"
-        case Seafood = "Seafood"
-        case Sesame = "Sesame"
-        case Sulfite = "Sulfite"
-        case Wheat = "Wheat"
-        case Egg = "Egg"
-        case TreeNut = "TreeNut"
-    }
-    
-    let allergy = Allergy.Gluten
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -253,6 +235,11 @@ class ProfileTabVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     
     override func viewWillAppear(_ animated: Bool)
     {
+        if ProfileTabVC.chosenImage != nil
+        {
+            profilepic.image = ProfileTabVC.chosenImage
+        }
+        
         var listAllergy = findUserAllergies(uid: User.curr_user_id)
         print(listAllergy)
         for allergy in listAllergy

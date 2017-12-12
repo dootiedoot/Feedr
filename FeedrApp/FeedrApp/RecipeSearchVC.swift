@@ -152,6 +152,9 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
         
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
+        lbl_searchbar.autocorrectionType = .no
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
