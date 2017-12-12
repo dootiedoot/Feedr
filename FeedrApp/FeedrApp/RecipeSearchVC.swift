@@ -8,33 +8,42 @@
 
 import UIKit
 
+extension Array {
+	mutating func shuffle() {
+		for i in 0 ..< (count - 1) {
+			let j = Int(arc4random_uniform(UInt32(count - i))) + i
+			swapAt(i, j)
+		}
+	}
+}
+
 class RecipeSearchVC: UITableViewController, DataSendingDelegate
 {
     //  BUTTONS
     @IBOutlet weak var lbl_searchbar: UITextField!
     
     private var result = Result()
-    private var recommendations = [Recipe]()
+	static var recommendations = [Recipe]()
 	private var selectedRecipeID : String = ""
 
     var allergyNames = [String]()
-    var userAllergyEnums = [Allergy]()
+    static var userAllergyEnums = [Allergy]()
 
     private var currentSelectedTab = 0
 
 	var name = ""
 	var user_id = -1
     
-    var excludeCuisines = [Cuisine]()
-    var excludeCourses = [Course]()
-    var excludeHolidays = [Holiday]()
+    static var excludeCuisines = [Cuisine]()
+    static var excludeCourses = [Course]()
+    static var excludeHolidays = [Holiday]()
 	
     func userDidSendData(cuisine: [Cuisine], course: [Course], holiday: [Holiday])
     {
         print("Data Received")
-        excludeCuisines = cuisine
-        excludeCourses = course
-        excludeHolidays = holiday
+		RecipeSearchVC.excludeCuisines = cuisine
+		RecipeSearchVC.excludeCourses = course
+		RecipeSearchVC.excludeHolidays = holiday
     }
     
     @IBAction func selectFilter(_ sender: UIBarButtonItem)
@@ -54,14 +63,14 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
                 requirePictures: true,
                 allowedIngredients: [],
 				excludedIngredients: [],
-                allowedAllergies: userAllergyEnums,
+                allowedAllergies: RecipeSearchVC.userAllergyEnums,
                 allowedDiet: [],
                 allowedCuisines: [],
-                excludedCuisines: excludeCuisines,
+				excludedCuisines: RecipeSearchVC.excludeCuisines,
                 allowedCourses: [],
-                excludeCourses: excludeCourses,
+                excludeCourses: RecipeSearchVC.excludeCourses,
                 allowedHoliday: [],
-                excludeHoliday: excludeHolidays,
+                excludeHoliday: RecipeSearchVC.excludeHolidays,
                 maxTotalTimeInSeconds: -1,
                 maxResults: 50)
             { result in
@@ -107,12 +116,22 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
         case 1:
             //print("Recomendations...")
             currentSelectedTab = 1
-            recommendations = YummlyAPI.GetRecommendedRecipes()
+			
+			//	Shuffle recommendations
+			RecipeSearchVC.recommendations.shuffle()
+			
+			//print("Refreshing table for recommendations...")
+			print("showing \(RecipeSearchVC.recommendations.count) recommendations.")
+			for recipe in RecipeSearchVC.recommendations
+			{
+				print("Recommended: \(recipe.name)")
+			}
             break
         default:
             //print("Unknown tab selected...")
             break
         }
+		
         //  Dispatch queue so table view is refreshed with data
         DispatchQueue.main.async
         {
@@ -164,7 +183,7 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
         }
         else
         {
-            return recommendations.count
+            return RecipeSearchVC.recommendations.count
         }
     }
     
@@ -209,9 +228,9 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
         else
         {
             //  Image thumbnail (code is long because there needs to be a handler for when img download fails for whatever reason.)
-            if recommendations[indexPath.row].images![0] != nil
+            if RecipeSearchVC.recommendations[indexPath.row].images![0] != nil
             {
-                let url = URL(string: recommendations[indexPath.row].images![0].hostedLargeUrl!)
+                let url = URL(string: RecipeSearchVC.recommendations[indexPath.row].images![0].hostedLargeUrl!)
                 URLSession.shared.dataTask(with: url!, completionHandler:
                     { (data, reponse, error) in
                         if error != nil
@@ -228,9 +247,9 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
             }
             
             //  Recipe Name
-            lbl_recipeName.text = recommendations[indexPath.row].name
+            lbl_recipeName.text = RecipeSearchVC.recommendations[indexPath.row].name
             //  Cooking Time
-            lbl_cookingTime.text = recommendations[indexPath.row].GetCookingTime()
+            lbl_cookingTime.text = RecipeSearchVC.recommendations[indexPath.row].GetCookingTime()
         }
         
         return cell
@@ -332,7 +351,7 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
         var allergyIDs = [Int]()
         
         self.allergyNames.removeAll()
-        self.userAllergyEnums.removeAll()
+        RecipeSearchVC.userAllergyEnums.removeAll()
         
         do
         {
@@ -388,55 +407,55 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
         
         if allergyFound == true && allergyName == "Gluten"
         {
-            userAllergyEnums.append(Allergy.Gluten)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.Gluten)
         }
         else
         if allergyFound == true && allergyName == "Egg"
         {
-            userAllergyEnums.append(Allergy.Egg)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.Egg)
         }
         else
         if allergyFound == true && allergyName == "Sesame"
         {
-            userAllergyEnums.append(Allergy.Sesame)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.Sesame)
         }
         else
         if allergyFound == true && allergyName == "Seafood"
         {
-            userAllergyEnums.append(Allergy.Seafood)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.Seafood)
         }
         else
         if allergyFound == true && allergyName == "TreeNut"
         {
-            userAllergyEnums.append(Allergy.TreeNut)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.TreeNut)
         }
         else
         if allergyFound == true && allergyName == "Wheat"
         {
-            userAllergyEnums.append(Allergy.Wheat)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.Wheat)
         }
         else
         if allergyFound == true && allergyName == "Peanut"
         {
-            userAllergyEnums.append(Allergy.Peanut)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.Peanut)
         }
         else
         if allergyFound == true && allergyName == "Soy"
         {
-            userAllergyEnums.append(Allergy.Soy)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.Soy)
         }
         else
         if allergyFound == true && allergyName == "Sulfite"
         {
-        userAllergyEnums.append(Allergy.Sulfite)
+        	RecipeSearchVC.userAllergyEnums.append(Allergy.Sulfite)
         }
         else
         if allergyFound == true && allergyName == "Diary"
         {
-            userAllergyEnums.append(Allergy.Diary)
+            RecipeSearchVC.userAllergyEnums.append(Allergy.Diary)
         }
     }
-
+	
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

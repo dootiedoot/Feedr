@@ -242,6 +242,9 @@ class FavoritesVC: UITableViewController
 				print(id, "has been added to favorites")
 //                FindRecipeAsFav(user_id: this_user_id, recipe_id: id)
 //                RecipeDetailVC.UpdateFavoriteButton(RecipeDetailVC)
+				
+				//	Update recommendations
+				YummlyAPI.UpdateRecommendations()
 			}
 		}
 		else
@@ -261,6 +264,9 @@ class FavoritesVC: UITableViewController
             removeRecipeAsFav(user_id: user_id, recipe_id: id)
 //            FindRecipeAsFav(user_id: user_id, recipe_id: id)
             print(id, "has been removed from favorites")
+			
+			//	Update recommendations
+			YummlyAPI.UpdateRecommendations()
 		}
 		else
 		{
