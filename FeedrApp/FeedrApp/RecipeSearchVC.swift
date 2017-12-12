@@ -118,7 +118,10 @@ class RecipeSearchVC: UITableViewController, DataSendingDelegate
             currentSelectedTab = 1
 			
 			//	Shuffle recommendations
-			RecipeSearchVC.recommendations.shuffle()
+			if RecipeSearchVC.recommendations.count > 0
+			{
+				RecipeSearchVC.recommendations.shuffle()
+			}
 			
 			//print("Refreshing table for recommendations...")
 			print("showing \(RecipeSearchVC.recommendations.count) recommendations.")
