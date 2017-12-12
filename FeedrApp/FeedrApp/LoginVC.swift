@@ -86,12 +86,18 @@ class LoginVC: UIViewController
             
             //  (CHAD) Retrive favorites from database and populate the favorites array at start
             let recipeIDS = FavoritesVC.GetFavoriteRecipeIDsFromDatabase()
-            for recipeID in recipeIDS
+			for (index, recipeID) in recipeIDS.enumerated()
             {
                 YummlyAPI.GetRecipe(recipeID: recipeID)
                 {   recipe in
                     FavoritesVC.favRecipes.append(recipe)
                     print("Recipe found in user favorites: \(recipe.name)")
+					
+					//	Execuated when all recipes have been appended
+					if index >= recipeIDS.count - 1
+					{
+						YummlyAPI.UpdateRecommendations()
+					}
                 }
             }
         }

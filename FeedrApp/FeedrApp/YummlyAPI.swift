@@ -438,7 +438,7 @@ class YummlyAPI
     //  GLOBAL VARIABLES
 	static let IngredientsMetadata = GetIngredientsMetadata()				//	Cache entire ingredients metadata into a array
     static var RecipeDetailHistory = [Recipe]()                             //  Contains the history of all recipes that were viewed
-    static var ResultsSearchHistory = [Match]()                             //  Contains the history of all search results that were searched.
+    //static var ResultsSearchHistory = [Match]()                             //  Contains the history of all search results that were searched.
     
 	//  yummly API variables
 	private static let yummlyID = "51013d4c"
@@ -958,19 +958,170 @@ class YummlyAPI
         // not found
         else
         {
+			//	Remove last element from history if its over the cap (50)
+			if RecipeDetailHistory.count >= 50
+			{
+				RecipeDetailHistory.removeLast()
+			}
+			
             RecipeDetailHistory.append(recipe)
             
             print("Recipe \(recipe.name) added to history.")
+			
+			//	Update recommendations
+			UpdateRecommendations()
         }
     }
-    
+	
+	
+	
     //  Returns array of recipes recommended
-    static func GetRecommendedRecipes() -> [Recipe]
+    static func UpdateRecommendations()
     {
-        var recommendations = [Recipe]()
-        //  Test
-        recommendations.append(contentsOf: RecipeDetailHistory)
-        recommendations.append(contentsOf: FavoritesVC.favRecipes)
-        return recommendations
+		var maxFavRecommendations = 25
+		var maxRecentRecommendations = 25
+		
+		//	Clear recommendations to rebuild
+		RecipeSearchVC.recommendations = [Recipe]()
+		
+		//	Pop last element if recommends hit cap
+		if RecipeSearchVC.recommendations.count >= (maxFavRecommendations + maxRecentRecommendations)
+		{
+			RecipeSearchVC.recommendations.popLast()
+		}
+		
+		print("building recommendations...")
+		
+		//	If there are any favorites or recent searches... Return empty
+		if FavoritesVC.favRecipes.count <= 0 && RecipeDetailHistory.count <= 0
+		{
+			print("No recommendation sources. Doing nothing.")
+			RecipeSearchVC.recommendations = [Recipe]()
+			
+			return
+		}
+		
+		//	Get recommendations from favorites...
+		for favRecipe in FavoritesVC.favRecipes
+		{
+			//	if there is already too many recommendations from favorites... break
+			if maxFavRecommendations <= 0
+			{
+				break
+			}
+			
+			//  Search for matches related to the favorite recipe name
+			YummlyAPI.GetSearch(
+				search: favRecipe.name,
+				requirePictures: true,
+				allowedIngredients: [],
+				excludedIngredients: [],
+				allowedAllergies: RecipeSearchVC.userAllergyEnums,
+				allowedDiet: [],
+				allowedCuisines: [],
+				excludedCuisines: RecipeSearchVC.excludeCuisines,
+				allowedCourses: [],
+				excludeCourses: RecipeSearchVC.excludeCourses,
+				allowedHoliday: [],
+				excludeHoliday: RecipeSearchVC.excludeHolidays,
+				maxTotalTimeInSeconds: -1,
+				maxResults: 4)
+			{ result in
+				
+				//print(result.matches)
+				
+				//	For each match...
+				for match in result.matches!
+				{
+					//	if the recipe found is this one... skip
+					if	favRecipe.id == match.id
+					{
+						continue
+					}
+					
+					//	check if recipe is already in recommendations...
+					if !RecipeSearchVC.recommendations.contains(where: { $0.id == match.id })
+					{
+						//	Get the recipe in Recipe struct and append to recommendations
+						YummlyAPI.GetRecipe(recipeID: match.id)
+						{	recipe in
+							RecipeSearchVC.recommendations.append(recipe)
+							//print(recipe.name)
+							
+							//	Reduce from max allowed favorite recipes
+							maxFavRecommendations = maxRecentRecommendations - 1
+						}
+					}
+				}
+			}
+		}
+		
+		//	Get recommendations from recent recipe detail views...
+		//	Get recommendations from favorites...
+		for historyRecipe in RecipeDetailHistory
+		{
+			//	if there is already too many recommendations from favorites... break
+			if maxRecentRecommendations <= 0
+			{
+				break
+			}
+			
+			//  Search for matches related to the favorite recipe name
+			YummlyAPI.GetSearch(
+				search: historyRecipe.name,
+				requirePictures: true,
+				allowedIngredients: [],
+				excludedIngredients: [],
+				allowedAllergies: RecipeSearchVC.userAllergyEnums,
+				allowedDiet: [],
+				allowedCuisines: [],
+				excludedCuisines: RecipeSearchVC.excludeCuisines,
+				allowedCourses: [],
+				excludeCourses: RecipeSearchVC.excludeCourses,
+				allowedHoliday: [],
+				excludeHoliday: RecipeSearchVC.excludeHolidays,
+				maxTotalTimeInSeconds: -1,
+				maxResults: 4)
+			{ result in
+				
+				//print(result.matches)
+				
+				//	For each match...
+				for match in result.matches!
+				{
+					//	if the recipe found is this one... skip
+					if	historyRecipe.id == match.id
+					{
+						continue
+					}
+					
+					//	check if recipe is already in recommendations...
+					if !RecipeSearchVC.recommendations.contains(where: { $0.id == match.id })
+					{
+						//	Get the recipe in Recipe struct and append to recommendations
+						YummlyAPI.GetRecipe(recipeID: match.id)
+						{	recipe in
+							RecipeSearchVC.recommendations.append(recipe)
+							//print(recipe.name)
+							
+							//	Reduce from max allowed favorite recipes
+							maxRecentRecommendations = maxRecentRecommendations - 1
+						}
+					}
+				}
+			}
+		}
     }
+	
+	//	Returns a random Int between 2 numbers
+	static func randomIntFrom(start: Int, to end: Int) -> Int
+	{
+		var a = start
+		var b = end
+		// swap to prevent negative integer crashes
+		if a > b {
+			swap(&a, &b)
+		}
+		return Int(arc4random_uniform(UInt32(b - a + 1))) + a
+	}
 }
