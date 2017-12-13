@@ -9,7 +9,7 @@ Chieh Chen,
 James Perry, 
 Navneet Pandey
 
-Libraries used 
+Libraries used  <br />
 DDSpider Chart [https://github.com/dadalar/DDSpiderChart] <br />
 Yummly API [https://developer.yummly.com/]
 
