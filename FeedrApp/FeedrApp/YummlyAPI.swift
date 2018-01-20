@@ -441,8 +441,8 @@ class YummlyAPI
     //static var ResultsSearchHistory = [Match]()                             //  Contains the history of all search results that were searched.
     
 	//  yummly API variables
-	private static let yummlyID = "51013d4c"
-	private static let yummlyKey = "0549dc2605e77741e0feb12736c65087"
+	private static let yummlyID = "INSERT YUMMLYAPI ID HERE"
+	private static let yummlyKey = "INSERT YUMMLYAPI KEY HERE"
     
     //	Function that returns a search result enum that contains all the data
     static func GetSearch(search: String?,
