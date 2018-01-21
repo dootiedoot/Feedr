@@ -1,5 +1,6 @@
 # Feedr
 iOS Recipe app for COSC 4355 at the University of Houston
+An iOS based application which suggests recipes based on ingredients. Recipe search can be narrowed down by using filters such as cuisine or course. The app also provides intelligent suggestion tailored for the user.
 
 -- Project Team -- 
 Jonathan Shakib, 
